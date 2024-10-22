@@ -35,14 +35,14 @@ $(document).ready(function(){
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Reseach","Development","Project Management","Monitoring and Evaluation","GIS,RS and Mapping","Data Analysis","BI Analysis"],
+        strings: ["Reseach","Climate Action","Climate Justice","Policy Analysis", "Natural Resource Rights","GIS, RS and Mapping","Data Analysis","PowerBI Analysis"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Reseach","Development","Project Management","Monitoring and Evaluation","GIS,RS and Mapping","Data Analysis","BI Analysis"],
+        strings: ["Reseach","Climate Action","Climate Justice","Policy Analysis", "Natural Resource Rights","GIS, RS and Mapping","Data Analysis","PowerBI Analysis"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
