@@ -7,6 +7,25 @@ $(document).ready(function(){
             $('.navbar').removeClass("sticky");
         }
         
+        $(document).ready(function() {
+            let currentSlide = 0;
+            const slides = $('.cover-slide');
+            const totalSlides = slides.length;
+        
+            function showNextSlide() {
+                slides.eq(currentSlide).removeClass('active');
+                currentSlide = (currentSlide + 1) % totalSlides;
+                slides.eq(currentSlide).addClass('active');
+            }
+        
+            // Set the first slide as active
+            slides.eq(currentSlide).addClass('active');
+        
+            // Change slides every 2 seconds
+            setInterval(showNextSlide, 2000);
+        });
+        
+
         // scroll-up button show/hide script
         if(this.scrollY > 500){
             $('.scroll-up-btn').addClass("show");
@@ -14,6 +33,8 @@ $(document).ready(function(){
             $('.scroll-up-btn').removeClass("show");
         }
     });
+
+    
 
     // slide-up script
     $('.scroll-up-btn').click(function(){
@@ -35,14 +56,14 @@ $(document).ready(function(){
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Reseach","Climate Action","Climate Justice","Policy Analysis", "Natural Resource Rights","GIS, RS and Mapping","Data Analysis","PowerBI Analysis"],
+        strings: ["Reseach","Development","Project Management","Monitoring and Evaluation","GIS,RS and Mapping","Data Analysis","BI Analysis"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Reseach","Climate Action","Climate Justice","Policy Analysis", "Natural Resource Rights","GIS, RS and Mapping","Data Analysis","PowerBI Analysis"],
+        strings: ["Reseach","Development","Project Management","Monitoring and Evaluation","GIS,RS and Mapping","Data Analysis","BI Analysis"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
