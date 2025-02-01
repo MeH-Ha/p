@@ -374,6 +374,18 @@ li:hover {
     background: none;
 }
 
+/*==================== Video section styling ===================*/
+.video-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.video-container iframe {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
 /*==================== Experience section styling ===================*/
 
 .Experience, .teams {
@@ -456,29 +468,12 @@ li:hover {
 }
 
 
-/*======================== Education section styling ======================== */
-
-.education, .teams {
-    color: #111;
-    background: #fff;
-}
-
-.education .title::before,
-.teams .title::before {
-    background: #111;
-}
-
-.education .title::after {
-    content: "where I've studied";
-    background: #fff;
-}
-
 .education .edu-content {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
     flex-wrap: wrap;
-    margin-top: 50px;
+    gap: 20px;
 }
 
 .education .card {
@@ -488,19 +483,25 @@ li:hover {
     color: #f1f1f1;
     border-radius: 6px;
     padding: 35px 25px;
-    margin-top: 20px;
     cursor: pointer;
-    height: 240px;
-}
-
-.education .card:hover {
-    background: #13B9FF;
+    height: auto; /* Adjusts based on content */
+    min-height: 240px; /* Ensures uniform size */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .education .card .box {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     transition: all 0.4s ease;
+}
+
+.education .card:hover {
+    background: #13B9FF;
 }
 
 .education .card:hover .box {
@@ -521,6 +522,11 @@ li:hover {
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
+    flex-grow: 1; /* Ensures text is contained */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -535,44 +541,206 @@ li:hover {
     }
 }
 
-/*# Sections General
---------------------------------------------------------------*/
-.section {
-  padding: 60px 0;
-  overflow: hidden;
+/*====================================== IELTS Score Section============================================== */
+
+.ielts-score .title {
+    color: #000 !important; /* Ensures the text is black */
 }
 
-.section-bg {
-  background: #f5f8fd;
+.ielts-score .title::after,
+.teams .title::after {
+    content: "IELTS Test Score";
+    background: #fff;
 }
 
-.section-title {
-  padding-bottom: 30px;
+.ielts-score {
+    padding: 60px 0;
+    background: #fff; /* Set background to white */
 }
 
-.section-title h2 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  position: relative;
-  color: #173b6c;
+.ielts-score .max-width {
+    width: 90%;
+    margin: 0 auto;
 }
 
-.section-title h2::after {
-  content: '';
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #13B9FF;
-  bottom: 0;
-  left: 0;
+.ielts-score .title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #173b6c;
+    text-align: center;
 }
 
-.section-title p {
-  margin-bottom: 0;
+.ielts-score .ielts-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
+
+.ielts-score .score-details {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 20px;
+    background: #fff; /* Set background to white */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px; /* Rounded corners like Experience section */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.ielts-score .score-details:hover {
+    transform: scale(1.05); /* Zoom in effect on hover */
+}
+
+.ielts-score .score-details p {
+    margin-bottom: 15px;
+}
+
+.ielts-score .score-details strong {
+    font-weight: 600;
+}
+
+.ielts-score .trf-preview {
+    flex: 1;
+    padding: 20px;
+    background: #fff; /* Set background to white */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 6px; /* Rounded corners like Experience section */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.ielts-score .trf-preview:hover {
+    transform: scale(1.05); /* Zoom in effect on hover */
+}
+
+.ielts-score .trf-preview img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    margin-top: 20px;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.ielts-score .trf-preview img:hover {
+    transform: scale(1.1); /* Zoom in effect */
+}
+
+.ielts-score .trf-preview a {
+    color: #13B9FF;
+    font-weight: bold;
+}
+
+.ielts-score .trf-preview a:hover {
+    text-decoration: underline;
+}
+
+.ielts-score .trf-preview button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.ielts-score .trf-preview button:hover {
+    transform: scale(1.1); /* Zoom in effect */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .ielts-score .ielts-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/*============================ Project section styling =============================*/
+
+.project {
+    color: #111;
+    background: #fff;
+}
+
+.project .title::before {
+    background: #111;
+}
+
+.project .title::after {
+    content: "I've contributed";
+    background: #fff;
+}
+
+.project-content {
+    margin-top: 40px;
+}
+
+.project-content .publication {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.project-content .publication h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.project-content .publication p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.project-content .publication a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.project-content .publication a:hover {
+    text-decoration: underline;
+}
+
+/* Certification/Project Download */
+.certification-download {
+    margin-top: 10px;
+}
+
+.download-thumbnail {
+    width: 200px;
+    height: auto;
+    border-radius: 3%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.download-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    transition: transform 0.3s ease;
+}
+
+
 
 /*============================ Research section styling =============================*/
 
@@ -659,9 +827,6 @@ li:hover {
     max-width: 700px;
     transition: transform 0.3s ease;
 }
-
-.modal-content,
-
 
 
 /*============================ Certification section styling =============================*/
