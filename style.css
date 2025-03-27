@@ -175,6 +175,16 @@ section .title::after{
     filter: brightness(90%);
 }
 
+
+
+
+
+
+
+
+
+
+
 /*==================================home section styling===================================*/
 .home {
     display: flex;
@@ -325,6 +335,12 @@ li:hover {
 }
 
 
+
+
+
+
+
+
 /*=================================about section styling==============================*/
 
 .about .title::after{
@@ -374,6 +390,16 @@ li:hover {
     background: none;
 }
 
+
+
+
+
+
+
+
+
+
+
 /*==================== Video section styling ===================*/
 .video-section {
     text-align: center;
@@ -384,6 +410,15 @@ li:hover {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+
+
+
+
+
+
+
+
+
 
 
 /*==================== Experience section styling ===================*/
@@ -466,6 +501,13 @@ li:hover {
         width: calc(100% - 20px); /* One card per row on small screens */
     }
 }
+
+
+
+
+
+
+
 
 /*============================ Project section styling =============================*/
 
@@ -552,7 +594,14 @@ li:hover {
     transition: transform 0.3s ease;
 }
 
+
+
+
+
+
+
 /*==================== Education ===================*/
+
 .education .title {
     font-size: 32px;
     font-weight: bold;
@@ -568,7 +617,7 @@ li:hover {
     margin-top: 10px;
     font-size: 18px;
     color: #13B9FF;
-    font-weight:bold ;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -601,6 +650,7 @@ li:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center; /* Centers the content (thumbnail) */
     transition: all 0.4s ease;
 }
 
@@ -644,6 +694,9 @@ li:hover {
         width: 100%;
     }
 }
+
+
+
 
 
 
@@ -700,16 +753,22 @@ li:hover {
     margin-top: 10px;
 }
 
+/* Improved thumbnail styling without extra white space */
 .download-thumbnail {
-    width: 200px;  /* Adjust the size as needed */
+    width: 200px;  /* Adjust as needed */
     height: auto;
-    border-radius: 3%;
+    border-radius: 8px; /* Soft rounded corners */
+    border: 2px solid #ccc; /* Light gray border */
+    background-color: transparent; /* Removes extra background */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
 }
 
 .download-thumbnail:hover {
     transform: scale(1.1);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow effect */
 }
 
 /* Modal styles */
@@ -723,7 +782,6 @@ li:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.9);
     transition: transform 0.3s ease;
 }
@@ -735,6 +793,11 @@ li:hover {
     max-width: 700px;
     transition: transform 0.3s ease;
 }
+
+
+
+
+
 
 
 /*====================================== IELTS Score Section============================================== */
@@ -780,12 +843,13 @@ li:hover {
     padding: 20px;
     background: #fff; /* Set background to white */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 6px; /* Rounded corners like Experience section */
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    border-radius: 6px; /* Rounded corners */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .ielts-score .score-details:hover {
     transform: scale(1.05); /* Zoom in effect on hover */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
 }
 
 .ielts-score .score-details p {
@@ -799,27 +863,33 @@ li:hover {
 .ielts-score .trf-preview {
     flex: 1;
     padding: 20px;
-    background: #fff; /* Set background to white */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    border-radius: 6px; /* Rounded corners like Experience section */
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    border-radius: 6px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .ielts-score .trf-preview:hover {
-    transform: scale(1.05); /* Zoom in effect on hover */
+    transform: scale(1.05);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Image styling with matching border and shadow */
 .ielts-score .trf-preview img {
     width: 100%;
     height: auto;
     max-width: 400px;
     margin-top: 20px;
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .ielts-score .trf-preview img:hover {
-    transform: scale(1.1); /* Zoom in effect */
+    transform: scale(1.1);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
 }
 
 .ielts-score .trf-preview a {
@@ -835,11 +905,11 @@ li:hover {
     padding: 10px 20px;
     margin: 10px 0;
     font-size: 16px;
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    transition: transform 0.3s ease-in-out;
 }
 
 .ielts-score .trf-preview button:hover {
-    transform: scale(1.1); /* Zoom in effect */
+    transform: scale(1.1);
 }
 
 /* Responsive Design */
@@ -852,10 +922,17 @@ li:hover {
 
 .ielts-score .trf-preview button {
     padding: 10px 20px;
-    margin: 30px 0 0 0; /* Increased margin-top */
+    margin: 30px 0 0 0;
     font-size: 16px;
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    transition: transform 0.3s ease-in-out;
 }
+
+
+
+
+
+
+
 
 
 /*============================ Certification section styling =============================*/
