@@ -14,6 +14,13 @@ html{
 html, body {
     max-width: 100%; /* Prevents content from exceeding the viewport width */
     overflow-x: hidden; /* Hides any overflow on the x-axis */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 /* custom scroll bar */
@@ -34,25 +41,34 @@ html, body {
 /* all similar content styling codes */
 section{
     padding: 50px 0;
+    width: 100%;
+    overflow: hidden;
 }
 .max-width{
     max-width: 1300px;
     padding: 0 20px;
-    margin: auto;
+    margin: 0 auto;
+    width: 100%;
+    overflow: visible;
+    min-width: 320px;
 }
-.about, .Experience, .skills, .contact .education .publication {
+.about, .Experience, .skills, .contact, .education, .publication {
     font-family: 'Poppins', sans-serif;
+    width: 100%;
+    overflow: hidden;
 }
 .about .about-content,
 .Experience .serv-content,
 .education .edu-content,
 .research .research-content,
 .skills .skills-content,
-.contact .contact-content{
+.contact .contact-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
 }
 section .title{
     position: relative;
@@ -349,15 +365,22 @@ li:hover {
 }
 .about .about-content .left{
     width: 45%;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .about .about-content .left img{
     height: auto;
-    width: 450px;
-    object-fit: cover ;
+    width: 100%;
+    max-width: 450px;
+    object-fit: contain;
     border-radius: 6px;
 }
 .about .about-content .right{
     width: 55%;
+    min-width: 300px;
+    padding: 0 20px;
 }
 .about .about-content .right .text{
     font-size: 25px;
@@ -654,6 +677,49 @@ li:hover {
     transition: all 0.4s ease;
 }
 
+.program-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.program-logos {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.program-logo {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Special styling for URJC logo */
+img[alt="URJC Logo"].program-logo {
+    background-color: #fff;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+img[alt="URJC Logo"].program-logo:hover {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.program-logo:hover {
+    transform: scale(1.1);
+}
+
+.grad-icon {
+    font-size: 50px;
+    color: #13B9FF;
+    transition: color 0.4s ease;
+}
+
 .education .card:hover {
     background: #13B9FF;
 }
@@ -727,6 +793,7 @@ li:hover {
 .research-content .publication {
     margin-bottom: 30px;
     text-align: left;
+    overflow: visible;
 }
 
 .research-content .publication h3 {
@@ -750,25 +817,32 @@ li:hover {
 }
 
 .certification-download {
-    margin-top: 10px;
+    margin: 20px 0;
+    padding: 10px;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 /* Improved thumbnail styling without extra white space */
 .download-thumbnail {
     width: 200px;  /* Adjust as needed */
     height: auto;
-    border-radius: 8px; /* Soft rounded corners */
-    border: 2px solid #ccc; /* Light gray border */
-    background-color: transparent; /* Removes extra background */
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background-color: transparent;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: block;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
 }
 
 .download-thumbnail:hover {
     transform: scale(1.1);
-    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow effect */
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+    z-index: 3;
 }
 
 /* Modal styles */
@@ -1311,6 +1385,12 @@ button:active {
     }
     .max-width{
         max-width: 930px;
+        min-width: 320px;
+        padding: 0 15px;
+    }
+    .about .about-content {
+        flex-direction: column;
+        align-items: center;
     }
     .about .about-content .column{
         width: 100%;
@@ -1319,9 +1399,11 @@ button:active {
         display: flex;
         justify-content: center;
         margin: 0 auto 60px;
+        padding: 0 15px;
     }
     .about .about-content .right{
         flex: 100%;
+        padding: 0 15px;
     }
     .Experience .serv-content .card{
         width: calc(50% - 10px);
@@ -1331,6 +1413,7 @@ button:active {
     .contact .contact-content .column{
         width: 100%;
         margin-bottom: 35px;
+        padding: 0 15px;
     }
 }
 
