@@ -8,14 +8,12 @@
 }
 html{
     scroll-behavior: smooth;
-    scrollbar-gutter: stable; /* Reserve space for scrollbar to prevent jumping */
 }
 
 /* Add this to remove the extra space in the right in the mobile view */
 html, body {
     max-width: 100%; /* Prevents content from exceeding the viewport width */
     overflow-x: hidden; /* Hides any overflow on the x-axis */
-    overflow-y: scroll; /* Always show scrollbar track */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
