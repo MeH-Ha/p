@@ -35,14 +35,14 @@ $(document).ready(function(){
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Reseach","Climate Action","Climate Justice","Policy Analysis", "Natural Resource Rights","GIS, RS and Mapping","Data Analysis","PowerBI Analysis"],
+        strings: ["Biodiversity Conservation","Biodiversity Governance","Climate Action","Climate Adaptation","Climate Justice","Data Analysis","Environmental Data Science","Environmental Governance","Environmental Management","GIS & Remote Sensing","Interdisciplinary Research","Natural Resource Rights","Nature-Based Solutions","Open to Internships","Open to PhD Opportunities","Policy Analysis","Power BI","Research","SDGs","Scientific Writing","Spatial Analysis"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Reseach","Climate Action","Climate Justice","Policy Analysis", "Natural Resource Rights","GIS, RS and Mapping","Data Analysis","PowerBI Analysis"],
+        strings: ["Biodiversity Conservation","Biodiversity Governance","Climate Action","Climate Adaptation","Climate Justice","Data Analysis","Environmental Data Science","Environmental Governance","Environmental Management","GIS & Remote Sensing","Interdisciplinary Research","Natural Resource Rights","Nature-Based Solutions","Open to Internships","Open to PhD Opportunities","Policy Analysis","Power BI","Research","SDGs","Scientific Writing","Spatial Analysis"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true

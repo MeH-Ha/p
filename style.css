@@ -8,12 +8,14 @@
 }
 html{
     scroll-behavior: smooth;
+    scrollbar-gutter: stable; /* Reserve space for scrollbar to prevent jumping */
 }
 
 /* Add this to remove the extra space in the right in the mobile view */
 html, body {
     max-width: 100%; /* Prevents content from exceeding the viewport width */
     overflow-x: hidden; /* Hides any overflow on the x-axis */
+    overflow-y: scroll; /* Always show scrollbar track */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -693,7 +695,7 @@ li:hover {
 }
 
 .program-logo {
-    width: 80px;
+    width: 100px;
     height: auto;
     border-radius: 8px;
     transition: transform 0.3s ease;
@@ -707,6 +709,17 @@ img[alt="URJC Logo"].program-logo {
 }
 
 img[alt="URJC Logo"].program-logo:hover {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Special styling for BU logo */
+img[alt="BU Logo"].program-logo {
+    background-color: #fff;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+img[alt="BU Logo"].program-logo:hover {
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
 }
 
