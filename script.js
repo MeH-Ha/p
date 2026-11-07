@@ -35,14 +35,14 @@ $(document).ready(function(){
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Biodiversity Conservation","Biodiversity Governance","Climate Action","Climate Adaptation","Climate Justice","Data Analysis","Environmental Data Science","Environmental Governance","Environmental Management","GIS & Remote Sensing","Interdisciplinary Research","Natural Resource Rights","Nature-Based Solutions","Open to Internships","Open to PhD Opportunities","Policy Analysis","Power BI","Research","SDGs","Scientific Writing","Spatial Analysis"],
+        strings: ["Biodiversity Conservation","Biodiversity Governance","Climate Action","Climate Adaptation","Climate Justice","Conservation Governance","Data Analysis","Ecosystem Services","Environmental Data Science","Environmental Governance","Environmental Justice","Environmental Management","GIS & Remote Sensing","Interdisciplinary Research","Land-Use Change","Natural Resource Rights","Nature-Based Solutions","Open to Internships","Open to PhD Opportunities","Participatory Research","Policy Analysis","Power BI","Research","SDGs","Scientific Writing","Socio-Ecological Systems","Spatial Analysis","Stakeholder Engagement","Sustainable Rural Development"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Biodiversity Conservation","Biodiversity Governance","Climate Action","Climate Adaptation","Climate Justice","Data Analysis","Environmental Data Science","Environmental Governance","Environmental Management","GIS & Remote Sensing","Interdisciplinary Research","Natural Resource Rights","Nature-Based Solutions","Open to Internships","Open to PhD Opportunities","Policy Analysis","Power BI","Research","SDGs","Scientific Writing","Spatial Analysis"],
+        strings: ["Biodiversity Conservation","Biodiversity Governance","Climate Action","Climate Adaptation","Climate Justice","Conservation Governance","Data Analysis","Ecosystem Services","Environmental Data Science","Environmental Governance","Environmental Justice","Environmental Management","GIS & Remote Sensing","Interdisciplinary Research","Land-Use Change","Natural Resource Rights","Nature-Based Solutions","Open to Internships","Open to PhD Opportunities","Participatory Research","Policy Analysis","Power BI","Research","SDGs","Scientific Writing","Socio-Ecological Systems","Spatial Analysis","Stakeholder Engagement","Sustainable Rural Development"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
@@ -71,95 +71,216 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function () {
-    $("#resumeDownloadButton").click(function (e) {
-      e.preventDefault();
-      window.location.href = "attributes/MEHEDI_HASAN_Resume.pdf";
-    });
-  });
- 
-  $(document).ready(function () {
-    $("#cvDownloadButton").click(function (e) {
-      e.preventDefault();
-      window.location.href = "attributes/MEHEDI_HASAN_CV.pdf";
-    });
-  });
 
-  /* Certification section */
-  var myState = {
-    pdf: null,
-    currentPage: 1,
-    zoom: 1
-}
+/* =====================================================================
+   Added features: analytics, contact form, scroll tracker, tilt, link previews
+   ===================================================================== */
 
-pdfjsLib.getDocument('./certifications/Certificate Book.pdf').then((pdf) => {
+/* ---- 1. Visitor tracker (GoatCounter: cookieless, GDPR-friendly) ----
+   1) Sign up free at https://www.goatcounter.com and pick a code (e.g. "mehedi").
+   2) Put that code between the quotes below. Leave empty to keep tracking off. */
+var GOATCOUNTER_CODE = "";
+(function () {
+    if (!GOATCOUNTER_CODE) return;
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://gc.zgo.at/count.js";
+    s.setAttribute("data-goatcounter", "https://" + GOATCOUNTER_CODE + ".goatcounter.com/count");
+    document.body.appendChild(s);
+    var f = document.querySelector("footer");
+    if (f) {
+        var p = document.createElement("p");
+        p.className = "privacy-note";
+        p.textContent = "This site uses cookieless, privacy-friendly visit statistics (GoatCounter). No personal profiles are built.";
+        f.appendChild(p);
+    }
+})();
 
-    myState.pdf = pdf;
-    render();
-
-});
-
-function render() {
-    myState.pdf.getPage(myState.currentPage).then((page) => {
-  
-        var canvas = document.getElementById("pdf_renderer");
-        var ctx = canvas.getContext('2d');
-
-        var viewport = page.getViewport(myState.zoom);
-
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-  
-        page.render({
-            canvasContext: ctx,
-            viewport: viewport
+/* ---- 2. Contact form: sends an email directly (FormSubmit, no server needed) ---- */
+(function () {
+    var form = document.forms["contact-form"];
+    var msg = document.getElementById("msg");
+    if (!form || !msg) return;
+    var TO = "mh0212999@gmail.com";
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var btn = document.getElementById("formButton");
+        var data = {};
+        new FormData(form).forEach(function (v, k) { data[k] = v; });
+        if (data._honey) return;                       // spam trap
+        delete data.privacy_consent;
+        btn.disabled = true; btn.textContent = "Sending...";
+        fetch("https://formsubmit.co/ajax/" + TO, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(data)
+        }).then(function (r) { return r.json(); }).then(function (res) {
+            if (res.success === "true" || res.success === true) {
+                msg.textContent = "Thank you! Your email has been sent.";
+                form.reset();
+            } else { throw new Error(res.message || "failed"); }
+        }).catch(function () {
+            msg.innerHTML = 'Sorry, it could not be sent. Please write to <a href="mailto:' + TO + '">' + TO + '</a>.';
+        }).finally(function () {
+            btn.disabled = false; btn.textContent = "Send Email";
+            setTimeout(function () { msg.textContent = ""; }, 8000);
         });
     });
-}
+})();
 
-document.getElementById('go_previous').addEventListener('click', (e) => {
-    if(myState.pdf == null || myState.currentPage == 1) 
-      return;
-    myState.currentPage -= 1;
-    document.getElementById("current_page").value = myState.currentPage;
-    render();
-});
-
-document.getElementById('go_next').addEventListener('click', (e) => {
-    if(myState.pdf == null || myState.currentPage > myState.pdf._pdfInfo.numPages) 
-       return;
-    myState.currentPage += 1;
-    document.getElementById("current_page").value = myState.currentPage;
-    render();
-});
-
-document.getElementById('current_page').addEventListener('keypress', (e) => {
-    if(myState.pdf == null) return;
-  
-    // Get key code
-    var code = (e.keyCode ? e.keyCode : e.which);
-  
-    // If key code matches that of the Enter key
-    if(code == 13) {
-        var desiredPage = 
-        document.getElementById('current_page').valueAsNumber;
-                          
-        if(desiredPage >= 1 && desiredPage <= myState.pdf._pdfInfo.numPages) {
-            myState.currentPage = desiredPage;
-            document.getElementById("current_page").value = desiredPage;
-            render();
+/* ---- 3. Right-edge scroll tracker: progress, section titles (click to jump), drag to scroll ---- */
+(function () {
+    var box = document.getElementById("scrollTracker");
+    if (!box) return;
+    var track = box.querySelector(".st-track");
+    var pct = box.querySelector(".st-pct");
+    var list = box.querySelector(".st-list");
+    var root = document.documentElement;
+    var SECTIONS = [["home","Home"],["about","About"],["experience","Experience"],["project","Projects"],["education","Education"],["training","Training"],["research","Publications"],["awards","Awards"],["ielts-score","Languages"],["skills","Skills"],["contact","Contact"]];
+    var items = [];
+    SECTIONS.forEach(function (s) {
+        var el = document.getElementById(s[0]); if (!el) return;
+        var li = document.createElement("li"), b = document.createElement("button");
+        b.type = "button"; b.textContent = s[1];
+        b.addEventListener("click", function () {
+            window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
+        });
+        li.appendChild(b); list.appendChild(li); items.push({ el: el, li: li });
+    });
+    function maxScroll() { return Math.max(1, root.scrollHeight - window.innerHeight); }
+    function layout() {                       // place titles where their sections start, keeping a minimum gap
+        var H = list.clientHeight || box.clientHeight, gap = 26, n = items.length, ys = [], i;
+        for (i = 0; i < n; i++) {
+            var y = (items[i].el.getBoundingClientRect().top + window.scrollY) / maxScroll() * H;
+            ys.push(Math.max(12, i ? Math.max(y, ys[i - 1] + gap) : y));
         }
+        for (i = n - 1; i >= 0; i--) { ys[i] = Math.min(ys[i], i === n - 1 ? H - 12 : ys[i + 1] - gap); }
+        items.forEach(function (it, k) { it.li.style.top = Math.max(12, ys[k]) + "px"; });
     }
-});
+    function update() {
+        var p = Math.min(1, Math.max(0, window.scrollY / maxScroll()));
+        box.style.setProperty("--p", (p * 100) + "%");
+        pct.textContent = Math.round(p * 100) + "%";
+        var cur = 0, probe = window.scrollY + window.innerHeight * 0.35;
+        items.forEach(function (it, i) { if (it.el.getBoundingClientRect().top + window.scrollY <= probe) cur = i; });
+        items.forEach(function (it, i) { it.li.classList.toggle("active", i === cur); });
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", function () { layout(); update(); });
+    window.addEventListener("load", function () { layout(); update(); });
+    box.addEventListener("mouseenter", function () { layout(); });
+    layout(); update();
+    function jump(clientY, instant) {
+        var r = track.getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, (clientY - r.top) / r.height));
+        window.scrollTo({ top: p * maxScroll(), behavior: instant ? "instant" : "smooth" });
+    }
+    var dragging = false;
+    track.addEventListener("pointerdown", function (e) { dragging = true; box.classList.add("dragging"); track.setPointerCapture(e.pointerId); jump(e.clientY, true); e.preventDefault(); });
+    track.addEventListener("pointermove", function (e) { if (dragging) jump(e.clientY, true); });
+    function stop() { dragging = false; box.classList.remove("dragging"); }
+    track.addEventListener("pointerup", stop);
+    track.addEventListener("pointercancel", stop);
+    box.querySelector(".st-top").addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    box.querySelector(".st-bottom").addEventListener("click", function () { window.scrollTo({ top: maxScroll(), behavior: "smooth" }); });
+})();
 
-document.getElementById('zoom_in').addEventListener('click', (e) => {
-    if(myState.pdf == null) return;
-    myState.zoom += 0.5;
-    render();
-});
+/* ---- 4. Hover tilt + zoom on cards, publications and boxes ---- */
+(function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover)").matches) return;
+    document.querySelectorAll(".serv-content > .card .box, .edu-card, .publication, .score-details, .trf-preview").forEach(function (el) {
+        el.classList.add("tilt");
+        el.addEventListener("mousemove", function (e) {
+            var r = el.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - 0.5;
+            var y = (e.clientY - r.top) / r.height - 0.5;
+            el.style.setProperty("--ry", (x * 7) + "deg");
+            el.style.setProperty("--rx", (-y * 7) + "deg");
+        });
+        el.addEventListener("mouseleave", function () {
+            el.style.setProperty("--ry", "0deg");
+            el.style.setProperty("--rx", "0deg");
+        });
+    });
+})();
 
-document.getElementById('zoom_out').addEventListener('click', (e) => {
-    if(myState.pdf == null) return;
-    myState.zoom -= 0.5;
-    render();
-});
+/* ---- 5. Link preview cards (hover thumbnails) ----
+   Privacy-friendly by default: the card is built locally, no request leaves the page.
+   Set LINK_SCREENSHOTS to true to also load live screenshots from thum.io (third party). */
+var LINK_SCREENSHOTS = false;
+(function () {
+    if (!window.matchMedia("(hover: hover)").matches) return;
+    var MAP = [
+        { m: /linkedin\.com/, icon: "fab fa-linkedin-in", c: "#0a66c2", t: "LinkedIn", d: "Professional profile, experience and recommendations." },
+        { m: /github\.com/, icon: "fab fa-github", c: "#24292f", t: "GitHub", d: "Code, websites and open projects." },
+        { m: /facebook\.com/, icon: "fab fa-facebook", c: "#1877f2", t: "Facebook", d: "Personal social profile." },
+        { m: /instagram\.com/, icon: "fa-brands fa-instagram", c: "#c13584", t: "Instagram", d: "Personal social profile." },
+        { m: /(^|\.)x\.com|twitter\.com/, icon: "fa-brands fa-x-twitter", c: "#111", t: "X (Twitter)", d: "Short updates and conservation news." },
+        { m: /t\.me/, icon: "fa-brands fa-telegram", c: "#229ed9", t: "Telegram", d: "Message me on Telegram." },
+        { m: /orcid\.org/, icon: "fab fa-orcid", c: "#a6ce39", t: "ORCID iD 0000-0003-3999-2740", d: "Persistent identifier linking my research outputs." },
+        { m: /doi\.org/, icon: "fas fa-book-open", c: "#08283F", t: "Journal article (DOI)", d: "Opens the full article on the publisher's website." },
+        { m: /bangladesh-unfccc-factsheet/, icon: "fas fa-globe-asia", c: "#08283F", t: "UNFCCC in Bangladesh", d: "Interactive factsheet: commitments, NDCs, adaptation actions and climate finance." },
+        { m: /netlify\.app/, icon: "fas fa-link", c: "#0b6fa4", t: "Personal website", d: "My other personal website." },
+        { m: /rsc-bd\.org/, icon: "fas fa-industry", c: "#08283F", t: "RMG Sustainability Council", d: "Remediation programme for factory safety in Bangladesh." },
+        { m: /oxfam\.org/, icon: "fas fa-hands-helping", c: "#e4002b", t: "Oxfam in Bangladesh", d: "Climate justice and natural resource rights portfolio." },
+        { m: /ceccr\.com/, icon: "fas fa-flask", c: "#08283F", t: "CECCR", d: "Centre for Environment and Climate Change Research." },
+        { m: /fao\.org/, icon: "fas fa-seedling", c: "#08283F", t: "FAO", d: "Food and Agriculture Organization of the United Nations." },
+        { m: /scbeurope\.org|conbio\.org/, icon: "fas fa-leaf", c: "#0b6fa4", t: "SCB Europe Region", d: "Society for Conservation Biology Europe: communicating conservation science." }
+    ];
+    var card = document.createElement("div");
+    card.className = "link-preview";
+    card.innerHTML = '<div class="lp-banner"><i class="lp-icon"></i></div><div class="lp-body"><div class="lp-title"></div><div class="lp-desc"></div><div class="lp-host"></div></div>';
+    document.body.appendChild(card);
+    var banner = card.querySelector(".lp-banner"), icon = card.querySelector(".lp-icon"),
+        title = card.querySelector(".lp-title"), desc = card.querySelector(".lp-desc"), host = card.querySelector(".lp-host");
+
+    function info(url, el) {
+        var u; try { u = new URL(url); } catch (e) { return null; }
+        var hit = MAP.filter(function (x) { return x.m.test(u.hostname + u.pathname); })[0] || {};
+        var pub = el.closest(".publication");
+        var h3 = pub && pub.querySelector("h3");
+        var cardText = el.querySelector && el.querySelector(".text");
+        return {
+            icon: hit.icon || "fas fa-external-link-alt", c: hit.c || "#08283F",
+            t: (h3 ? h3.textContent.trim() : hit.t) || (cardText ? cardText.textContent.trim() : u.hostname),
+            d: hit.d && h3 ? hit.t + ": " + hit.d : (hit.d || "Opens in a new tab."),
+            host: u.hostname.replace(/^www\./, ""), url: url
+        };
+    }
+    function show(el, url, e) {
+        var i = info(url, el); if (!i) return;
+        icon.className = "lp-icon " + i.icon;
+        banner.style.background = "linear-gradient(135deg," + i.c + ",#0f1720)";
+        banner.style.backgroundImage = "";
+        if (LINK_SCREENSHOTS) {
+            banner.style.backgroundImage = "url('https://image.thum.io/get/width/560/crop/300/" + i.url + "')";
+            banner.style.backgroundSize = "cover";
+        }
+        title.textContent = i.t; desc.textContent = i.d; host.textContent = "↗ " + i.host;
+        card.classList.add("show"); move(e);
+    }
+    function move(e) {
+        var w = card.offsetWidth, hh = card.offsetHeight, x = e.clientX + 18, y = e.clientY + 18;
+        if (x + w > window.innerWidth - 10) x = e.clientX - w - 18;
+        if (y + hh > window.innerHeight - 10) y = e.clientY - hh - 18;
+        card.style.left = Math.max(8, x) + "px"; card.style.top = Math.max(8, y) + "px";
+    }
+    function hide() { card.classList.remove("show"); }
+    function bind(el, url) {
+        el.addEventListener("mouseenter", function (e) { show(el, url, e); });
+        el.addEventListener("mousemove", move);
+        el.addEventListener("mouseleave", hide);
+    }
+    document.querySelectorAll('a[href^="http"]').forEach(function (a) {
+        if (a.closest(".navbar") || a.closest(".publication")) return;
+        bind(a, a.href);
+        if (!a.getAttribute("aria-label") && !a.textContent.trim()) {
+            var i = info(a.href, a); if (i) a.setAttribute("aria-label", i.t);
+        }
+    });
+    document.querySelectorAll(".publication").forEach(function (p) {
+        var a = p.querySelector('a[href^="http"]'); if (a) bind(p, a.href);
+    });
+    window.addEventListener("scroll", hide, { passive: true });
+})();
