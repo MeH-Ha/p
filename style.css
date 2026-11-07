@@ -1673,3 +1673,64 @@ section .title:hover{ transform: scale(1.12); }
 .lp-host{ margin-top:8px; font-size:11.5px; font-weight:600; color:#0b8fc7; }
 
 @media (prefers-reduced-motion: reduce){ *{ transition-duration:.01ms !important; animation-duration:.01ms !important; } }
+
+/* =====================================================================
+   Round 4: cover flash fix, scroll hint, title/subtitle fix, org icons,
+   languages + IELTS layout, screenshot previews
+   ===================================================================== */
+/* sections are always opaque so the fixed cover can never show through while AOS fades them in */
+section:not(.home){ background-color:#fff; }
+section[data-aos]{ opacity:1 !important; transform:none !important; }
+
+/* scroll-down hint under "Find me" */
+.scroll-hint{
+    position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:6;
+    display:flex; flex-direction:column; align-items:center; gap:8px; color:#fff; text-decoration:none;
+    font:500 12.5px 'Poppins',sans-serif; letter-spacing:3px; text-transform:uppercase; text-shadow:0 2px 8px rgba(0,0,0,.5);
+    transition: opacity .5s ease, transform .5s var(--spring);
+}
+.scroll-hint:hover{ transform:translateX(-50%) scale(1.12); color:#fff; }
+.scroll-hint.hide{ opacity:0; pointer-events:none; }
+.scroll-hint .mouse{ position:relative; width:26px; height:42px; border:2px solid #fff; border-radius:16px; }
+.scroll-hint .mouse::before{ content:""; position:absolute; top:7px; left:50%; width:4px; height:8px; margin-left:-2px; border-radius:3px; background:#fff; animation: sh-wheel 1.6s ease-in-out infinite; }
+.scroll-hint i{ font-size:16px; animation: sh-bounce 1.6s ease-in-out infinite; }
+@keyframes sh-wheel{ 0%{ opacity:1; transform:translateY(0);} 70%{ opacity:0; transform:translateY(14px);} 100%{ opacity:0; transform:translateY(0);} }
+@keyframes sh-bounce{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(7px);} }
+
+/* titles and subtitles: one consistent geometry so they never collide */
+.education .title, .ielts-score .title{ font-size:40px !important; font-weight:500 !important; margin-bottom:60px !important; padding-bottom:30px !important; color:#111 !important; font-family:'Ubuntu',sans-serif; }
+section .title::after{
+    position:absolute !important; display:block !important; bottom:-8px !important; left:50% !important;
+    margin:0 !important; transform:translateX(-50%) !important; background:#fff !important;
+    padding:0 6px !important; font-size:20px !important; font-weight:400 !important; color:#13B9FF !important; white-space:nowrap;
+}
+.research.training .title::after{ content:"short courses & workshops"; }
+.research.awards .title::after{ content:"recognition"; }
+.ielts-score .title::after{ content:"how I communicate"; }
+
+/* organisation logos on experience cards */
+.org-icon{ display:inline-flex; align-items:center; justify-content:center; width:68px; height:68px; border-radius:50%; background:#fff; padding:12px; box-shadow:0 4px 14px rgba(0,0,0,.25); transition: transform .45s var(--spring); }
+.org-icon img{ width:100%; height:100%; object-fit:contain; display:block; }
+.Experience .serv-content .card .org-icon i{ display:none; }
+.org-icon.noimg img{ display:none; }
+.Experience .serv-content .card .org-icon.noimg i{ display:inline-block; font-size:30px; color:#13B9FF; }
+.Experience .serv-content .card:hover .org-icon{ transform:scale(1.14); }
+
+/* languages first, IELTS card below */
+.ielts-score .ielts-content{ flex-direction:column; align-items:stretch; gap:28px; }
+.ielts-score .trf-preview{ order:1; flex:none; width:100%; }
+.ielts-score .score-details{ order:2; flex:none; width:100%; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:4px 28px; }
+.ielts-score .score-details h3{ grid-column:1/-1; display:flex; align-items:center; gap:10px; font:600 22px 'Ubuntu',sans-serif; margin-bottom:14px; }
+.ielts-score .score-details h3 i{ color:#13B9FF; }
+.trf-preview td[colspan]{ font-weight:500; }
+
+/* link previews: homepage screenshot */
+.lp-banner{ position:relative; height:160px; overflow:hidden; background:#0f1720; }
+.lp-icon{ position:relative; z-index:1; }
+.lp-shot{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; opacity:0; z-index:2; transition:opacity .4s ease; }
+.lp-shot.ready{ opacity:1; }
+
+/* contact form: consent checkbox must not inherit the big dark text-field style */
+.contact form input[type="checkbox"]{ width:18px !important; height:18px; padding:0 !important; margin:0 8px 0 0; vertical-align:middle; accent-color:#13B9FF; box-shadow:none; background:transparent; flex:none; cursor:pointer; }
+.contact form label{ display:flex; align-items:flex-start; }
+.contact #msg{ margin-top:12px; line-height:1.5; }

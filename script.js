@@ -96,35 +96,49 @@ var GOATCOUNTER_CODE = "";
     }
 })();
 
-/* ---- 2. Contact form: sends an email directly (FormSubmit, no server needed) ---- */
+/* ---- 2. Contact form: sends the message by email (FormSubmit; optional Web3Forms) ---- */
 (function () {
     var form = document.forms["contact-form"];
     var msg = document.getElementById("msg");
     if (!form || !msg) return;
     var TO = "mh0212999@gmail.com";
+    /* Optional, more reliable second service: get a free access key at https://web3forms.com
+       (it asks for your email), paste it here and it is used instead of FormSubmit. */
+    var WEB3FORMS_KEY = "";
+    function say(html, ok) { msg.style.color = ok ? "#1a7f37" : "#b3261e"; msg.style.fontWeight = "500"; msg.innerHTML = html; }
+    function mailto(d) {
+        return "mailto:" + TO + "?subject=" + encodeURIComponent("Message from your portfolio website") +
+            "&body=" + encodeURIComponent((d.message || "") + "\n\n" + (d.name || "") + " (" + (d.email || "") + ")");
+    }
     form.addEventListener("submit", function (e) {
         e.preventDefault();
         var btn = document.getElementById("formButton");
         var data = {};
         new FormData(form).forEach(function (v, k) { data[k] = v; });
-        if (data._honey) return;                       // spam trap
+        if (data._honey) return;                                   // spam trap
         delete data.privacy_consent;
+        var fallback = '<a href="' + mailto(data) + '">Click here to send it from your email app instead</a>.';
+        if (location.protocol === "file:") {
+            say("Sending only works on the published website (https), not from a file opened on your computer. " + fallback, false);
+            return;
+        }
         btn.disabled = true; btn.textContent = "Sending...";
-        fetch("https://formsubmit.co/ajax/" + TO, {
+        var w3 = !!WEB3FORMS_KEY;
+        var url = w3 ? "https://api.web3forms.com/submit" : "https://formsubmit.co/ajax/" + TO;
+        var payload = w3 ? { access_key: WEB3FORMS_KEY, name: data.name, email: data.email, message: data.message, subject: data._subject } : data;
+        fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify(data)
-        }).then(function (r) { return r.json(); }).then(function (res) {
-            if (res.success === "true" || res.success === true) {
-                msg.textContent = "Thank you! Your email has been sent.";
-                form.reset();
-            } else { throw new Error(res.message || "failed"); }
-        }).catch(function () {
-            msg.innerHTML = 'Sorry, it could not be sent. Please write to <a href="mailto:' + TO + '">' + TO + '</a>.';
-        }).finally(function () {
-            btn.disabled = false; btn.textContent = "Send Email";
-            setTimeout(function () { msg.textContent = ""; }, 8000);
-        });
+            body: JSON.stringify(payload)
+        }).then(function (r) {
+            return r.text().then(function (t) { var j = {}; try { j = JSON.parse(t); } catch (x) {} return j; });
+        }).then(function (j) {
+            if (j.success === true || j.success === "true") { say("Thank you! Your message has been sent.", true); form.reset(); }
+            else { throw new Error(j.message || "the mail service did not accept the message"); }
+        }).catch(function (err) {
+            console.error("Contact form:", err);
+            say("Could not send automatically (" + String(err.message || err).slice(0, 180) + "). " + fallback, false);
+        }).finally(function () { btn.disabled = false; btn.textContent = "Send Message"; });
     });
 })();
 
@@ -205,10 +219,10 @@ var GOATCOUNTER_CODE = "";
     });
 })();
 
-/* ---- 5. Link preview cards (hover thumbnails) ----
-   Privacy-friendly by default: the card is built locally, no request leaves the page.
-   Set LINK_SCREENSHOTS to true to also load live screenshots from thum.io (third party). */
-var LINK_SCREENSHOTS = false;
+/* ---- 5. Link preview cards: hover shows a screenshot of the linked page ----
+   Screenshots come from thum.io (fallback: WordPress mShots), so hovering a link sends that
+   link's address to those services. Set LINK_SCREENSHOTS to false to use local-only cards. */
+var LINK_SCREENSHOTS = true;
 (function () {
     if (!window.matchMedia("(hover: hover)").matches) return;
     var MAP = [
@@ -230,11 +244,10 @@ var LINK_SCREENSHOTS = false;
     ];
     var card = document.createElement("div");
     card.className = "link-preview";
-    card.innerHTML = '<div class="lp-banner"><i class="lp-icon"></i></div><div class="lp-body"><div class="lp-title"></div><div class="lp-desc"></div><div class="lp-host"></div></div>';
+    card.innerHTML = '<div class="lp-banner"><i class="lp-icon"></i><img class="lp-shot" alt="" referrerpolicy="no-referrer"></div><div class="lp-body"><div class="lp-title"></div><div class="lp-desc"></div><div class="lp-host"></div></div>';
     document.body.appendChild(card);
-    var banner = card.querySelector(".lp-banner"), icon = card.querySelector(".lp-icon"),
+    var banner = card.querySelector(".lp-banner"), icon = card.querySelector(".lp-icon"), shot = card.querySelector(".lp-shot"),
         title = card.querySelector(".lp-title"), desc = card.querySelector(".lp-desc"), host = card.querySelector(".lp-host");
-
     function info(url, el) {
         var u; try { u = new URL(url); } catch (e) { return null; }
         var hit = MAP.filter(function (x) { return x.m.test(u.hostname + u.pathname); })[0] || {};
@@ -252,10 +265,14 @@ var LINK_SCREENSHOTS = false;
         var i = info(url, el); if (!i) return;
         icon.className = "lp-icon " + i.icon;
         banner.style.background = "linear-gradient(135deg," + i.c + ",#0f1720)";
-        banner.style.backgroundImage = "";
+        shot.classList.remove("ready"); shot.removeAttribute("src");
         if (LINK_SCREENSHOTS) {
-            banner.style.backgroundImage = "url('https://image.thum.io/get/width/560/crop/300/" + i.url + "')";
-            banner.style.backgroundSize = "cover";
+            shot.dataset.fb = "";
+            shot.onload = function () { shot.classList.add("ready"); };
+            shot.onerror = function () {
+                if (!shot.dataset.fb) { shot.dataset.fb = "1"; shot.src = "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(i.url) + "?w=580&h=320"; }
+            };
+            shot.src = "https://image.thum.io/get/width/580/crop/320/" + i.url;
         }
         title.textContent = i.t; desc.textContent = i.d; host.textContent = "↗ " + i.host;
         card.classList.add("show"); move(e);
@@ -283,4 +300,16 @@ var LINK_SCREENSHOTS = false;
         var a = p.querySelector('a[href^="http"]'); if (a) bind(p, a.href);
     });
     window.addEventListener("scroll", hide, { passive: true });
+})();
+
+/* ---- 6. Cover photos only exist while the home screen is in view; hide scroll hint after scrolling ---- */
+(function () {
+    var covers = document.querySelector(".cover-slides"), home = document.getElementById("home"), hint = document.querySelector(".scroll-hint");
+    function chk() {
+        var past = home && home.getBoundingClientRect().bottom <= 0;
+        if (covers) covers.style.visibility = past ? "hidden" : "visible";
+        if (hint) hint.classList.toggle("hide", window.scrollY > 60);
+    }
+    window.addEventListener("scroll", chk, { passive: true });
+    chk();
 })();
