@@ -137,7 +137,7 @@ var GOATCOUNTER_CODE = "";
             else { throw new Error(j.message || "the mail service did not accept the message"); }
         }).catch(function (err) {
             console.error("Contact form:", err);
-            say("Could not send automatically (" + String(err.message || err).slice(0, 180) + "). " + fallback, false);
+            say("Sorry, the message could not be sent automatically. " + fallback, false);
         }).finally(function () { btn.disabled = false; btn.textContent = "Send Message"; });
     });
 })();
