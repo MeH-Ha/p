@@ -1774,3 +1774,111 @@ section .title::after{
     .trf-preview td.lang-name{ justify-content:flex-start; font-weight:700; font-size:16px; color:#0b8fc7; }
     .trf-preview td[colspan]{ justify-content:flex-start; text-align:left !important; }
 }
+
+/* =====================================================================
+   Round 6: adaptive transparent tracker + top button, glass contact form, course lists
+   ===================================================================== */
+/* Scroll tracker and go-to-top button: transparent, colours follow whatever is behind them */
+.scroll-tracker{ mix-blend-mode:difference; color:#fff; }
+.scroll-tracker:hover, .scroll-tracker.dragging{ background:rgba(255,255,255,.14); -webkit-backdrop-filter:none; backdrop-filter:none; box-shadow:none; border:1px solid rgba(255,255,255,.4); border-right:0; }
+.st-list button, .st-list li.active button{ color:#fff; }
+.st-list button{ opacity:.62; }
+.st-list button:hover{ opacity:1; }
+.st-list li.active button{ opacity:1; font-weight:700; text-decoration:underline; text-underline-offset:5px; }
+.st-track, .scroll-tracker:hover .st-track, .scroll-tracker.dragging .st-track{ background:rgba(255,255,255,.3); }
+.st-fill{ background:#fff; }
+.st-thumb, .scroll-tracker:hover .st-thumb, .scroll-tracker.dragging .st-thumb{ background:#fff; border-color:#fff; box-shadow:none; }
+.st-pct{ background:#fff; color:#000; }
+.st-btn{ background:rgba(255,255,255,.18); -webkit-backdrop-filter:none; backdrop-filter:none; color:#fff; border:1px solid rgba(255,255,255,.8); }
+.st-btn:hover{ background:rgba(255,255,255,.5); }
+.scroll-up-btn{ mix-blend-mode:difference; background:rgba(255,255,255,.14) !important; color:#fff; border:1.5px solid #fff; border-radius:50%; width:44px; height:44px; line-height:41px; font-size:24px; box-shadow:none; transition: opacity .3s ease, bottom .3s ease, transform .4s var(--spring), background .3s ease; }
+.scroll-up-btn:hover{ filter:none; background:rgba(255,255,255,.34) !important; transform:scale(1.18); }
+
+/* "Send me a message" box: transparent glass, colour change on hover */
+.contact .contact-content .column-right{
+    padding:26px; border-radius:22px; background:rgba(255,255,255,.35); border:1px solid rgba(8,40,63,.12);
+    -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+    transition: background .4s ease, border-color .4s ease, box-shadow .4s ease;
+}
+.contact .contact-content .column-right:hover{ background:linear-gradient(135deg, rgba(19,185,255,.10), rgba(255,255,255,.30)); border-color:rgba(19,185,255,.45); box-shadow:0 18px 44px rgba(8,40,63,.14); }
+.contact form input:not([type="checkbox"]):not([type="hidden"]), .contact form textarea, .contact form select{
+    background:rgba(255,255,255,.28) !important; color:#111 !important; border:1.5px solid rgba(8,40,63,.28) !important;
+    box-shadow:none !important; padding:1.2rem 1.3rem; border-radius:.9rem;
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    transition: background .35s ease, border-color .35s ease, transform .4s var(--spring), box-shadow .35s ease;
+}
+.contact form input:not([type="checkbox"]):not([type="hidden"]):hover, .contact form textarea:hover, .contact form select:hover{
+    background:rgba(19,185,255,.10) !important; border-color:#13B9FF !important; color:#111 !important;
+    transform:translateY(-2px); box-shadow:0 10px 24px rgba(19,185,255,.18) !important;
+}
+.contact form input:not([type="checkbox"]):not([type="hidden"]):focus, .contact form textarea:focus, .contact form select:focus{
+    background:rgba(19,185,255,.14) !important; border-color:#0b8fc7 !important; color:#111 !important; outline:none;
+    box-shadow:0 0 0 4px rgba(19,185,255,.22) !important;
+}
+.contact form ::placeholder{ color:rgba(8,40,63,.55); opacity:1; }
+.contact #formButton{ background:transparent !important; color:#08283F !important; border:2px solid #13B9FF !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+.contact #formButton:hover{ background:#13B9FF !important; color:#fff !important; box-shadow:0 12px 28px rgba(19,185,255,.35); }
+.contact-field{ display:flex; gap:10px; align-items:stretch; }
+.contact-field input{ flex:1; min-width:0; }
+.cc-select{ flex:0 0 170px; width:170px; cursor:pointer; appearance:auto; padding-left:10px !important; padding-right:6px !important; font-size:14px; }
+.cc-select[hidden]{ display:none; }
+.contact-hint{ display:block; margin-top:-0.8rem; min-height:1em; font-size:12.5px; color:#08283F; opacity:.8; }
+@media (max-width:600px){ .contact-field{ flex-wrap:wrap; } .cc-select{ flex:1 1 100%; width:100%; } .contact .contact-content .column-right{ padding:18px; } }
+
+/* long course lists (JUST) */
+.edu-card.edu-long:hover .edu-courses, .edu-card.edu-long:focus-within .edu-courses{ max-height:430px; overflow-y:auto; padding-right:6px; }
+.edu-courses .grp{ list-style:none; margin:10px 0 2px -16px; font-weight:600; font-size:11.5px; letter-spacing:.5px; color:#aeb8c0; }
+.edu-courses ul::-webkit-scrollbar{ width:4px; }
+.st-pct{ right:calc(100% + 196px); }   /* percentage bubble sits left of the title panel, not on top of it */
+
+/* =====================================================================
+   Round 7: IELTS highlight, per-field contact effects only, earlier tracker look in transparent glass
+   ===================================================================== */
+/* contact: effects live on each field/button only, no box around the whole form */
+.contact .contact-content .column-right, .contact .contact-content .column-right:hover{ padding:0; border:0; border-radius:0; background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; box-shadow:none; }
+@media (max-width:600px){ .contact .contact-content .column-right{ padding:0; } }
+
+/* IELTS: overall band score highlighted in the centre, details underneath */
+.ielts-score .score-details{ display:flex !important; flex-direction:column; align-items:center; gap:20px; text-align:center; }
+.ielts-score .score-details h3{ justify-content:center; margin-bottom:0; }
+.ielts-overall{ display:flex; flex-direction:column; align-items:center; padding:22px 54px 20px; border-radius:28px; color:#fff; background:linear-gradient(135deg,#13B9FF,#0b6fa4); box-shadow:0 16px 38px rgba(19,185,255,.35); transition: transform .5s var(--spring), box-shadow .4s ease; }
+.ielts-overall:hover{ transform:scale(1.07); box-shadow:0 24px 50px rgba(19,185,255,.45); }
+.ielts-overall .lbl{ font-size:13px; letter-spacing:2.5px; text-transform:uppercase; opacity:.92; }
+.ielts-overall .num{ font:700 68px/1.05 'Ubuntu',sans-serif; margin:4px 0 8px; }
+.ielts-overall .lvl{ padding:4px 18px; border-radius:20px; background:rgba(255,255,255,.24); font-weight:600; font-size:15px; }
+.ielts-bands{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; width:100%; max-width:720px; }
+.ielts-bands > div{ padding:14px 10px; border-radius:16px; border:1.5px solid rgba(8,40,63,.2); background:rgba(255,255,255,.4); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition: transform .4s var(--spring), background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+.ielts-bands > div:hover{ transform:translateY(-4px) scale(1.05); background:rgba(19,185,255,.12); border-color:#13B9FF; box-shadow:0 10px 24px rgba(19,185,255,.2); }
+.ielts-bands span{ display:block; font-size:13px; opacity:.8; }
+.ielts-bands b{ display:block; font-size:28px; font-family:'Ubuntu',sans-serif; margin-top:2px; }
+.ielts-meta{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px 26px; font-size:14px; opacity:.85; }
+@media (max-width:600px){ .ielts-bands{ grid-template-columns:repeat(2,1fr); } .ielts-overall{ padding:20px 38px 18px; } .ielts-overall .num{ font-size:56px; } }
+
+/* Scroll tracker: the earlier panel design, with the dark/black parts turned into transparent frosted glass */
+.scroll-tracker{ mix-blend-mode:normal; color:#08283F; }
+.scroll-tracker:hover, .scroll-tracker.dragging{ background:rgba(255,255,255,.28); -webkit-backdrop-filter:blur(16px) saturate(140%); backdrop-filter:blur(16px) saturate(140%); box-shadow:-8px 10px 34px rgba(8,40,63,.18); border:1px solid rgba(255,255,255,.6); border-right:0; }
+.st-list button{ color:#08283F; opacity:.8; }
+.st-list button:hover{ opacity:1; color:#08283F; }
+.st-list li.active button{ color:#0b8fc7; opacity:1; font-weight:600; text-decoration:none; }
+.st-track, .scroll-tracker:hover .st-track, .scroll-tracker.dragging .st-track{ background:rgba(8,40,63,.2); }
+.st-fill{ background:#13B9FF; }
+.st-thumb{ background:#fff; border:2px solid #13B9FF; box-shadow:0 2px 6px rgba(0,0,0,.25); }
+.scroll-tracker:hover .st-thumb, .scroll-tracker.dragging .st-thumb{ background:#13B9FF; border-color:#fff; box-shadow:0 2px 6px rgba(0,0,0,.25); }
+.st-pct{ background:rgba(8,40,63,.78); color:#fff; }
+.st-btn{ background:rgba(255,255,255,.45); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); color:#08283F; border:1px solid rgba(8,40,63,.25); }
+.st-btn:hover{ background:#13B9FF; color:#fff; }
+
+/* =====================================================================
+   Round 8: scroll tracker in neutral grey
+   ===================================================================== */
+.scroll-tracker{ color:#2b2f36; }
+.scroll-tracker:hover, .scroll-tracker.dragging{ box-shadow:-8px 10px 34px rgba(30,34,40,.18); }
+.st-list button, .st-list button:hover{ color:#2b2f36; }
+.st-list li.active button{ color:#111; font-weight:700; }
+.st-track, .scroll-tracker:hover .st-track, .scroll-tracker.dragging .st-track{ background:rgba(60,66,74,.22); }
+.st-fill{ background:#6b7280; }
+.st-thumb{ background:#fff; border:2px solid #6b7280; }
+.scroll-tracker:hover .st-thumb, .scroll-tracker.dragging .st-thumb{ background:#6b7280; border-color:#fff; }
+.st-pct{ background:rgba(43,47,54,.82); color:#fff; }
+.st-btn{ color:#2b2f36; border:1px solid rgba(60,66,74,.3); }
+.st-btn:hover{ background:#6b7280; color:#fff; }

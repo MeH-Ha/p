@@ -96,19 +96,68 @@ var GOATCOUNTER_CODE = "";
     }
 })();
 
-/* ---- 2. Contact form: sends the message by email (FormSubmit; optional Web3Forms) ---- */
+/* ---- 2. Contact form: email or phone (with country picker), sent by email via FormSubmit ---- */
 (function () {
     var form = document.forms["contact-form"];
     var msg = document.getElementById("msg");
     if (!form || !msg) return;
     var TO = "mh0212999@gmail.com";
-    /* Optional, more reliable second service: get a free access key at https://web3forms.com
-       (it asks for your email), paste it here and it is used instead of FormSubmit. */
+    /* Optional: free key from https://web3forms.com, used instead of FormSubmit when set. */
     var WEB3FORMS_KEY = "";
+    /* ISO code, name, dial code. Listed by priority: the first entry wins when a dial code is shared (e.g. +1). */
+    var COUNTRIES = [["BD","Bangladesh","880"],["PT","Portugal","351"],["ES","Spain","34"],["GB","United Kingdom","44"],["IN","India","91"],["PK","Pakistan","92"],["US","United States","1"],["CA","Canada","1"],["MX","Mexico","52"],["DE","Germany","49"],["FR","France","33"],["IT","Italy","39"],["NL","Netherlands","31"],["BE","Belgium","32"],["IE","Ireland","353"],["CH","Switzerland","41"],["AT","Austria","43"],["SE","Sweden","46"],["NO","Norway","47"],["DK","Denmark","45"],["FI","Finland","358"],["PL","Poland","48"],["GR","Greece","30"],["TR","Turkey","90"],["RU","Russia","7"],["UA","Ukraine","380"],["BR","Brazil","55"],["AR","Argentina","54"],["CL","Chile","56"],["CO","Colombia","57"],["PE","Peru","51"],["CN","China","86"],["JP","Japan","81"],["KR","South Korea","82"],["TH","Thailand","66"],["MY","Malaysia","60"],["SG","Singapore","65"],["ID","Indonesia","62"],["PH","Philippines","63"],["VN","Vietnam","84"],["LK","Sri Lanka","94"],["NP","Nepal","977"],["MM","Myanmar","95"],["AE","United Arab Emirates","971"],["SA","Saudi Arabia","966"],["QA","Qatar","974"],["EG","Egypt","20"],["NG","Nigeria","234"],["KE","Kenya","254"],["ZA","South Africa","27"],["AU","Australia","61"],["NZ","New Zealand","64"]];
+    var byIso = {}, byCode = {};
+    COUNTRIES.forEach(function (c) { byIso[c[0]] = c; if (!byCode[c[2]]) byCode[c[2]] = c[0]; });
+    function flag(iso) { return String.fromCodePoint.apply(null, iso.split("").map(function (ch) { return 127397 + ch.charCodeAt(0); })); }
+
+    var sel = document.getElementById("ccSelect");
+    var box = form.elements["contact_method"];
+    var hint = document.getElementById("contactHint");
+    var manual = false;
+    var region = ((navigator.language || "").split("-")[1] || "").toUpperCase();
+    sel.innerHTML = COUNTRIES.slice().sort(function (a, b) { return a[1].localeCompare(b[1]); }).map(function (c) {
+        return '<option value="' + c[0] + '">' + flag(c[0]) + " " + c[1] + " (+" + c[2] + ")</option>";
+    }).join("");
+    sel.value = byIso[region] ? region : "PT";
+
+    function kind(v) {
+        v = v.trim();
+        if (!v) return "none";
+        if (v.indexOf("@") > -1) return "email";
+        return /^[+\d(]/.test(v) ? "phone" : "email";
+    }
+    function parse(raw) {
+        raw = raw.trim();
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(raw)) return { email: raw };
+        if (!/^[+\d][\d\s().-]*$/.test(raw)) return null;
+        var s = raw.replace(/[\s().-]/g, ""), intl = s.charAt(0) === "+" || s.slice(0, 2) === "00";
+        var digits = s.replace(/^\+/, "").replace(/^00/, "").replace(/\D/g, "");
+        var full = intl ? digits : byIso[sel.value][2] + digits.replace(/^0+/, "");
+        return (full.length >= 8 && full.length <= 15) ? { phone: "+" + full, country: intl ? "" : byIso[sel.value][1] } : null;
+    }
+    function detect(raw) {                     // "+351..." or "00351..." picks the matching country
+        var s = raw.trim().replace(/[\s().-]/g, "");
+        if (s.charAt(0) !== "+" && s.slice(0, 2) !== "00") return;
+        var d = s.replace(/^\+/, "").replace(/^00/, "");
+        for (var n = 3; n >= 1; n--) { if (byCode[d.slice(0, n)]) { sel.value = byCode[d.slice(0, n)]; return; } }
+    }
+    function refresh() {
+        var k = kind(box.value);
+        if (k === "phone") detect(box.value);   // only acts on +/00 prefixes
+        sel.hidden = k !== "phone";
+        box.setAttribute("inputmode", k === "phone" ? "tel" : "text");
+        var p = parse(box.value);
+        box.setCustomValidity(p ? "" : "Please enter a valid email address or phone number.");
+        hint.textContent = p && p.phone ? "Will be sent as " + p.phone : "";
+    }
+    box.addEventListener("input", function () { if (!box.value.trim()) manual = false; refresh(); });
+    sel.addEventListener("change", function () { manual = true; refresh(); });
+    refresh();
+
     function say(html, ok) { msg.style.color = ok ? "#1a7f37" : "#b3261e"; msg.style.fontWeight = "500"; msg.innerHTML = html; }
     function mailto(d) {
         return "mailto:" + TO + "?subject=" + encodeURIComponent("Message from your portfolio website") +
-            "&body=" + encodeURIComponent((d.message || "") + "\n\n" + (d.name || "") + " (" + (d.email || "") + ")");
+            "&body=" + encodeURIComponent((d.message || "") + "\n\n" + (d.name || "") + " (" + (d.email || d.phone || "") + ")");
     }
     form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -116,7 +165,10 @@ var GOATCOUNTER_CODE = "";
         var data = {};
         new FormData(form).forEach(function (v, k) { data[k] = v; });
         if (data._honey) return;                                   // spam trap
-        delete data.privacy_consent;
+        var p = parse(data.contact_method || "");
+        if (!p) { refresh(); form.reportValidity(); return; }
+        delete data.contact_method; delete data.privacy_consent;
+        if (p.email) data.email = p.email; else { data.phone = p.phone; if (p.country) data.country = p.country; }
         var fallback = '<a href="' + mailto(data) + '">Click here to send it from your email app instead</a>.';
         if (location.protocol === "file:") {
             say("Sending only works on the published website (https), not from a file opened on your computer. " + fallback, false);
@@ -125,7 +177,7 @@ var GOATCOUNTER_CODE = "";
         btn.disabled = true; btn.textContent = "Sending...";
         var w3 = !!WEB3FORMS_KEY;
         var url = w3 ? "https://api.web3forms.com/submit" : "https://formsubmit.co/ajax/" + TO;
-        var payload = w3 ? { access_key: WEB3FORMS_KEY, name: data.name, email: data.email, message: data.message, subject: data._subject } : data;
+        var payload = w3 ? { access_key: WEB3FORMS_KEY, name: data.name, email: data.email, phone: data.phone, message: data.message, subject: data._subject } : data;
         fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -133,12 +185,12 @@ var GOATCOUNTER_CODE = "";
         }).then(function (r) {
             return r.text().then(function (t) { var j = {}; try { j = JSON.parse(t); } catch (x) {} return j; });
         }).then(function (j) {
-            if (j.success === true || j.success === "true") { say("Thank you! Your message has been sent.", true); form.reset(); }
+            if (j.success === true || j.success === "true") { say("Thank you! Your message has been sent.", true); form.reset(); manual = false; refresh(); }
             else { throw new Error(j.message || "the mail service did not accept the message"); }
         }).catch(function (err) {
             console.error("Contact form:", err);
             var why = String((err && err.message) || err).replace(/[<>&"]/g, "").slice(0, 200);
-            say("Sorry, the message could not be sent automatically. " + fallback + '<br><small style="opacity:.75">Technical detail: ' + why + '</small>', false);
+            say("Sorry, the message could not be sent automatically. " + fallback + '<br><small style="opacity:.75">Technical detail: ' + why + "</small>", false);
         }).finally(function () { btn.disabled = false; btn.textContent = "Send Message"; });
     });
 })();
@@ -236,10 +288,11 @@ var LINK_SCREENSHOTS = true;
         { m: /orcid\.org/, icon: "fab fa-orcid", c: "#a6ce39", t: "ORCID iD 0000-0003-3999-2740", d: "Persistent identifier linking my research outputs." },
         { m: /doi\.org/, icon: "fas fa-book-open", c: "#08283F", t: "Journal article (DOI)", d: "Opens the full article on the publisher's website." },
         { m: /bangladesh-unfccc-factsheet/, icon: "fas fa-globe-asia", c: "#08283F", t: "UNFCCC in Bangladesh", d: "Interactive factsheet: commitments, NDCs, adaptation actions and climate finance." },
-        { m: /netlify\.app/, icon: "fas fa-link", c: "#0b6fa4", t: "Personal website", d: "My other personal website." },
+        { m: /^meh-ha\.github\.io\/p\/?$/, icon: "fas fa-user-circle", c: "#08283F", t: "Mehedi Hasan's Portfolio", d: "My personal portfolio website." },
+        { m: /aanbangladesh\.org/, icon: "fas fa-tint", c: "#08283F", t: "Asia Arsenic Network Bangladesh", d: "Arsenic mitigation and public health work in Bangladesh." },
         { m: /rsc-bd\.org/, icon: "fas fa-industry", c: "#08283F", t: "RMG Sustainability Council", d: "Remediation programme for factory safety in Bangladesh." },
         { m: /oxfam\.org/, icon: "fas fa-hands-helping", c: "#e4002b", t: "Oxfam in Bangladesh", d: "Climate justice and natural resource rights portfolio." },
-        { m: /ceccr\.com/, icon: "fas fa-flask", c: "#08283F", t: "CECCR", d: "Centre for Environment and Climate Change Research." },
+        { m: /ceccr\.gov\.bd|ceccr\.com/, icon: "fas fa-flask", c: "#08283F", t: "CECCR", d: "Centre for Environment and Climate Change Research." },
         { m: /fao\.org/, icon: "fas fa-seedling", c: "#08283F", t: "FAO", d: "Food and Agriculture Organization of the United Nations." },
         { m: /scbeurope\.org|conbio\.org/, icon: "fas fa-leaf", c: "#0b6fa4", t: "SCB Europe Region", d: "Society for Conservation Biology Europe: communicating conservation science." }
     ];
