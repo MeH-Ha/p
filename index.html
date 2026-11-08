@@ -6,8 +6,8 @@
     <title>Mehedi Hasan's Portfolio</title>
     <meta name="description" content="Portfolio of Mehedi Hasan: environmental researcher in biodiversity conservation, climate adaptation and environmental governance (Erasmus Mundus GLOBE).">
     <link rel="icon" href="/images/Title_Icon.ico" type="image/x-icon">  <!--------Icon in the Title bar----------->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style.css?v=20261107d">
+    <link rel="stylesheet" href="main.css?v=20261107d">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -35,7 +35,7 @@
     <nav class="navbar">
         <div class="max-width">
             <div class="logo"><a href="#">Portfolio of M.Hasan </a>
-                <span></span></a></div>
+                <span></span></div>
             <ul class="menu">
                 <li><a href="#home" class="menu-btn">Home</a></li>
                 <li><a href="#about" class="menu-btn">About</a></li>
@@ -285,6 +285,10 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </div>
+    </section>
 
 <!-------------------------- Project section styling ----------------------------------->
 
@@ -710,11 +714,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid #ddd;"><td style="padding: 8px; text-align: left;">English</td><td>C1</td><td>C1</td><td>C1</td><td>B2</td><td>B2</td></tr>
-                        <tr style="border-bottom: 1px solid #ddd;"><td style="padding: 8px; text-align: left;">Spanish</td><td>A1</td><td>A1</td><td>A1</td><td>A1</td><td>A1</td></tr>
-                        <tr style="border-bottom: 1px solid #ddd;"><td style="padding: 8px; text-align: left;">Portuguese</td><td colspan="5">Basic</td></tr>
-                        <tr style="border-bottom: 1px solid #ddd;"><td style="padding: 8px; text-align: left;">Hindi</td><td colspan="5">Basic</td></tr>
-                        <tr><td style="padding: 8px; text-align: left;">Urdu</td><td colspan="5">Basic</td></tr>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">English</td><td data-label="Listening">C1</td><td data-label="Reading">C1</td><td data-label="Spoken production">C1</td><td data-label="Spoken interaction">B2</td><td data-label="Writing">B2</td></tr>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Spanish</td><td data-label="Listening">A1</td><td data-label="Reading">A1</td><td data-label="Spoken production">A1</td><td data-label="Spoken interaction">A1</td><td data-label="Writing">A1</td></tr>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Portuguese</td><td colspan="5">Basic</td></tr>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Hindi</td><td colspan="5">Basic</td></tr>
+                        <tr><td class="lang-name" style="padding: 8px; text-align: left;">Urdu</td><td colspan="5">Basic</td></tr>
                     </tbody>
                 </table>
                 </div>
@@ -830,11 +834,8 @@
 <!--------------------------- contact section start ------------------------------->
 
 <section class="contact" id="contact" data-aos="fade-up" data-aos-delay="300">
+    <h2 class="title">Contact Information</h2>
     <div class="contact-content" data-aos="fade-up" data-aos-delay="1000">
-        <content="device-width">
-            <h2 class="title">Contact Information</h2>
-            <link rel="stylesheet" href="styles.css">
-            <div class="contact-content" data-aos="fade-up" data-aos-delay="1000">
        
         <div class="column-left">
             <div class="text">Contact me</div>
@@ -903,6 +904,7 @@
     </form>
     <p id="msg"></p> <!-- Element to display submission message -->
 </div>
+    </div>
 
 </section>
 
@@ -922,10 +924,11 @@
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20261107d"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
   AOS.init();
 </script>
+</footer>
 </body>
 </html>

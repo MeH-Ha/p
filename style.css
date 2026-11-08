@@ -1733,4 +1733,44 @@ section .title::after{
 /* contact form: consent checkbox must not inherit the big dark text-field style */
 .contact form input[type="checkbox"]{ width:18px !important; height:18px; padding:0 !important; margin:0 8px 0 0; vertical-align:middle; accent-color:#13B9FF; box-shadow:none; background:transparent; flex:none; cursor:pointer; }
 .contact form label{ display:flex; align-items:flex-start; }
-.contact #msg{ margin-top:12px; line-height:1.5; }
+.contact #msg{ margin-top:12px; line-height:1.5; }
+
+/* =====================================================================
+   Round 5: narrow-screen fixes
+   ===================================================================== */
+.contact{ margin-left:0 !important; margin-right:0 !important; padding-left:30px; padding-right:30px; box-sizing:border-box; }
+.skills .skills-content .right{ grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr)); }
+/* glass top bar drawn by a pseudo-element: backdrop-filter on the bar itself would trap the fixed mobile menu */
+.navbar, .navbar.sticky{ background:transparent !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; border-bottom:0 !important; }
+.navbar::before{ content:""; position:absolute; inset:0; z-index:-1; background:rgba(8,40,63,.30); -webkit-backdrop-filter:blur(14px) saturate(150%); backdrop-filter:blur(14px) saturate(150%); border-bottom:1px solid rgba(255,255,255,.18); transition:background .3s ease; }
+.navbar.sticky::before{ background:rgba(8,40,63,.55); }
+@media (max-width:947px){
+    .navbar .menu{ overflow-y:auto; padding-bottom:30px; }
+    .navbar .menu li a{ margin:8px 0 !important; font-size:22px !important; }
+}
+@media (max-width:600px){
+    section .title{ max-width:100%; font-size:32px; }
+    .education .title, .ielts-score .title{ font-size:32px !important; }
+    section .title::after{ font-size:16px !important; }
+    .edu-logo-wrap{ width:76px; height:76px; }
+    .edu-head{ gap:14px; }
+    .education .edu-content .card.edu-card{ padding:20px 18px; }
+    .edu-programme{ font-size:15.5px; }
+    .skill-group{ padding:20px 18px 8px; }
+    .research-content .publication, .project .publication{ padding:14px 12px; }
+}
+
+@media (max-width:360px){ .max-width{ min-width:0 !important; } .about .about-content .column{ min-width:0 !important; } }
+.research-content .publication a{ overflow-wrap:anywhere; word-break:break-word; }
+
+.ielts-score{ font-family:'Poppins',sans-serif; }
+@media (max-width:600px){
+    /* language table becomes one small card per language instead of scrolling sideways */
+    .trf-preview table, .trf-preview tbody, .trf-preview tr, .trf-preview td{ display:block; width:100%; }
+    .trf-preview thead{ display:none; }
+    .trf-preview tr{ padding:10px 0; border-bottom:1px solid #ddd !important; }
+    .trf-preview td{ display:flex; justify-content:space-between; gap:12px; padding:3px 4px !important; text-align:right !important; border:0; }
+    .trf-preview td[data-label]::before{ content:attr(data-label); font-weight:600; opacity:.7; text-align:left; }
+    .trf-preview td.lang-name{ justify-content:flex-start; font-weight:700; font-size:16px; color:#0b8fc7; }
+    .trf-preview td[colspan]{ justify-content:flex-start; text-align:left !important; }
+}
