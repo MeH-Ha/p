@@ -195,52 +195,52 @@ var GOATCOUNTER_CODE = "";
     });
 })();
 
-/* ---- 3. Right-edge scroll tracker: progress, section titles (click to jump), drag to scroll ---- */
+/* ---- 3. Right-edge scroll tracker (cached positions + one update per frame) ---- */
 (function () {
     var box = document.getElementById("scrollTracker");
     if (!box) return;
-    var track = box.querySelector(".st-track");
-    var pct = box.querySelector(".st-pct");
-    var list = box.querySelector(".st-list");
+    var track = box.querySelector(".st-track"), pct = box.querySelector(".st-pct"), list = box.querySelector(".st-list");
     var root = document.documentElement;
-    var SECTIONS = [["home","Home"],["about","About"],["experience","Experience"],["project","Projects"],["education","Education"],["training","Training"],["research","Publications"],["awards","Awards"],["ielts-score","Languages"],["skills","Skills"],["contact","Contact"]];
-    var items = [];
+    var SECTIONS = [["home","Home"],["about","About"],["education","Education"],["research","Research"],["experience","Experience"],["project","Projects"],["skills","Skills"],["training","Training"],["awards","Awards"],["ielts-score","Languages"],["contact","Contact"]];
+    var items = [], maxS = 1, ticking = false;
     SECTIONS.forEach(function (s) {
         var el = document.getElementById(s[0]); if (!el) return;
         var li = document.createElement("li"), b = document.createElement("button");
         b.type = "button"; b.textContent = s[1];
-        b.addEventListener("click", function () {
-            window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
-        });
-        li.appendChild(b); list.appendChild(li); items.push({ el: el, li: li });
+        b.addEventListener("click", function () { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" }); });
+        li.appendChild(b); list.appendChild(li); items.push({ el: el, li: li, top: 0 });
     });
-    function maxScroll() { return Math.max(1, root.scrollHeight - window.innerHeight); }
-    function layout() {                       // place titles where their sections start, keeping a minimum gap
+    function measure() {
+        maxS = Math.max(1, root.scrollHeight - window.innerHeight);
         var H = list.clientHeight || box.clientHeight, gap = 26, n = items.length, ys = [], i;
         for (i = 0; i < n; i++) {
-            var y = (items[i].el.getBoundingClientRect().top + window.scrollY) / maxScroll() * H;
+            items[i].top = items[i].el.getBoundingClientRect().top + window.scrollY;
+            var y = items[i].top / maxS * H;
             ys.push(Math.max(12, i ? Math.max(y, ys[i - 1] + gap) : y));
         }
         for (i = n - 1; i >= 0; i--) { ys[i] = Math.min(ys[i], i === n - 1 ? H - 12 : ys[i + 1] - gap); }
         items.forEach(function (it, k) { it.li.style.top = Math.max(12, ys[k]) + "px"; });
     }
+    var activeIdx = -1;
     function update() {
-        var p = Math.min(1, Math.max(0, window.scrollY / maxScroll()));
+        ticking = false;
+        var y = window.scrollY, p = Math.min(1, Math.max(0, y / maxS));
         box.style.setProperty("--p", (p * 100) + "%");
         pct.textContent = Math.round(p * 100) + "%";
-        var cur = 0, probe = window.scrollY + window.innerHeight * 0.35;
-        items.forEach(function (it, i) { if (it.el.getBoundingClientRect().top + window.scrollY <= probe) cur = i; });
-        items.forEach(function (it, i) { it.li.classList.toggle("active", i === cur); });
+        var cur = 0, probe = y + window.innerHeight * 0.35;
+        for (var i = 0; i < items.length; i++) { if (items[i].top <= probe) cur = i; }
+        if (cur !== activeIdx) { items.forEach(function (it, k) { it.li.classList.toggle("active", k === cur); }); activeIdx = cur; }
     }
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", function () { layout(); update(); });
-    window.addEventListener("load", function () { layout(); update(); });
-    box.addEventListener("mouseenter", function () { layout(); });
-    layout(); update();
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () { measure(); update(); });
+    window.addEventListener("load", function () { measure(); update(); setTimeout(function () { measure(); update(); }, 1500); });
+    box.addEventListener("mouseenter", function () { measure(); });
+    measure(); update();
     function jump(clientY, instant) {
         var r = track.getBoundingClientRect();
         var p = Math.min(1, Math.max(0, (clientY - r.top) / r.height));
-        window.scrollTo({ top: p * maxScroll(), behavior: instant ? "instant" : "smooth" });
+        window.scrollTo({ top: p * maxS, behavior: instant ? "instant" : "smooth" });
     }
     var dragging = false;
     track.addEventListener("pointerdown", function (e) { dragging = true; box.classList.add("dragging"); track.setPointerCapture(e.pointerId); jump(e.clientY, true); e.preventDefault(); });
@@ -249,26 +249,22 @@ var GOATCOUNTER_CODE = "";
     track.addEventListener("pointerup", stop);
     track.addEventListener("pointercancel", stop);
     box.querySelector(".st-top").addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
-    box.querySelector(".st-bottom").addEventListener("click", function () { window.scrollTo({ top: maxScroll(), behavior: "smooth" }); });
+    box.querySelector(".st-bottom").addEventListener("click", function () { window.scrollTo({ top: maxS, behavior: "smooth" }); });
 })();
 
 /* ---- 4. Hover tilt + zoom on cards, publications and boxes ---- */
 (function () {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!window.matchMedia("(hover: hover)").matches) return;
-    document.querySelectorAll(".serv-content > .card .box, .edu-card, .publication, .score-details, .trf-preview").forEach(function (el) {
+    document.querySelectorAll(".exp-card, .edu-card, .publication, .score-details, .trf-preview, .skill-group").forEach(function (el) {
         el.classList.add("tilt");
         el.addEventListener("mousemove", function (e) {
             var r = el.getBoundingClientRect();
-            var x = (e.clientX - r.left) / r.width - 0.5;
-            var y = (e.clientY - r.top) / r.height - 0.5;
-            el.style.setProperty("--ry", (x * 7) + "deg");
-            el.style.setProperty("--rx", (-y * 7) + "deg");
+            var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+            el.style.setProperty("--ry", (x * 5) + "deg");
+            el.style.setProperty("--rx", (-y * 5) + "deg");
         });
-        el.addEventListener("mouseleave", function () {
-            el.style.setProperty("--ry", "0deg");
-            el.style.setProperty("--rx", "0deg");
-        });
+        el.addEventListener("mouseleave", function () { el.style.setProperty("--ry", "0deg"); el.style.setProperty("--rx", "0deg"); });
     });
 })();
 
@@ -324,9 +320,9 @@ var LINK_SCREENSHOTS = true;
             shot.dataset.fb = "";
             shot.onload = function () { shot.classList.add("ready"); };
             shot.onerror = function () {
-                if (!shot.dataset.fb) { shot.dataset.fb = "1"; shot.src = "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(i.url) + "?w=580&h=320"; }
+                if (!shot.dataset.fb) { shot.dataset.fb = "1"; shot.src = "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(i.url) + "?w=840&h=460"; }
             };
-            shot.src = "https://image.thum.io/get/width/580/crop/320/" + i.url;
+            shot.src = "https://image.thum.io/get/width/840/crop/460/" + i.url;
         }
         title.textContent = i.t; desc.textContent = i.d; host.textContent = "↗ " + i.host;
         card.classList.add("show"); move(e);
@@ -356,14 +352,55 @@ var LINK_SCREENSHOTS = true;
     window.addEventListener("scroll", hide, { passive: true });
 })();
 
-/* ---- 6. Cover photos only exist while the home screen is in view; hide scroll hint after scrolling ---- */
+/* ---- 6. Cover photos: load the rest after the page is ready, pause when off screen; hide the scroll hint ---- */
 (function () {
     var covers = document.querySelector(".cover-slides"), home = document.getElementById("home"), hint = document.querySelector(".scroll-hint");
-    function chk() {
-        var past = home && home.getBoundingClientRect().bottom <= 0;
-        if (covers) covers.style.visibility = past ? "hidden" : "visible";
-        if (hint) hint.classList.toggle("hide", window.scrollY > 60);
+    if (covers) {
+        window.addEventListener("load", function () {
+            var slides = [].slice.call(covers.querySelectorAll(".cover-slide[data-bg]")), i = 0;
+            (function next() {
+                if (i >= slides.length) return;
+                var s = slides[i++], im = new Image();
+                im.onload = im.onerror = function () { s.style.backgroundImage = 'url("' + s.getAttribute("data-bg") + '")'; setTimeout(next, 500); };
+                im.src = s.getAttribute("data-bg");
+            })();
+        });
+        if ("IntersectionObserver" in window && home) {
+            new IntersectionObserver(function (en) {
+                var vis = en[0].isIntersecting;
+                covers.style.visibility = vis ? "visible" : "hidden";
+                covers.classList.toggle("paused", !vis);
+            }, { threshold: 0 }).observe(home);
+        }
     }
-    window.addEventListener("scroll", chk, { passive: true });
+    if (hint) {
+        var t = false;
+        window.addEventListener("scroll", function () {
+            if (t) return; t = true;
+            requestAnimationFrame(function () { t = false; hint.classList.toggle("hide", window.scrollY > 60); });
+        }, { passive: true });
+    }
+})();
+
+/* ---- 7. Top bar: glass bar + smaller texts once you start scrolling (works without jQuery too) ---- */
+(function () {
+    var nav = document.querySelector(".navbar"); if (!nav) return;
+    var t = false;
+    function chk() { t = false; nav.classList.toggle("sticky", window.scrollY > 20); }
+    window.addEventListener("scroll", function () { if (!t) { t = true; requestAnimationFrame(chk); } }, { passive: true });
     chk();
+})();
+
+/* ---- 8. Touch screens: tap a card to show its details (hover is not available) ---- */
+(function () {
+    if (window.matchMedia("(hover: hover)").matches) return;
+    var all = [].slice.call(document.querySelectorAll(".edu-card, .exp-card, .publication[tabindex]"));
+    all.forEach(function (el) {
+        el.addEventListener("click", function (e) {
+            if (e.target.closest("a")) return;
+            var was = el.classList.contains("open");
+            all.forEach(function (o) { o.classList.remove("open"); });
+            if (!was) el.classList.add("open");
+        });
+    });
 })();

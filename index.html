@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mehedi Hasan's Portfolio</title>
     <meta name="description" content="Portfolio of Mehedi Hasan: environmental researcher in biodiversity conservation, climate adaptation and environmental governance (Erasmus Mundus GLOBE).">
-    <link rel="icon" href="images/Title_Icon.ico?v=1" type="image/x-icon">
-    <link rel="shortcut icon" href="images/Title_Icon.ico?v=1" type="image/x-icon">
+    <link rel="icon" type="image/png" href="attributes/Title_Icon.png?v=2">
+    <link rel="shortcut icon" type="image/png" href="attributes/Title_Icon.png?v=2">
+    <link rel="apple-touch-icon" href="attributes/Title_Icon.png?v=2">
     <meta name="theme-color" content="#08283F">  <!--------Icon in the Title bar----------->
-    <link rel="stylesheet" href="style.css?v=20261108d">
-    <link rel="stylesheet" href="main.css?v=20261108d">
+    <link rel="stylesheet" href="style.css?v=20261109b">
+    <link rel="stylesheet" href="main.css?v=20261109b">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -20,6 +21,22 @@
     <script src="https://kit.fontawesome.com/71749ce622.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="cover-slides" aria-hidden="true">
+        <div class="cover-slide" style="--i:0; background-image:url('images/Cover_Photo_1.jpg')"></div>
+        <div class="cover-slide" style="--i:1" data-bg="images/Cover_Photo_2.jpg"></div>
+        <div class="cover-slide" style="--i:2" data-bg="images/Cover_Photo_3.jpg"></div>
+        <div class="cover-slide" style="--i:3" data-bg="images/Cover_Photo_4.jpg"></div>
+        <div class="cover-slide" style="--i:4" data-bg="images/Cover_Photo_5.jpg"></div>
+        <div class="cover-slide" style="--i:5" data-bg="images/Cover_Photo_6.jpg"></div>
+        <div class="cover-slide" style="--i:6" data-bg="images/Cover_Photo_7.jpg"></div>
+        <div class="cover-slide" style="--i:7" data-bg="images/Cover_Photo_8.jpg"></div>
+        <div class="cover-slide" style="--i:8" data-bg="images/Cover_Photo_9.jpg"></div>
+        <div class="cover-slide" style="--i:9" data-bg="images/Cover_Photo_10.jpg"></div>
+        <div class="cover-slide" style="--i:10" data-bg="images/Cover_Photo_11.jpg"></div>
+        <div class="cover-slide" style="--i:11" data-bg="images/Cover_Photo_12.jpg"></div>
+        <div class="cover-slide" style="--i:12" data-bg="images/Cover_Photo_13.jpg"></div>
+        <div class="cover-slide" style="--i:13" data-bg="images/Cover_Photo_14.jpg"></div>
+    </div>
     <nav class="scroll-tracker" id="scrollTracker" aria-label="Page sections and scroll position">
         <ul class="st-list"></ul>
         <div class="st-rail">
@@ -41,14 +58,13 @@
             <ul class="menu">
                 <li><a href="#home" class="menu-btn">Home</a></li>
                 <li><a href="#about" class="menu-btn">About</a></li>
-                <li><a href="#experience" class="menu-btn">Experience</a></li>
-                               <!--  <li><a href="#certifications" class="menu-btn">Certifications</a></li>
-                -->
                 <li><a href="#education" class="menu-btn">Education</a></li>
-                <li><a href="#training" class="menu-btn">Training</a></li>
-                <li><a href="#research" class="menu-btn">Publications</a></li>
-                <li><a href="#awards" class="menu-btn">Awards</a></li>
+                <li><a href="#research" class="menu-btn">Research</a></li>
+                <li><a href="#experience" class="menu-btn">Experience</a></li>
+                <li><a href="#project" class="menu-btn">Projects</a></li>
                 <li><a href="#skills" class="menu-btn">Skills</a></li>
+                <li><a href="#training" class="menu-btn">Training</a></li>
+                <li><a href="#awards" class="menu-btn">Awards</a></li>
                 <li><a href="#contact" class="menu-btn">Contact</a></li>
             </ul>
             <div class="menu-btn">
@@ -102,197 +118,660 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#about" class="scroll-hint" aria-label="Scroll down for more"><span>Scroll</span><span class="mouse"></span><i class="fas fa-chevron-down"></i></a>
-        <div class="cover-slides">
-                        <div class="cover-slide" style="background-image: url('images/Cover_Photo_1.jpg');"></div>
-                        <div class="cover-slide" style="background-image: url('images/Cover_Photo_2.jpg');"></div>
-                        <div class="cover-slide" style="background-image: url('images/Cover_Photo_3.jpg');"></div>
-                        <div class="cover-slide" style="background-image: url('images/Cover_Photo_4.jpg');"></div>
-                        <div class="cover-slide" style="background-image: url('images/Cover_Photo_5.jpg');"></div>
-                    </div>
+                    <a href="#about" class="scroll-hint" aria-label="Scroll down"><span></span><span></span></a>
+        
                 </section>
-     <!-- home section end -->
-    
-    <!--------------------------------------- about section start ------------------------------>
 
-    <section class="about" id="about"data-aos="fade-up" data-aos-delay="300">
+<section class="about" id="about"data-aos="fade-up" data-aos-delay="300">
         <div class="max-width">
             <h2 class="title">About me</h2>
             <div class="about-content">
                 <div class="column left" data-aos="fade-right" data-aos-delay="600">
-                    <img src="images/About_Photo.JPG" alt="Profile Photo">
+                    <div class="about-photo">
+                        <img src="images/About_Photo_1.JPG" alt="Mehedi Hasan, photo 1" style="--i:0">
+                        <img src="images/About_Photo_2.JPG" alt="Mehedi Hasan, photo 2" style="--i:1" loading="lazy">
+                        <img src="images/About_Photo_3.JPG" alt="Mehedi Hasan, photo 3" style="--i:2" loading="lazy">
+                        <img src="images/About_Photo_4.JPG" alt="Mehedi Hasan, photo 4" style="--i:3" loading="lazy">
+                        <img src="images/About_Photo_5.JPG" alt="Mehedi Hasan, photo 5" style="--i:4" loading="lazy">
+                    </div>
                 </div>
                 <div class="column right">
                     <div class="text" data-aos="fade-left" data-aos-delay="600"> I'm interested & skilled in <br> <span class="typing-2"></span></div>
-                    <p data-aos="fade-left" data-aos-delay="600">This is Mehedi Hasan, an early-career environmental researcher and development professional with a strong focus on climate action, biodiversity conservation, and environmental policy. I hold a B.Sc. in Environmental Science from Jashore University of Science & Technology and am pursuing the Erasmus Mundus Joint Master’s in Global Change Ecology and Biodiversity Management (GLOBE), with study periods at Universidad Rey Juan Carlos (Spain), Bangor University (UK), the Universidad Autónoma de Tlaxcala summer school (Mexico) and, since September 2026, the University of Lisbon (Portugal). I am also an intern at the Society for Conservation Biology Europe Region.</p>
-                    <p data-aos="fade-left" data-aos-delay="600">My academic and research interests lie at the intersection of climate adaptation and mitigation, ecosystem-based management, nature-based solutions, and biodiversity conservation, with a growing focus on resilience, sustainability science, and environmental governance. I am particularly interested in understanding human–nature interactions, climate risk and vulnerability, and the role of policy in advancing just and inclusive environmental transitions.</p>
-                    <p data-aos="fade-left" data-aos-delay="600">My work integrates interdisciplinary research, data-driven analysis, and participatory approaches to address complex environmental challenges. I have contributed to programs and research initiatives with organizations such as Oxfam, the RMG Sustainability Council (RSC), the Food and Agriculture Organization of the United Nations (FAO), the Centre for Environment and Climate Change Research (CECCR), and the Institute of Epidemiology Disease Control and Research (IEDCR), focusing on community-based resource management, climate resilience, and environmental governance.</p>
-                    <p data-aos="fade-left" data-aos-delay="600">I bring technical expertise in GIS and remote sensing, environmental data analysis, and visualization tools such as Power BI, alongside hands-on experience in project implementation and stakeholder engagement. My approach combines spatial analysis, field-based research, and evidence-based policy insights to support sustainable and equitable solutions.</p>
-                    <p data-aos="fade-left" data-aos-delay="600">I am particularly interested in conservation, nature-based solutions, and policy-oriented research, and I am actively seeking opportunities for internships, research collaborations, and future PhD studies. Through my Erasmus Mundus Master’s in Global Change Ecology and Biodiversity Management (GLOBE), I am developing an interdisciplinary perspective on ecosystem dynamics, global environmental change, and biodiversity conservation, which I aim to apply in advancing sustainability, resilience, and inclusive development through impactful, solution-oriented research.</p>
-                    <p data-aos="fade-left" data-aos-delay="600">As an interdisciplinary environmental researcher, I bring experience in biodiversity conservation, climate change adaptation, socio-ecological systems and community-based environmental management. I am skilled in participatory research, stakeholder engagement, environmental governance and mixed-methods research across conservation and sustainability projects. My research interests include environmental justice, ecosystem services, conservation governance, land-use change and sustainable rural development.</p>
+                    <p data-aos="fade-left" data-aos-delay="600">I grew up in Chandpur, where the Ganges, Brahmaputra and Meghna meet, so I have always seen how closely rivers, land and livelihoods are tied together. That curiosity took me from community fieldwork in Bangladesh to an Erasmus Mundus master’s in global change ecology and biodiversity management, studying in Spain, the UK, Mexico and Portugal.</p>
+                    <p data-aos="fade-left" data-aos-delay="600">What keeps pulling me back to research is one question: when we protect nature, does it really work, and for whom? I want to answer that with careful evidence, and I am looking for a PhD where I can do exactly that.</p>
               </div>
             </div>
         </div>
     </section>
 
- <!-------------------------------------- Video section start ------------------------>
-    
- <!-- section class="video-section">
-    <h2 class="title">Watch My Work</h2>
-    <div class="video-container">
-        <iframe width="65%" height="500" 
-                src="https://www.youtube.com/embed/65K1Ph6cmfY" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
+<section class="education" id="education" data-aos="fade-up" data-aos-delay="300">
+    <div class="max-width">
+        <h2 class="title">Education</h2>
+        <div class="edu-content">
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/ULisboa logo.png" alt="ULisboa logo" class="edu-logo" onerror="this.onerror=null;this.src='attributes/ULISBOA logo.png'"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">ULisboa</span>
+                        <span class="edu-full">Universidade de Lisboa</span>
+                    </div>
+                </div>
+                <div class="edu-faculty">Faculty of Sciences</div>
+                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>Erasmus Mundus Master in Global Change Ecology and Biodiversity Management (GLOBE)</span></div>
+                <p class="edu-meta">September 2026 - Continue<br>Lisbon, Portugal</p>
+                <div class="edu-courses">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li>Environmental Assessment</li>
+                        <li>Environmental Policy and Governance</li>
+                        <li>Project in Ecology and Environmental Management</li>
+                        <li>Natural Hazards</li>
+                        <li>Ecosystem Services and Bioeconomy</li>
+                        <li>Ecological Sustainability</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/uatx logo.png" alt="UATx logo" class="edu-logo"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">UATx</span>
+                        <span class="edu-full">Universidad Autónoma de Tlaxcala</span>
+                    </div>
+                </div>
+                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>International Socio-Ecosystems and Biodiversity Summer School</span></div>
+                <p class="edu-meta">August 2026 - September 2026<br>Tlaxcala, Mexico</p>
+                <div class="edu-courses">
+                    <h4>Highlights</h4>
+                    <ul>
+                        <li>Veracruz: cloud forest and coffee agroecosystems (INECOL botanical garden, Las Cañadas agroecology)</li>
+                        <li>Tehuacán-Cuicatlán Biosphere Reserve and La Malinche National Park: dryland and montane ecology, traditional agriculture and Metepantle</li>
+                        <li>Ixtenco: community dialogue, native maize and science communication, ending with a poster at the Conservation Fair on 11 September</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/BU Logo.svg" alt="Bangor University logo" class="edu-logo"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">BU</span>
+                        <span class="edu-full">Bangor University</span>
+                    </div>
+                </div>
+                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>Erasmus Mundus Master in Global Change Ecology and Biodiversity Management (GLOBE)</span></div>
+                <p class="edu-meta">January 2026 - June 2026 · 2nd Semester<br>Final grade: 8.73/10<br>Bangor, Wales, UK</p>
+                <div class="edu-courses">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li>Botanical Ecology & Ecosystem</li>
+                        <li>Genetics and the Conservation</li>
+                        <li>Human-Wildlife Co-Existence</li>
+                        <li>Methods in Wildlife Conservation</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/URJC Logo.png" alt="URJC logo" class="edu-logo"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">URJC</span>
+                        <span class="edu-full">Universidad Rey Juan Carlos</span>
+                    </div>
+                </div>
+                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>Erasmus Mundus Master in Global Change Ecology and Biodiversity Management (GLOBE)</span></div>
+                <p class="edu-meta">September 2025 - January 2026 · 1st Semester<br>Final grade: 9.02/10<br>Móstoles, Spain</p>
+                <div class="edu-courses">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li>Conservation Strategies for Biodiversity</li>
+                        <li>Evolutionary Consequences of Global Change</li>
+                        <li>Global Change: Drivers and Impacts</li>
+                        <li>Integrative Field Course</li>
+                        <li>Scientific Writing, Reporting, and Communication</li>
+                        <li>Statistical Modelling and Data Science</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/JUST logo.png" alt="JUST logo" class="edu-logo"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">JUST</span>
+                        <span class="edu-full">Jashore University of Science &amp; Technology</span>
+                    </div>
+                </div>
+                <div class="edu-faculty">Department of Environmental Science and Technology</div>
+                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Bachelor of Science (Honours) in Environmental Science</span></div>
+                <p class="edu-meta">2018 - 2023<br>CGPA: 3.19 out of 4.00<br>Jashore, Bangladesh</p>
+                <div class="edu-courses">
+                    <h4>Thesis &amp; honours</h4>
+                    <ul>
+                        <li>Thesis: Microplastics in Indoor Environment in Dhaka, Bangladesh</li>
+                        <li>Best Dissertation Award, session 2017-18</li>
+                    </ul>
+                    <h4 style="margin-top:12px">Courses</h4>
+                    <ul>
+                            <li class="grp">Year 1 · Semester 1</li>
+                            <li>Introduction to Environmental Science and Technology</li>
+                            <li>Earth Science I</li>
+                            <li>Earth Science I Sessional</li>
+                            <li>Biological Environment</li>
+                            <li>Biological Environment Sessional</li>
+                            <li>Chemistry I</li>
+                            <li>Chemistry I Sessional</li>
+                            <li>Mathematics I</li>
+                            <li>Communicative English</li>
+                            <li>Bangladesh Studies and Moral Ethics</li>
+                            <li>Semester Final Viva</li>
+                            <li class="grp">Year 1 · Semester 2</li>
+                            <li>Environmental Pollution</li>
+                            <li>Earth Science II</li>
+                            <li>Field Trip on Earth Science II</li>
+                            <li>Environmental Sociology</li>
+                            <li>Chemistry II</li>
+                            <li>Chemistry II Sessional</li>
+                            <li>Mathematics II</li>
+                            <li>Environmental Physics</li>
+                            <li>Computer Application</li>
+                            <li>Computer Application Sessional</li>
+                            <li>Semester Final Viva</li>
+                            <li class="grp">Year 2 · Semester 1</li>
+                            <li>Ecology</li>
+                            <li>Public Health and Environment</li>
+                            <li>Soil Environment</li>
+                            <li>Environmental Chemistry</li>
+                            <li>Environmental Economics</li>
+                            <li>Environmental Hydrology</li>
+                            <li>Statistics</li>
+                            <li>Soil Environment Sessional</li>
+                            <li>Environmental Chemistry Sessional</li>
+                            <li>Environmental Hydrology Sessional</li>
+                            <li>Semester Final Viva</li>
+                            <li class="grp">Year 2 · Semester 2</li>
+                            <li>Agriculture and Environment</li>
+                            <li>Geography and Geology of Bangladesh</li>
+                            <li>Coastal Environment and Flood Plain Management</li>
+                            <li>Analytical Chemistry</li>
+                            <li>Epidemiology</li>
+                            <li>Meteorology</li>
+                            <li>Agriculture and Environment Sessional</li>
+                            <li>Epidemiology Sessional</li>
+                            <li>Field Trip on Meteorology</li>
+                            <li>Semester Final Viva</li>
+                            <li class="grp">Year 3 · Semester 1</li>
+                            <li>Energy and Environment</li>
+                            <li>Environmental Microbiology and Biotechnology</li>
+                            <li>Water and Waste Water Treatment</li>
+                            <li>Environmental Bio-Chemistry</li>
+                            <li>GIS and Remote Sensing</li>
+                            <li>Gender and Environment</li>
+                            <li>Limnology and Oceanography</li>
+                            <li>Environmental Microbiology and Biotechnology Sessional</li>
+                            <li>Environmental Bio-Chemistry Sessional</li>
+                            <li>GIS and Remote Sensing Sessional</li>
+                            <li>Semester Final Viva</li>
+                            <li class="grp">Year 3 · Semester 2</li>
+                            <li>Waste Management</li>
+                            <li>Urbanization and Environment</li>
+                            <li>Research Methodology</li>
+                            <li>Instrumental Analysis</li>
+                            <li>Toxicology and Eco-Toxicology</li>
+                            <li>Biodiversity Conservation and Ecotourism</li>
+                            <li>Instrumental Analysis Sessional</li>
+                            <li>Toxicology and Eco-Toxicology Sessional</li>
+                            <li>Field Trip on Biodiversity Conservation and Ecotourism</li>
+                            <li>Semester Final Viva</li>
+                            <li class="grp">Year 4 · Semester 1</li>
+                            <li>Environmental Impact Assessment</li>
+                            <li>Water Supply, Health and Sanitation</li>
+                            <li>Environmental Ethics, Protocols and Laws</li>
+                            <li>Climate Change and Adaptation</li>
+                            <li>Disaster Management</li>
+                            <li>Environmental Modeling</li>
+                            <li>Environmental Impact Assessment Sessional</li>
+                            <li>Field Trip on Disaster Management</li>
+                            <li>Environmental Modeling Sessional</li>
+                            <li class="grp">Year 4 · Semester 2</li>
+                            <li>Environmental Management System</li>
+                            <li>Integrated Water Resource Management</li>
+                            <li>Industrial Pollution and Management</li>
+                            <li>Environment, Health &amp; Safety</li>
+                            <li>Project Thesis</li>
+                        </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/DC logo.png" alt="Dhaka College logo" class="edu-logo"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">DC</span>
+                        <span class="edu-full">Dhaka College</span>
+                    </div>
+                </div>
+                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Higher Secondary Certificate (HSC)</span></div>
+                <p class="edu-meta">2014 - 2016<br>GPA: 5.00 out of 5.00<br>Dhaka, Bangladesh</p>
+                <div class="edu-static">
+                    <h4>Group</h4>
+                    <ul>
+                        <li>Science</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/MGBHS logo.png" alt="MGBHS logo" class="edu-logo"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">MGBHS</span>
+                        <span class="edu-full">Motijheel Govt. Boys’ High School</span>
+                    </div>
+                </div>
+                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Secondary School Certificate (SSC)</span></div>
+                <p class="edu-meta">2012 - 2014<br>GPA: 5.00 out of 5.00<br>Dhaka, Bangladesh</p>
+                <div class="edu-static">
+                    <h4>Group</h4>
+                    <ul>
+                        <li>Science</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card edu-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <div class="edu-logo-wrap"><img src="attributes/MGBHS logo.png" alt="MGBHS logo" class="edu-logo"></div>
+                    <div class="edu-name">
+                        <span class="edu-short">MGBHS</span>
+                        <span class="edu-full">Motijheel Govt. Boys’ High School</span>
+                    </div>
+                </div>
+                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Junior School Certificate (JSC)</span></div>
+                <p class="edu-meta">2007 - 2011<br>GPA: 5.00 out of 5.00<br>Dhaka, Bangladesh</p>
+             </div>
+           </div>
+
+           </div>
     </div>
 </section>
 
+<section class="research" id="research" data-aos="fade-up" data-aos-delay="300">
+    <div class="max-width">
+        <h2 class="title">Research & Publication</h2>
+            <div class="research-content">
+            <div class="publication poster-entry">
+                <h3>Preserving our colours during water scarcity</h3>
+                <p class="project-date" style="font-size: 14px; font-weight: 500; color: #13B9FF;">Poster presentation · 11 September 2026</p>
+                <p>Feria de la Conservación del Paisaje Natural, Ixtenco, Tlaxcala, Mexico (UATx summer school)</p>
+                <p style="text-align: justify;">How rain-fed maize farmers in Ixtenco can cope with water scarcity: adjusting sowing dates, mixing long- and short-cycle maize, using the milpa and Metepantle to keep soil moisture, and harvesting rainwater.</p>
+                <p><em>Spanish title: Preservando nuestros colores durante la escasez de agua</em></p>
+            </div>
+</section>
 
-    <-------------------------------------- Experience section start ------------------------>
-     
-    <section class="Experience" id="experience" data-aos="fade-up" data-aos-delay="300">
+<section class="Experience" id="experience" data-aos="fade-up" data-aos-delay="300">
         <div class="max-width">
             <h2 class="title" style="padding-bottom: 40px;">My Experience</h2>
-            <div class="serv-content">
+            <div class="exp-content">
 
-                <div class="card" data-aos="flip-left" data-aos-delay="1000">
-                    <a href="https://www.scbeurope.org" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://scbeurope.org&amp;size=256" alt="SCB Europe logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Intern</div>
-                            <p>Society for Conservation Biology Europe Region<br>June 2026 - Current<br>Paris & Remote, France<br>Author of the “SCB Europe Voices” interview series</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" data-aos="flip-left" data-aos-delay="1000">
-                    <a href="https://www.rsc-bd.org" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://rsc-bd.org&amp;size=256" alt="RSC logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Remediation Programme Officer</div>
-                            <p>RMG Sustainability Council (RSC)<br>3 November 2024 - 7 September 2025<br>Dhaka & Chattogram</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" data-aos="flip-left" data-aos-delay="1000">
-                    <a href="https://www.oxfam.org/en/countries/bangladesh" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://oxfam.org&amp;size=256" alt="Oxfam logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Programme Quality Officer</div>
-                            <p>Oxfam <br>March 2024 - May 2024<br>Dhaka & remote locations</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" data-aos="flip-left" data-aos-delay="1000">
-                    <a href="https://www.oxfam.org/en/countries/bangladesh" style="color: white">
-                         <div class="box">
-                          <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://oxfam.org&amp;size=256" alt="Oxfam logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                          <div class="text">Development Trainee</div>
-                          <p>Oxfam <br>October 2023 - February 2024<br>Dhaka & remote locations</p>
-                        </div>
-                   </a>
-                </div>
-
-                <div class="card" data-aos="flip-left" data-aos-delay="1000">
-                    <a href="https://www.oxfam.org/en/countries/bangladesh" style="color: white">
-                         <div class="box">
-                          <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://oxfam.org&amp;size=256" alt="Oxfam logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                          <div class="text">Volunteer</div>
-                          <p>Oxfam <br>April 2023 - October 2023<br>Dhaka & remote locations</p>
-                        </div>
-                   </a>
-                </div>
-            
-                <div class="card" data-aos="flip-down" data-aos-delay="1000">
-                    <a href="https://ceccr.gov.bd/" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://ceccr.gov.bd&amp;size=256" alt="CECCR logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Research Coordinator</div>
-                            <p>Centre for Environment and Climate Change Research (CECCR)<br>December 2022 - April 2023</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" data-aos="flip-right" data-aos-delay="1000">
-                    <a href="https://ceccr.gov.bd/" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://ceccr.gov.bd&amp;size=256" alt="CECCR logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Research Assistant and Analyst</div>
-                            <p>Centre for Environment and Climate Change Research (CECCR)<br>July 2022 - December 2022</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" data-aos="flip-right" data-aos-delay="1000">
-                    <a href="https://www.fao.org/bangladesh/en/" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://www.fao.org&amp;size=256" alt="FAO logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Field Medical Technologist (RT-CST)</div>
-                            <p>Food and Agriculture Organization of the United Nations (FAO)<br>August 2021 - April 2022<br>Dhaka, Bangladesh</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" data-aos="flip-left" data-aos-delay="1000">
-                    <a href="https://www.brac.net" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://brac.net&amp;size=256" alt="BRAC logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Frontline Covid Fighter (RT-CST)</div>
-                            <p>BRAC, co-managed and funded by the Ministry of Health and FAO<br>January 2021 - March 2022<br>Dhaka, Bangladesh</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" data-aos="flip-down" data-aos-delay="1000">
-                    <div style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://upwork.com&amp;size=256" alt="Upwork logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Content Developer and Creator</div>
-                            <p>Freelance: Upwork, Fiverr, PeoplePerHour<br>2020 - 2022<br>Remote</p>
-                        </div>
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.scbeurope.org" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://scbeurope.org&amp;size=256" alt="Society for Conservation Biology Europe Region logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Intern</span>
+                        <a class="exp-org" href="https://www.scbeurope.org" target="_blank">Society for Conservation Biology Europe Region</a>
                     </div>
                 </div>
-
-                <div class="card" data-aos="flip-right" data-aos-delay="1000">
-                    <a href="https://www.wfp.org" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://wfp.org&amp;size=256" alt="WFP logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Food Volunteer</div>
-                            <p>BRAC, funded by the World Food Programme (WFP)<br>August 2020 - December 2020<br>Dhaka, Bangladesh</p>
-                        </div>
-                    </a>
+                <p class="edu-meta">June 2026 - Current<br>Paris &amp; Remote, France</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Contributing to the communication team’s work on communicating conservation science from researchers and practitioners to all.</li>
+                        <li>Writing up the “SCB Europe Voices” conversations for a general audience.</li>
+                    </ul>
                 </div>
+             </div>
+           </div>
 
-                <div class="card" data-aos="flip-left" data-aos-delay="1000">
-                    <a href="https://www.nippon-foundation.or.jp/en" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://nippon-foundation.or.jp&amp;size=256" alt="Nippon Foundation logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Inclusion Developer</div>
-                            <p>Nippon Foundation and Japan Paralympic Committee<br>December 2019<br>Tokyo, Japan</p>
-                        </div>
-                    </a>
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.rsc-bd.org" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://rsc-bd.org&amp;size=256" alt="RMG Sustainability Council (RSC) logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Remediation Programme Officer</span>
+                        <a class="exp-org" href="https://www.rsc-bd.org" target="_blank">RMG Sustainability Council (RSC)</a>
+                    </div>
                 </div>
+                <p class="edu-meta">3 November 2024 - 7 September 2025<br>Dhaka &amp; Chattogram</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Oversee remediation progress in RMG factories, ensuring compliance with safety and sustainability standards.</li>
+                        <li>Conduct inspections and risk assessments for structural, electrical and fire safety improvements.</li>
+                        <li>Coordinate with BGMEA, BKMEA, NGWF and factory management on remediation and worker safety.</li>
+                        <li>Provide technical guidance to factory owners on regulatory compliance.</li>
+                        <li>Engage with authorities, local government and brands for transparency and accountability.</li>
+                        <li>Develop monitoring tools to track progress and identify challenges.</li>
+                        <li>Collaborate with DIFE to ensure alignment with international safety standards.</li>
+                        <li>Support training programmes on occupational health, safety and emergency preparedness.</li>
+                        <li>Prepare reports and policy recommendations for advocacy and stakeholder engagement.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
 
-                <div class="card" data-aos="flip-down" data-aos-delay="1000">
-                    <a href="https://aanbangladesh.org/" style="color: white">
-                        <div class="box">
-                            <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://aanbangladesh.org&amp;size=256" alt="Asia Arsenic Network logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
-                            <div class="text">Research Assistant</div>
-                            <p>Asia Arsenic Network (AAN) in collaboration with The University of Michigan, USA<br>November 2018 - November 2019<br>Jashore, Bangladesh</p>
-                        </div>
-                    </a>
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.oxfam.org/en/countries/bangladesh" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://oxfam.org&amp;size=256" alt="Oxfam in Bangladesh logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Programme Quality Officer</span>
+                        <a class="exp-org" href="https://www.oxfam.org/en/countries/bangladesh" target="_blank">Oxfam in Bangladesh</a>
+                    </div>
                 </div>
+                <p class="edu-meta">March 2024 - May 2024<br>Dhaka &amp; remote locations</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Facilitated strategic partnerships by assessing capacity gaps, identifying risks and mitigation strategies.</li>
+                        <li>Led five or more strategic partnership assessments with Oxfam’s newly developed CAPAS (pilot) tool, plus 15 more with the manual assessment tool, coordinating two teams.</li>
+                        <li>Supported SDG project activities such as ecosystem restoration, natural resource management, disaster risk reduction and livelihood diversification by engaging with local communities and stakeholders.</li>
+                        <li>Supported research on regulations and strategy planning, and advocacy for community consultations.</li>
+                        <li>Kept detailed and accurate finance and budget records and prepared comprehensive project status reports.</li>
+                        <li>Handled the administrative tasks and logistical support needed to carry out programme activities.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.oxfam.org/en/countries/bangladesh" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://oxfam.org&amp;size=256" alt="Oxfam in Bangladesh logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Development Trainee</span>
+                        <a class="exp-org" href="https://www.oxfam.org/en/countries/bangladesh" target="_blank">Oxfam in Bangladesh</a>
+                    </div>
+                </div>
+                <p class="edu-meta">October 2023 - February 2024<br>Dhaka &amp; remote locations</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Co-designed, co-created and co-facilitated a community-based approach for diversity and inclusion.</li>
+                        <li>Operated a DJI Mavic 3 Multispectral drone for real-time remote sensing, aerial surveying and data acquisition, following drone safety protocols.</li>
+                        <li>Collected, managed and analysed remote sensing data with Pix4Ddesktop, Pix4Dcloud, DroneDeploy and DJI Terra, and mapped it in ArcGIS Pro, ArcGIS and QGIS.</li>
+                        <li>Conducted analytical write-ups: reports, presentations and publications.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.oxfam.org/en/countries/bangladesh" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://oxfam.org&amp;size=256" alt="Oxfam in Bangladesh logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Volunteer</span>
+                        <a class="exp-org" href="https://www.oxfam.org/en/countries/bangladesh" target="_blank">Oxfam in Bangladesh</a>
+                    </div>
+                </div>
+                <p class="edu-meta">April 2023 - October 2023<br>Dhaka &amp; remote locations</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Facilitated surveys, interviews, FGDs, KIIs and participatory rural appraisals (PRA) with diverse communities and with government and private-sector stakeholders in urban and rural settings.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://ceccr.gov.bd/" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://ceccr.gov.bd&amp;size=256" alt="Centre for Environment and Climate Change Research (CECCR) logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Research Coordinator</span>
+                        <a class="exp-org" href="https://ceccr.gov.bd/" target="_blank">Centre for Environment and Climate Change Research (CECCR)</a>
+                    </div>
+                </div>
+                <p class="edu-meta">December 2022 - April 2023<br>Moheshkhali, Gaibandha, Kurigram, Syamnagar</p>
+                <p class="exp-project"><strong>Project:</strong> Assessment of Indigenous Knowledge and Technology Used for Climate Adaptation and Resilience in Bangladesh (Moheshkhali, Gaibandha, Kurigram, Syamnagar)</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Supervised field activities, developed data collection tools and managed work directly from the field.</li>
+                        <li>Showed leadership, communication and strategic planning within the team.</li>
+                        <li>Led participatory, data-driven, result-oriented and collaborative R&amp;D activities.</li>
+                        <li>Managed data input and analysis with MIS, KoBoToolbox, SurveyCTO, SPSS and NVivo.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://ceccr.gov.bd/" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://ceccr.gov.bd&amp;size=256" alt="Centre for Environment and Climate Change Research (CECCR) logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Research Assistant and Analyst</span>
+                        <a class="exp-org" href="https://ceccr.gov.bd/" target="_blank">Centre for Environment and Climate Change Research (CECCR)</a>
+                    </div>
+                </div>
+                <p class="edu-meta">July 2022 - December 2022<br>Rangpur</p>
+                <p class="exp-project"><strong>Project:</strong> Impact of Climate Change on Occurrence and Distribution of Animal Diseases and Deaths in Smallholder Farming Systems: An Investigation of Farm-level Experiences (Rangpur)</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Conducted field research and a foresight exercise on how climate change affects the occurrence and distribution of animal diseases and deaths in smallholder farming systems in Rangpur, Bangladesh.</li>
+                        <li>Collected data and analysed surveys, interviews, focus group discussions and secondary sources, using quantitative and qualitative methods from the field and households.</li>
+                        <li>Prepared and presented research findings, results and field reports to the project leader and stakeholders.</li>
+                        <li>Collaborated with researchers, veterinarians, extension workers and local community members, with accountability to project participants and gender balance.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.fao.org/bangladesh/en/" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://www.fao.org&amp;size=256" alt="Food and Agriculture Organization of the United Nations (FAO) logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Field Medical Technologist (RT-CST)</span>
+                        <a class="exp-org" href="https://www.fao.org/bangladesh/en/" target="_blank">Food and Agriculture Organization of the United Nations (FAO)</a>
+                    </div>
+                </div>
+                <p class="edu-meta">August 2021 - April 2022<br>Dhaka, Bangladesh</p>
+                <p class="exp-project"><strong>Study:</strong> Evaluation of Diagnostic Performance of SARS-CoV-2 Rapid Antigen Test at Household Level</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Supervised COVID sample collection from households while upholding ethical values.</li>
+                        <li>Led team members, supervising their sample collection and carrying out the mission in difficult scenarios.</li>
+                        <li>Ensured environmental safety, safety and social compliance.</li>
+                        <li>Handled, maintained and monitored COVID sampling kits.</li>
+                        <li>Checked the performance of the Rapid Antigen Test kit.</li>
+                        <li>Managed and verified data through KoBoToolbox.</li>
+                        <li>Conducted data analysis on RAT and RT-PCR.</li>
+                        <li>Analysed data and submitted reports.</li>
+                        <li>Ensured biohazard waste management.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://iedcr.gov.bd" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://iedcr.gov.bd&amp;size=256" alt="Institute of Epidemiology, Disease Control and Research (IEDCR) logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Covid Data Assistant - Field</span>
+                        <a class="exp-org" href="https://iedcr.gov.bd" target="_blank">Institute of Epidemiology, Disease Control and Research (IEDCR)</a>
+                    </div>
+                </div>
+                <p class="edu-meta">June 2021 - August 2021<br>Dhaka, Bangladesh</p>
+                <p class="exp-project"><strong>Study:</strong> COVID RAT (Rapid Antigen Test) Kit Research, Phases I and II</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Conducted field audits of the COVID RAT kit research (phases I and II) to evaluate the accuracy and feasibility of rapid antigen tests for COVID-19 diagnosis.</li>
+                        <li>Collected COVID samples and verified data from over 1000 participants tested at households across Dhaka, including transport to the IEDCR lab for RT-PCR.</li>
+                        <li>Checked the quality and reliability of the kit for errors, inconsistencies and faults.</li>
+                        <li>Ensured flawless data submission through the given apps and KoBoToolbox.</li>
+                        <li>Prepared and submitted audit reports to the coordinators and IEDCR, highlighting findings and issues.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.brac.net" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://brac.net&amp;size=256" alt="BRAC, co-managed and funded by the Ministry of Health and FAO logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Frontline Covid Fighter (RT-CST)</span>
+                        <a class="exp-org" href="https://www.brac.net" target="_blank">BRAC, co-managed and funded by the Ministry of Health and FAO</a>
+                    </div>
+                </div>
+                <p class="edu-meta">January 2021 - March 2022<br>Dhaka, Bangladesh</p>
+                <p class="exp-project"><strong>Programme:</strong> Community Support Team identifying Potential and Verified Covid Fighters and providing support at doorsteps in Dhaka South City Corporation, Wards 1–6, 73 and 74</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Visited and surveyed households to identify potential COVID-19 cases and responded accordingly.</li>
+                        <li>Followed up with Potential Virus Fighters (PVF) and Verified Virus Fighters (VVF).</li>
+                        <li>Identified households and PVFs from data provided by 999 and 333.</li>
+                        <li>Arranged COVID sample collection at household level with confidentiality and support.</li>
+                        <li>Regularly visited and monitored VVFs to ensure timely delivery of aid.</li>
+                        <li>Supported marginalised and vulnerable groups, including pregnant and elderly people at household level.</li>
+                        <li>Transported VVFs to special COVID hospitals in emergencies, following safety guidelines.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://upwork.com&amp;size=256" alt="Freelance: Upwork, Fiverr, PeoplePerHour logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span>
+                    <div class="edu-name">
+                        <span class="exp-role">Content Developer and Creator</span>
+                        <span class="exp-org">Freelance: Upwork, Fiverr, PeoplePerHour</span>
+                    </div>
+                </div>
+                <p class="edu-meta">2020 - 2022<br>Remote</p>
+                <p class="exp-project"><strong>Websites:</strong> Cyclisthut.com and Fishycave.com</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Developed high-quality, engaging content (blog posts, articles, web copy, social media content and marketing materials) to client specifications.</li>
+                        <li>Researched in depth to ensure accuracy, relevance and adherence to trends and requirements.</li>
+                        <li>Worked with clients to understand their brand voice, audience and content goals.</li>
+                        <li>Optimised content for SEO using keyword research tools.</li>
+                        <li>Edited and proofread content for clarity, coherence and accuracy.</li>
+                        <li>Managed multiple projects at once under tight deadlines.</li>
+                        <li>Advised clients on content strategy, topic generation and distribution.</li>
+                        <li>Used Trello, Asana and Slack to track progress and keep client communication smooth.</li>
+                        <li>Monitored content performance with analytics tools and adjusted strategy to client KPIs.</li>
+                        <li>Ensured compliance with copyright laws and ethical guidelines.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.wfp.org" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://wfp.org&amp;size=256" alt="BRAC, funded by the World Food Programme (WFP) logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Food Volunteer</span>
+                        <a class="exp-org" href="https://www.wfp.org" target="_blank">BRAC, funded by the World Food Programme (WFP)</a>
+                    </div>
+                </div>
+                <p class="edu-meta">August 2020 - December 2020<br>Dhaka, Bangladesh</p>
+                <p class="exp-project"><strong>Programme:</strong> Emergency response ensuring nutrition for verified COVID patients’ households to reduce the impact of COVID-19</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Supported the supply of nutritional supplements and daily necessities to COVID-positive households.</li>
+                        <li>Distributed food packages, hygiene kits, masks and sanitisers while maintaining safety protocols.</li>
+                        <li>Helped improve access to healthcare for early detection and treatment of malnutrition among the poor of Dhaka.</li>
+                        <li>Coordinated with local authorities and community leaders to support beneficiaries efficiently.</li>
+                        <li>Raised awareness and educated beneficiaries about preventing and controlling COVID-19.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://www.nippon-foundation.or.jp/en" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://nippon-foundation.or.jp&amp;size=256" alt="Nippon Foundation and Japan Paralympic Committee logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Inclusion Developer</span>
+                        <a class="exp-org" href="https://www.nippon-foundation.or.jp/en" target="_blank">Nippon Foundation and Japan Paralympic Committee</a>
+                    </div>
+                </div>
+                <p class="edu-meta">December 2019<br>Tokyo, Japan</p>
+                <p class="exp-project"><strong>Programme:</strong> Inclusion Developer for Japan Paralympic 2020 in the “Learn Act Make Programme (LAMP)”</p>
+                <div class="edu-courses">
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Studied para-sports and surveyed para-sports stadiums.</li>
+                        <li>Collaborated with a multidisciplinary team to design, develop and implement the Learn Act Make Programme (LAMP) for Japan Paralympic 2020, aimed at participant engagement and inclusivity.</li>
+                        <li>Identified gaps in Tokyo’s systems and environments for disabled people and proposed design modifications.</li>
+                        <li>Handled documented and written communication, including social media marketing of para-sports.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
+
+           <div class="card exp-card" tabindex="0">
+             <div class="box">
+                <div class="edu-head">
+                    <a class="exp-ico" href="https://aanbangladesh.org/" target="_blank" tabindex="-1"><span class="org-icon"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://aanbangladesh.org&amp;size=256" alt="Asia Arsenic Network (AAN) in collaboration with The University of Michigan, USA logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg')"><i class="fas fa-building"></i></span></a>
+                    <div class="edu-name">
+                        <span class="exp-role">Research Assistant</span>
+                        <a class="exp-org" href="https://aanbangladesh.org/" target="_blank">Asia Arsenic Network (AAN) in collaboration with The University of Michigan, USA</a>
+                    </div>
+                </div>
+                <p class="edu-meta">November 2018 - November 2019<br>Jashore, Bangladesh</p>
+                <p class="exp-project"><strong>Study:</strong> Integrated Assessment Study on Sustainability of Safe Drinking Water Supply in Bangladesh</p>
+                <div class="edu-courses">
+                    <h4>Key accomplishments</h4>
+                    <ul>
+                        <li>Provided full support in data collection, analysis and interpretation from Samta Village, Jashore.</li>
+                        <li>Assisted enumerators in field data collection and managed large data sets.</li>
+                        <li>Completed data collection and lab analysis in coordination with the research team.</li>
+                        <li>Supported validating the data set and drafting reports and articles for Asia Arsenic Network (AAN).</li>
+                        <li>Liaised with Samta Village communities affected by arsenic contamination.</li>
+                        <li>Collaborated with international partners from the University of Michigan.</li>
+                    </ul>
+                </div>
+             </div>
+           </div>
 
             </div>
         </div>
     </section>
-
-<!-------------------------- Project section styling ----------------------------------->
 
 <section class="project" id="project" data-aos="fade-up" data-aos-delay="300">
     <div class="max-width">
@@ -305,10 +784,10 @@
                 <p><a href="https://meh-ha.github.io/bangladesh-unfccc-factsheet" target="_blank">meh-ha.github.io/bangladesh-unfccc-factsheet</a></p>
             </div>
             <div class="publication">
-                <h3>SCB Europe Voices (interview series)</h3>
+                <h3>SCB Europe Voices</h3>
                 <p class="project-date" style="font-size: 14px; font-weight: 500; color: #13B9FF;">June 2026 - Current</p>
-                <p style="text-align: justify;">As part of the communication team of the Society for Conservation Biology Europe Region, I conduct and write up the “SCB Europe Voices” interview series for a general audience, communicating conservation science from researchers and practitioners to all.</p>
-                <p><a href="https://www.scbeurope.org/en/actualities/14" target="_blank">From a Farm in the UK to Europe's Conservation Policy Table: A Conversation with Stephen Venn | SCB Europe Region</a></p>
+                <p style="text-align: justify;">As part of the communication team of the Society for Conservation Biology Europe Region, I conduct and write up the “SCB Europe Voices” conversations for a general audience, communicating conservation science from researchers and practitioners to all.</p>
+                <p><strong>Episode 1:</strong> <a href="https://www.scbeurope.org/en/actualities/14" target="_blank">From a Farm in the UK to Europe's Conservation Policy Table: A Conversation with Stephen Venn</a></p>
             </div>
             <div class="publication">
                 <h3>Just Energy Transition in the Industries of Bangladesh (JET)</h3>
@@ -379,498 +858,7 @@
     </div>
 </section>
 
-
-                
-
-
-
-
-
-
-<!---------------------------------Education Section----------------------------------->
-
-<section class="education" id="education" data-aos="fade-up" data-aos-delay="300">
-    <div class="max-width">
-        <h2 class="title">Education</h2>
-        <div class="edu-content">
-
-           <div class="card edu-card" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/ULisboa logo.png" alt="ULisboa logo" class="edu-logo" onerror="this.onerror=null;this.src='attributes/ULISBOA logo.png'"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">ULisboa</span>
-                        <span class="edu-full">Universidade de Lisboa</span>
-                    </div>
-                </div>
-                <div class="edu-faculty">Faculty of Sciences</div>
-                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>Erasmus Mundus Master in Global Change Ecology and Biodiversity Management (GLOBE)</span></div>
-                <p class="edu-meta">September 2026 - Continue<br>Lisbon, Portugal</p>
-                <div class="edu-hint"><i class="fas fa-angle-down"></i> Hover to see courses</div>
-                <div class="edu-courses">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li>Environmental Assessment</li>
-                        <li>Environmental Policy and Governance</li>
-                        <li>Project in Ecology and Environmental Management</li>
-                        <li>Natural Hazards</li>
-                        <li>Ecosystem Services and Bioeconomy</li>
-                        <li>Ecological Sustainability</li>
-                    </ul>
-                </div>
-             </div>
-           </div>
-
-           <div class="card edu-card" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/uatx logo.png" alt="UATx logo" class="edu-logo"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">UATx</span>
-                        <span class="edu-full">Universidad Autónoma de Tlaxcala</span>
-                    </div>
-                </div>
-                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>International Socio-Ecosystems and Biodiversity Summer School</span></div>
-                <p class="edu-meta">August 2026 - September 2026<br>Tlaxcala, Mexico</p>
-                <div class="edu-hint"><i class="fas fa-angle-down"></i> Hover to see activities</div>
-                <div class="edu-courses">
-                    <h4>Activities</h4>
-                    <ul>
-                        <li>Course focus: Metepantle agroecology (a FAO Globally Important Agricultural Heritage System), La Malinche National Park and Ixtenco’s maize seed networks</li>
-                        <li>Critical essay: “One Mountain, Two Stories: Agriculture and Biodiversity Conservation on La Malinche”</li>
-                        <li>Activity report on Veracruz, Tehuacán-Cuicatlán, La Malinche and the Ixtenco science fair</li>
-                    </ul>
-                </div>
-             </div>
-           </div>
-
-           <div class="card edu-card" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/BU Logo.svg" alt="Bangor University logo" class="edu-logo"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">BU</span>
-                        <span class="edu-full">Bangor University</span>
-                    </div>
-                </div>
-                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>Erasmus Mundus Master in Global Change Ecology and Biodiversity Management (GLOBE)</span></div>
-                <p class="edu-meta">January 2026 - June 2026 · 2nd Semester<br>Final grade: 8.73/10<br>Bangor, Wales, UK</p>
-                <div class="edu-hint"><i class="fas fa-angle-down"></i> Hover to see courses</div>
-                <div class="edu-courses">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li>Botanical Ecology & Ecosystem</li>
-                        <li>Genetics and the Conservation</li>
-                        <li>Human-Wildlife Co-Existence</li>
-                        <li>Methods in Wildlife Conservation</li>
-                    </ul>
-                </div>
-             </div>
-           </div>
-
-           <div class="card edu-card" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/URJC Logo.png" alt="URJC logo" class="edu-logo"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">URJC</span>
-                        <span class="edu-full">Universidad Rey Juan Carlos</span>
-                    </div>
-                </div>
-                <div class="edu-programme"><img src="attributes/globe logo white.png" alt="GLOBE logo" class="globe-chip"> <span>Erasmus Mundus Master in Global Change Ecology and Biodiversity Management (GLOBE)</span></div>
-                <p class="edu-meta">September 2025 - January 2026 · 1st Semester<br>Final grade: 9.02/10<br>Móstoles, Spain</p>
-                <div class="edu-hint"><i class="fas fa-angle-down"></i> Hover to see courses</div>
-                <div class="edu-courses">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li>Conservation Strategies for Biodiversity</li>
-                        <li>Evolutionary Consequences of Global Change</li>
-                        <li>Global Change: Drivers and Impacts</li>
-                        <li>Integrative Field Course</li>
-                        <li>Scientific Writing, Reporting, and Communication</li>
-                        <li>Statistical Modelling and Data Science</li>
-                    </ul>
-                </div>
-             </div>
-           </div>
-
-           <div class="card edu-card edu-long" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/JUST logo.png" alt="JUST logo" class="edu-logo"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">JUST</span>
-                        <span class="edu-full">Jashore University of Science &amp; Technology</span>
-                    </div>
-                </div>
-                <div class="edu-faculty">Department of Environmental Science and Technology</div>
-                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Bachelor of Science (Honours) in Environmental Science</span></div>
-                <p class="edu-meta">2018 - 2023<br>CGPA: 3.19 out of 4.00<br>Jashore, Bangladesh</p>
-                <div class="edu-hint"><i class="fas fa-angle-down"></i> Hover to see courses, thesis &amp; honours</div>
-                <div class="edu-courses">
-                    <h4>Thesis &amp; honours</h4>
-                    <ul>
-                        <li>Thesis: Microplastics in Indoor Environment in Dhaka, Bangladesh</li>
-                        <li>Best Dissertation Award, session 2017-18</li>
-                    </ul>
-                    <h4 style="margin-top:12px">Courses</h4>
-                    <ul>
-                        <li class="grp">Year 1 · Semester 1</li>
-                        <li>Introduction to Environmental Science and Technology</li>
-                        <li>Earth Science I</li>
-                        <li>Earth Science I Sessional</li>
-                        <li>Biological Environment</li>
-                        <li>Biological Environment Sessional</li>
-                        <li>Chemistry I</li>
-                        <li>Chemistry I Sessional</li>
-                        <li>Mathematics I</li>
-                        <li>Communicative English</li>
-                        <li>Bangladesh Studies and Moral Ethics</li>
-                        <li>Semester Final Viva</li>
-                        <li class="grp">Year 1 · Semester 2</li>
-                        <li>Environmental Pollution</li>
-                        <li>Earth Science II</li>
-                        <li>Field Trip on Earth Science II</li>
-                        <li>Environmental Sociology</li>
-                        <li>Chemistry II</li>
-                        <li>Chemistry II Sessional</li>
-                        <li>Mathematics II</li>
-                        <li>Environmental Physics</li>
-                        <li>Computer Application</li>
-                        <li>Computer Application Sessional</li>
-                        <li>Semester Final Viva</li>
-                        <li class="grp">Year 2 · Semester 1</li>
-                        <li>Ecology</li>
-                        <li>Public Health and Environment</li>
-                        <li>Soil Environment</li>
-                        <li>Environmental Chemistry</li>
-                        <li>Environmental Economics</li>
-                        <li>Environmental Hydrology</li>
-                        <li>Statistics</li>
-                        <li>Soil Environment Sessional</li>
-                        <li>Environmental Chemistry Sessional</li>
-                        <li>Environmental Hydrology Sessional</li>
-                        <li>Semester Final Viva</li>
-                        <li class="grp">Year 2 · Semester 2</li>
-                        <li>Agriculture and Environment</li>
-                        <li>Geography and Geology of Bangladesh</li>
-                        <li>Coastal Environment and Flood Plain Management</li>
-                        <li>Analytical Chemistry</li>
-                        <li>Epidemiology</li>
-                        <li>Meteorology</li>
-                        <li>Agriculture and Environment Sessional</li>
-                        <li>Epidemiology Sessional</li>
-                        <li>Field Trip on Meteorology</li>
-                        <li>Semester Final Viva</li>
-                        <li class="grp">Year 3 · Semester 1</li>
-                        <li>Energy and Environment</li>
-                        <li>Environmental Microbiology and Biotechnology</li>
-                        <li>Water and Waste Water Treatment</li>
-                        <li>Environmental Bio-Chemistry</li>
-                        <li>GIS and Remote Sensing</li>
-                        <li>Gender and Environment</li>
-                        <li>Limnology and Oceanography</li>
-                        <li>Environmental Microbiology and Biotechnology Sessional</li>
-                        <li>Environmental Bio-Chemistry Sessional</li>
-                        <li>GIS and Remote Sensing Sessional</li>
-                        <li>Semester Final Viva</li>
-                        <li class="grp">Year 3 · Semester 2</li>
-                        <li>Waste Management</li>
-                        <li>Urbanization and Environment</li>
-                        <li>Research Methodology</li>
-                        <li>Instrumental Analysis</li>
-                        <li>Toxicology and Eco-Toxicology</li>
-                        <li>Biodiversity Conservation and Ecotourism</li>
-                        <li>Instrumental Analysis Sessional</li>
-                        <li>Toxicology and Eco-Toxicology Sessional</li>
-                        <li>Field Trip on Biodiversity Conservation and Ecotourism</li>
-                        <li>Semester Final Viva</li>
-                        <li class="grp">Year 4 · Semester 1</li>
-                        <li>Environmental Impact Assessment</li>
-                        <li>Water Supply, Health and Sanitation</li>
-                        <li>Environmental Ethics, Protocols and Laws</li>
-                        <li>Climate Change and Adaptation</li>
-                        <li>Disaster Management</li>
-                        <li>Environmental Modeling</li>
-                        <li>Environmental Impact Assessment Sessional</li>
-                        <li>Field Trip on Disaster Management</li>
-                        <li>Environmental Modeling Sessional</li>
-                        <li class="grp">Year 4 · Semester 2</li>
-                        <li>Environmental Management System</li>
-                        <li>Integrated Water Resource Management</li>
-                        <li>Industrial Pollution and Management</li>
-                        <li>Environment, Health &amp; Safety</li>
-                        <li>Project Thesis</li>
-                    </ul>
-                </div>
-             </div>
-           </div>
-
-           <div class="card edu-card" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/DC logo.png" alt="Dhaka College logo" class="edu-logo"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">DC</span>
-                        <span class="edu-full">Dhaka College</span>
-                    </div>
-                </div>
-                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Higher Secondary Certificate (HSC), Science</span></div>
-                <p class="edu-meta">2014 - 2016<br>GPA: 5.00 out of 5.00<br>Dhaka, Bangladesh</p>
-             </div>
-           </div>
-
-           <div class="card edu-card" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/MGBHS logo.png" alt="MGBHS logo" class="edu-logo"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">MGBHS</span>
-                        <span class="edu-full">Motijheel Govt. Boys’ High School</span>
-                    </div>
-                </div>
-                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Secondary School Certificate (SSC), Science</span></div>
-                <p class="edu-meta">2012 - 2014<br>GPA: 5.00 out of 5.00<br>Dhaka, Bangladesh</p>
-             </div>
-           </div>
-
-           <div class="card edu-card" tabindex="0">
-             <div class="box">
-                <div class="edu-head">
-                    <div class="edu-logo-wrap"><img src="attributes/MGBHS logo.png" alt="MGBHS logo" class="edu-logo"></div>
-                    <div class="edu-name">
-                        <span class="edu-short">MGBHS</span>
-                        <span class="edu-full">Motijheel Govt. Boys’ High School</span>
-                    </div>
-                </div>
-                <div class="edu-programme"><i class="fas fa-graduation-cap"></i><span>Junior School Certificate (JSC)</span></div>
-                <p class="edu-meta">2007 - 2011<br>GPA: 5.00 out of 5.00<br>Dhaka, Bangladesh</p>
-             </div>
-           </div>
-
-           </div>
-    </div>
-</section>
-           
-                
-                
-
-
-
-
-<section class="research training" id="training" data-aos="fade-up" data-aos-delay="300">
-    <div class="max-width">
-        <h2 class="title">Training & Short Courses</h2>
-        <div class="research-content">
-            <div class="publication">
-                <h3>Training of Trainers (ToT) on Human Rights & Environmental Due Diligence (HREDD)</h3>
-                <p>Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ)</p>
-                <p>19 - 21 November 2024</p>
-            </div>
-            <div class="publication">
-                <h3>Young Negotiator Programme: Climate Diplomacy Capacity Building Workshop</h3>
-                <p>GAIN</p>
-                <p>6 - 9 October 2024</p>
-            </div>
-            <div class="publication">
-                <h3>Earth Observations for Humanitarian Applications</h3>
-                <p>NASA’s Applied Remote Sensing Training (ARSET)</p>
-                <p>6 - 20 June 2024</p>
-            </div>
-            <div class="publication">
-                <h3>Key Roles of Youth and Children to Address Loss and Damage under the Youth and Children Platform on Loss & Damage (YCPLD)</h3>
-                <p>International Centre for Climate Change and Development (ICCCAD)</p>
-            </div>
-            <div class="publication">
-                <h3>Training for Community Support Team on COVID-19 Prevention</h3>
-                <p>Ministry of Health and Family Welfare, Bangladesh and FAO</p>
-                <p>August 2021 - May 2022</p>
-            </div>
-            <div class="publication">
-                <h3>Global Leadership Training</h3>
-                <p>FOSTER under LAMP, Yangon, Myanmar</p>
-                <p>25 February - 4 March 2020</p>
-            </div>
-            <div class="publication">
-                <h3>Climate Change in Practice</h3>
-                <p>Global Citizenship Education (GECD)</p>
-                <p>1 - 25 February 2020</p>
-            </div>
-            <div class="publication">
-                <h3>Global Leadership Education</h3>
-                <p>E-Education and Nippon Foundation, Tokyo, Japan</p>
-                <p>September - December 2019</p>
-            </div>
-                    </div>
-    </div>
-</section>
-
-<!-------------------------- Research and Publication section styling ----------------------------------->
-
-<section class="research" id="research" data-aos="fade-up" data-aos-delay="300">
-    <div class="max-width">
-        <h2 class="title">Research & Publication</h2>
-            <div class="research-content">
-                 <div class="publication">
-                 <h3>Exploring Climate Justice and Natural Resource Rights: Climate Adaptation through Community Stewardship in Ecosystem Services Management in MPA</h3>
-                 <p>Manuscript under development</p>
-            </div>
-            <div class="publication">
-                <h3>Anthropogenic Marine Litter Pollution Along the Coast of Sonadia Island: An Ecologically Critical Area (ECA) of Bangladesh</h3>
-                <p>Journal: Regional Studies in Marine Science, Volume 77, Article 103690</p>
-                <p>Publication date: July 10, 2024</p>
-                <p>Link:<a href="https://doi.org/10.1016/j.rsma.2024.103690"> doi.org/10.1016/j.rsma.2024.103690 </a></p>
-            </div>
-            <div class="publication">
-                <h3>Assessment of Community Stewardship over Ecosystem Services within Climate Nexus: A Pathway Towards Locally-led Adaptation in Nijhum Dwip, Bangladesh</h3>
-                <p>South Asian Climate Conference, November 2023</p>
-            </div>
-            <div class="publication">
-                <h3>Adapting to Change: Exploring Reverse Migration as Coping Strategy Among Internal Migrants in Bangladesh</h3>
-                <p>Journal: Heliyon, Volume 9, Issue 9, e19479</p>
-                <p>Publication Date: August 26, 2023</p>
-                <p>Link:<a href="https://doi.org/10.1016/j.heliyon.2023.e19479"> doi.org/10.1016/j.heliyon.2023.e19479 </a></p>
-            </div>
-            <div class="publication">
-                <h3>MICROPLASTICS IN INDOOR ENVIRONMENT IN DHAKA, BANGLADESH</h3>
-                <p style="text-align: justify;">
-                    This study investigates atmospheric microplastics in indoor environments in Dhaka, Bangladesh, highlighting their composition, sources, and potential health risks. Using FT-IR, SEM, and EDS, the research identified polyethylene and low-density polyethylene, along with toxic elements like Pb, Zn, and Ni. Findings emphasize the risk of bioaccumulation through inhalation, posing long-term health concerns.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<section class="research awards" id="awards" data-aos="fade-up" data-aos-delay="300">
-    <div class="max-width">
-        <h2 class="title">Honours & Awards</h2>
-        <div class="research-content">
-            <div class="publication">
-                <h3>Erasmus Mundus Joint Master Scholarship for the GLOBE Programme</h3>
-                <p>The European Union & Instituto de Investigación en Cambio Global</p>
-                <p>May 2025. A competitive scholarship for the 120 ECTS GLOBE Joint Master, with mobility across Spain, the UK, Portugal and Mexico.</p>
-            </div>
-            <div class="publication">
-                <h3>Rising Star Award</h3>
-                <p>Oxfam in Bangladesh</p>
-                <p>January 2024. For consistent high performance in fiscal year 2023.</p>
-            </div>
-            <div class="publication">
-                <h3>Best Dissertation Award</h3>
-                <p>Jashore University of Science and Technology</p>
-                <p>January 2023. Best dissertation of session 2017-18 in the Department of Environmental Science and Technology.</p>
-            </div>
-            <div class="publication">
-                <h3>Bangladesh Poribeshbid Society Research Scholarship</h3>
-                <p>Bangladesh Poribeshbid Society</p>
-                <p>October 2022. Awarded to support the bachelor’s dissertation.</p>
-            </div>
-            <div class="publication">
-                <h3>Runner-up, Inter-University Poster Presentation Competition</h3>
-                <p>“Environmental Innovative Solution” category</p>
-                <p>August 2021</p>
-            </div>
-            <div class="publication">
-                <h3>Dr M. N. Khan Scholarship</h3>
-                <p>Department of Applied Science, Jashore University of Science and Technology</p>
-                <p>June 2021</p>
-            </div>
-                    </div>
-    </div>
-</section>
-
-<!---------------------------------IELTS----------------------------------->
-
-<section class="ielts-score" id="ielts-score">
-    <div class="max-width">
-        <h2 class="title">Language Proficiency</h2>
-        <div class="ielts-content">
-            <div class="score-details">
-                <h3><i class="fas fa-award"></i> English Proficiency Test: IELTS</h3>
-                <div class="ielts-overall">
-                    <span class="lbl">Overall Band Score</span>
-                    <span class="num">7.0</span>
-                    <span class="lvl">CEFR Level: C1</span>
-                </div>
-                <div class="ielts-bands">
-                    <div><span>Listening</span><b>7.5</b></div>
-                    <div><span>Reading</span><b>8.0</b></div>
-                    <div><span>Writing</span><b>6.5</b></div>
-                    <div><span>Speaking</span><b>6.0</b></div>
-                </div>
-                <div class="ielts-meta">
-                    <span><strong>Candidate:</strong> Mehedi Hasan</span>
-                    <span><strong>First Language:</strong> Bengali</span>
-                    <span><strong>Test Date:</strong> 21/OCT/2024</span>
-                </div>
-             </div>
-            <div class="trf-preview">
-                <h3>Languages (CEFR, as in Europass CV)</h3>
-                <p style="margin: 15px 0 10px;"><strong>Mother tongue:</strong> Bengali</p>
-                <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 15px; text-align: center;">
-                    <thead>
-                        <tr style="border-bottom: 2px solid #13B9FF;">
-                            <th style="padding: 8px; text-align: left;">Language</th>
-                            <th style="padding: 8px;">Listening</th>
-                            <th style="padding: 8px;">Reading</th>
-                            <th style="padding: 8px;">Spoken production</th>
-                            <th style="padding: 8px;">Spoken interaction</th>
-                            <th style="padding: 8px;">Writing</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">English</td><td data-label="Listening">C1</td><td data-label="Reading">C1</td><td data-label="Spoken production">C1</td><td data-label="Spoken interaction">B2</td><td data-label="Writing">B2</td></tr>
-                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Spanish</td><td data-label="Listening">A1</td><td data-label="Reading">A1</td><td data-label="Spoken production">A1</td><td data-label="Spoken interaction">A1</td><td data-label="Writing">A1</td></tr>
-                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Portuguese</td><td colspan="5">Basic</td></tr>
-                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Hindi</td><td colspan="5">Basic</td></tr>
-                        <tr><td class="lang-name" style="padding: 8px; text-align: left;">Urdu</td><td colspan="5">Basic</td></tr>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!--Certificate section styling-->
-    
-         <!--
-    <section class="certifications" id="certifications"data-aos="fade-up" data-aos-delay="300">
-         <div class="max-width">
-            <h2 class="title">My Certifications</h2>
-            <div id="image-slider">
-            <div id="slide-frame"data-aos="flip-down">
-              <div id="slides">
-                <img class = "certification_image" id="slide1" src="./certifications/data science for business.JPG" alt="" />
-                <img class = "certification_image" id="slide2" src="./certifications/ask question to make data driven decision.JPG" alt="" />
-                <img class = "certification_image" id="slide3" src="./certifications/process data from dirty to clean.JPG" alt="" />
-                <img class = "certification_image" id="slide4" src="./certifications/emotional intelligence.JPG" alt="" />
-                <img class = "certification_image" id="slide5" src="./certifications/Asir Intesar - Intro to Deep Learning.png" alt="" />
-                <img class = "certification_image" id="slide6" src="./certifications/Asir Intesar - Intro to Machine Learning.png" alt="" />
-                <img class = "certification_image" id="slide7" src="./certifications/Asir Intesar - Python.png" alt="" />
-              </div>
-            </div>
-            <div id="navigation">
-              <a href="#slide1">1</a>
-              <a href="#slide2">2</a>
-              <a href="#slide3">3</a>
-              <a href="#slide4">4</a>
-              <a href="#slide5">5</a>
-              <a href="#slide6">6</a>
-              <a href="#slide7">7</a>
-            </div>
-          </div>
-        </div>  
-    </section>
-
--->
-        
-    <!-- skills section start -->
-    <section class="skills" id="skills" data-aos="fade-up" data-aos-delay="300">
+<section class="skills" id="skills" data-aos="fade-up" data-aos-delay="300">
         <div class="max-width">
             <h2 class="title">My skills</h2>
             <div class="skills-content">
@@ -918,6 +906,21 @@
                         <div class="bars" data-aos="fade-right" data-aos-delay="1000"> <div class="info"> <span>Adobe Premiere Pro & After Effects</span> <span>80%</span> </div> <div class="line adobe"></div> </div>
                     </div>
                     <div class="skill-group" data-aos="fade-up" data-aos-delay="200">
+                        <h3><i class="fas fa-comments"></i>Analytical &amp; Communication</h3>
+                        <div class="skill-chips">
+                            <span>Critical thinking and creative brainstorming</span>
+                            <span>Project proposals, project design, monitoring, evaluation and reports</span>
+                            <span>Report writing</span>
+                            <span>Interpretation, transcription and translation (English and Bangla)</span>
+                            <span>Social media marketing and SEO content creation</span>
+                            <span>Data entry (40-55 words per minute)</span>
+                            <span>Video editing: Premiere Pro, After Effects, Filmora</span>
+                            <span>Google Earth mapping</span>
+                            <span>Google Slides and PowerPoint</span>
+                            <span>Bengali (native), English (fluent)</span>
+                        </div>
+                    </div>
+                    <div class="skill-group" data-aos="fade-up" data-aos-delay="200">
                         <h3><i class="fas fa-seedling"></i>More skills</h3>
                         <div class="skill-chips">
                             <span>Data Collection, Processing, Analysis & Visualization</span>
@@ -937,9 +940,211 @@
             </div>
         </div>
     </section>
-    
 
-<!--------------------------- contact section start ------------------------------->
+<section class="research training" id="training" data-aos="fade-up" data-aos-delay="300">
+    <div class="max-width">
+        <h2 class="title">Training & Short Courses</h2>
+        <div class="research-content">
+            <div class="publication">
+                <h3>Training of Trainers (ToT) on Human Rights &amp; Environmental Due Diligence (HREDD)</h3>
+                <p>Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ)</p>
+                <p>19 - 21 November 2024</p>
+            </div>
+            <div class="publication">
+                <h3>Young Negotiator Programme: Climate Diplomacy Capacity Building Workshop</h3>
+                <p>Youth Negotiators Academy (YNA) and GAIN</p>
+                <p>6 - 9 October 2024</p>
+            </div>
+            <div class="publication">
+                <h3>Earth Observations for Humanitarian Applications</h3>
+                <p>NASA’s Applied Remote Sensing Training (ARSET)</p>
+                <p>6 - 20 June 2024</p>
+            </div>
+            <div class="publication" tabindex="0">
+                <h3>Key Roles of Youth and Children to Address Loss and Damage under the Youth and Children Platform on Loss &amp; Damage (YCPLD)</h3>
+                <p>International Centre for Climate Change and Development (ICCCAD)</p>
+                <p>May 2024</p>
+                <div class="train-details">
+                    <p>A two-day residential workshop</p>
+                    
+                </div>
+            </div>
+            <div class="publication" tabindex="0">
+                <h3>Training on NVivo, KoBoToolbox, SurveyCTO and Power BI</h3>
+                <p>Oxfam</p>
+                <p>March 2024</p>
+                <div class="train-details">
+                    <p>A week-long training</p>
+                    
+                </div>
+            </div>
+            <div class="publication" tabindex="0">
+                <h3>Training on “SPSS for Quantitative Data Analysis”</h3>
+                <p>Oxfam</p>
+                <p>February 2024</p>
+                <div class="train-details">
+                    <p>A three-day training</p>
+                    
+                </div>
+            </div>
+            <div class="publication">
+                <h3>Training on the Development and Management of Tourism of Bangladesh</h3>
+                <p>Tourism Board of Bangladesh, by UN Volunteers Bangladesh</p>
+                <p>July 2022</p>
+            </div>
+            <div class="publication">
+                <h3>Training for Community Support Team on COVID-19 Prevention</h3>
+                <p>Ministry of Health and Family Welfare, Bangladesh and FAO</p>
+                <p>August 2021 - May 2022</p>
+            </div>
+            <div class="publication">
+                <h3>Training on Biohazard Waste Management</h3>
+                <p>IEDCR: hazardous human sample collection and environmental health and safety management</p>
+                <p>June 2021</p>
+            </div>
+            <div class="publication" tabindex="0">
+                <h3>Training of Medical Technologists for the Evaluation of Diagnostic Performance of SARS-CoV-2 Rapid Antigen Test at Household Level</h3>
+                <p>IEDCR</p>
+                <p>March 2021</p>
+                <div class="train-details">
+                    <p>A two-day training</p>
+                    
+                </div>
+            </div>
+            <div class="publication" tabindex="0">
+                <h3>Training on CST: Community Support Team to Prepare Frontline Fighters to Tackle COVID-19</h3>
+                <p>BRAC and FAO</p>
+                <p>January 2021</p>
+                <div class="train-details">
+                    <p>A week-long training on identifying Potential Virus Fighters (PVF) and Verified Virus Fighters (VVF) and providing essential support at community level</p>
+                    
+                </div>
+            </div>
+            <div class="publication" tabindex="0">
+                <h3>Global Leadership Training</h3>
+                <p>FOSTER (NGO), Yangon, Myanmar</p>
+                <p>25 February - 4 March 2020</p>
+                <div class="train-details">
+                    <p>Education and training on the Rohingya influx, its history and upcycling</p>
+                    <ul class="train-list">
+                        <li>Developed knowledge of the Rohingya and their history from the perspectives of different countries.</li>
+                        <li>Analysed multiple perspectives on the Rohingya influx and discussed solutions, including the role of NGOs in easing the crisis.</li>
+                        <li>Studied upcycling and “Upcycling Ideas into Business” for developing countries and building beneficial communities.</li>
+                        <li>Presented a concept note with an analysis of the situation and recommendations.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="publication">
+                <h3>Climate Change in Practice</h3>
+                <p>Global Citizenship Education (GECD)</p>
+                <p>1 - 25 February 2020</p>
+            </div>
+            <div class="publication" tabindex="0">
+                <h3>Global Leadership Education</h3>
+                <p>E-Education and Nippon Foundation, Tokyo, Japan</p>
+                <p>September - December 2019</p>
+                <div class="train-details">
+                    <p>Education and training on disabled people, para-sports and immigrants from a global perspective</p>
+                    <ul class="train-list">
+                        <li>Identified key informants and discussed with them.</li>
+                        <li>Prepared a societal report on the condition of disabled people and immigrants.</li>
+                        <li>Presented an overview of the current social and economic situation.</li>
+                        <li>Proposed sustainable development approaches integrating disabled people and immigrants.</li>
+                    </ul>
+                </div>
+            </div>
+                    </div>
+    </div>
+</section>
+
+<section class="research awards" id="awards" data-aos="fade-up" data-aos-delay="300">
+    <div class="max-width">
+        <h2 class="title">Honours & Awards</h2>
+        <div class="research-content">
+            <div class="publication">
+                <h3>Erasmus Mundus Joint Master Scholarship for the GLOBE Programme</h3>
+                <p>The European Union & Instituto de Investigación en Cambio Global</p>
+                <p>May 2025. A competitive scholarship for the 120 ECTS GLOBE Joint Master, with mobility across Spain, the UK, Portugal and Mexico.</p>
+            </div>
+            <div class="publication">
+                <h3>Rising Star Award</h3>
+                <p>Oxfam in Bangladesh</p>
+                <p>January 2024. For consistent high performance in fiscal year 2023.</p>
+            </div>
+            <div class="publication">
+                <h3>Best Dissertation Award</h3>
+                <p>Jashore University of Science and Technology</p>
+                <p>January 2023. Best dissertation of session 2017-18 in the Department of Environmental Science and Technology.</p>
+            </div>
+            <div class="publication">
+                <h3>Bangladesh Poribeshbid Society Research Scholarship</h3>
+                <p>Bangladesh Poribeshbid Society</p>
+                <p>October 2022. Awarded to support the bachelor’s dissertation.</p>
+            </div>
+            <div class="publication">
+                <h3>Runner-up, Inter-University Poster Presentation Competition</h3>
+                <p>“Environmental Innovative Solution” category</p>
+                <p>August 2021</p>
+            </div>
+            <div class="publication">
+                <h3>Dr M. N. Khan Scholarship</h3>
+                <p>Department of Applied Science, Jashore University of Science and Technology</p>
+                <p>June 2021</p>
+            </div>
+                    </div>
+    </div>
+</section>
+
+<section class="ielts-score" id="ielts-score">
+    <div class="max-width">
+        <h2 class="title">Language Proficiency</h2>
+        <div class="ielts-content">
+            <div class="score-details">
+                <h3><i class="fas fa-award"></i> English Proficiency Test: IELTS</h3>
+                <div class="ielts-overall">
+                    <span class="lbl">Overall Band Score</span>
+                    <span class="num">7.0</span>
+                    <span class="lvl">CEFR Level: C1</span>
+                </div>
+                <div class="ielts-bands">
+                    <div><span>Listening</span><b>7.5</b></div>
+                    <div><span>Reading</span><b>8.0</b></div>
+                    <div><span>Writing</span><b>6.5</b></div>
+                    <div><span>Speaking</span><b>6.0</b></div>
+                </div>
+                <div class="ielts-meta">
+                    <span><strong>Candidate:</strong> Mehedi Hasan</span>
+                    <span><strong>First Language:</strong> Bengali</span>
+                    <span><strong>Test Date:</strong> 21/OCT/2024</span>
+                </div>
+             </div>
+            <div class="trf-preview">
+                <p class="mother-tongue"><strong>Mother tongue:</strong> <span>Bengali</span></p>
+                <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 15px; text-align: center;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #13B9FF;">
+                            <th style="padding: 8px; text-align: left;">Language</th>
+                            <th style="padding: 8px;">Listening</th>
+                            <th style="padding: 8px;">Reading</th>
+                            <th style="padding: 8px;">Spoken production</th>
+                            <th style="padding: 8px;">Spoken interaction</th>
+                            <th style="padding: 8px;">Writing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">English</td><td data-label="Listening">C1</td><td data-label="Reading">C1</td><td data-label="Spoken production">C1</td><td data-label="Spoken interaction">B2</td><td data-label="Writing">B2</td></tr>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Spanish</td><td data-label="Listening">A1</td><td data-label="Reading">A1</td><td data-label="Spoken production">A1</td><td data-label="Spoken interaction">A1</td><td data-label="Writing">A1</td></tr>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Portuguese</td><td colspan="5">Basic</td></tr>
+                        <tr style="border-bottom: 1px solid #ddd;"><td class="lang-name" style="padding: 8px; text-align: left;">Hindi</td><td colspan="5">Basic</td></tr>
+                        <tr><td class="lang-name" style="padding: 8px; text-align: left;">Urdu</td><td colspan="5">Basic</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="contact" id="contact" data-aos="fade-up" data-aos-delay="300">
     <h2 class="title">Contact Information</h2>
@@ -1018,22 +1223,116 @@
 </section>
 
 
+     <!-- home section end -->
+    
+    <!--------------------------------------- about section start ------------------------------>
+
+    
+
+ <!-------------------------------------- Video section start ------------------------>
+    
+ <!-- section class="video-section">
+    <h2 class="title">Watch My Work</h2>
+    <div class="video-container">
+        <iframe width="65%" height="500" 
+                src="https://www.youtube.com/embed/65K1Ph6cmfY" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+
+    <-------------------------------------- Experience section start ------------------------>
+     
+    
+
+<!-------------------------- Project section styling ----------------------------------->
+
+
+
+
+                
+
+
+
+
+
+
+<!---------------------------------Education Section----------------------------------->
+
+
+           
+                
+                
+
+
+
+
+
+
+<!-------------------------- Research and Publication section styling ----------------------------------->
+
+
+
+
+
+
+
+<!---------------------------------IELTS----------------------------------->
+
+
+
+
+    <!--Certificate section styling-->
+    
+         <!--
+    <section class="certifications" id="certifications"data-aos="fade-up" data-aos-delay="300">
+         <div class="max-width">
+            <h2 class="title">My Certifications</h2>
+            <div id="image-slider">
+            <div id="slide-frame"data-aos="flip-down">
+              <div id="slides">
+                <img class = "certification_image" id="slide1" src="./certifications/data science for business.JPG" alt="" />
+                <img class = "certification_image" id="slide2" src="./certifications/ask question to make data driven decision.JPG" alt="" />
+                <img class = "certification_image" id="slide3" src="./certifications/process data from dirty to clean.JPG" alt="" />
+                <img class = "certification_image" id="slide4" src="./certifications/emotional intelligence.JPG" alt="" />
+                <img class = "certification_image" id="slide5" src="./certifications/Asir Intesar - Intro to Deep Learning.png" alt="" />
+                <img class = "certification_image" id="slide6" src="./certifications/Asir Intesar - Intro to Machine Learning.png" alt="" />
+                <img class = "certification_image" id="slide7" src="./certifications/Asir Intesar - Python.png" alt="" />
+              </div>
+            </div>
+            <div id="navigation">
+              <a href="#slide1">1</a>
+              <a href="#slide2">2</a>
+              <a href="#slide3">3</a>
+              <a href="#slide4">4</a>
+              <a href="#slide5">5</a>
+              <a href="#slide6">6</a>
+              <a href="#slide7">7</a>
+            </div>
+          </div>
+        </div>  
+    </section>
+
+-->
+        
+    <!-- skills section start -->
+    
+    
+
+<!--------------------------- contact section start ------------------------------->
+
+
+
+
     <!-- footer section start -->
 <footer>
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="assets/vendor/counterup/counterup.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/venobox/venobox.min.js"></script>
-    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="assets/vendor/typed.js/typed.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
-    <script src="script.js?v=20261108d"></script>
+    <script src="script.js?v=20261109b"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
   AOS.init();

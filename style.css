@@ -1882,3 +1882,143 @@ section .title::after{
 .st-pct{ background:rgba(43,47,54,.82); color:#fff; }
 .st-btn{ color:#2b2f36; border:1px solid rgba(60,66,74,.3); }
 .st-btn:hover{ background:#6b7280; color:#fff; }
+
+/* =====================================================================
+   Round 9
+   ===================================================================== */
+/* ---- Cover photos: one fixed layer, 14 photos, no movement while scrolling ---- */
+.cover-slides{ position:fixed; top:0; right:0; bottom:0; left:0; width:auto; height:auto; z-index:-1; overflow:hidden; background:#0b1620; transform:translateZ(0); contain:layout paint; }
+.cover-slides.paused .cover-slide{ animation-play-state:paused; }
+.cover-slides .cover-slide{ position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; background-repeat:no-repeat; opacity:0; animation:coverFade 84s linear infinite; animation-delay:calc(var(--i) * 6s) !important; will-change:opacity; }
+@keyframes coverFade{ 0%{opacity:0;} 3%{opacity:1;} 7.2%{opacity:1;} 10.2%{opacity:0;} 100%{opacity:0;} }
+
+/* ---- Typed words change colour while they are typed ---- */
+.about .typing-2{ background:linear-gradient(90deg,#13B9FF,#8b5cf6,#ec4899,#f59e0b,#22c55e,#13B9FF); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; animation:typeHue 5s linear infinite; }
+@keyframes typeHue{ to{ background-position:300% 0; } }
+
+/* ---- Simple scroll-down arrows ---- */
+.scroll-hint{ width:44px; height:56px; gap:0; justify-content:center; font-size:0; }
+.scroll-hint span{ display:block; width:18px; height:18px; margin:-6px 0; border-right:3px solid #fff; border-bottom:3px solid #fff; transform:rotate(45deg); opacity:0; animation:shArrow 1.8s ease-in-out infinite; filter:drop-shadow(0 2px 4px rgba(0,0,0,.55)); }
+.scroll-hint span:nth-child(2){ animation-delay:.25s; }
+@keyframes shArrow{ 0%{ opacity:0; transform:rotate(45deg) translate(-7px,-7px);} 50%{ opacity:1;} 100%{ opacity:0; transform:rotate(45deg) translate(7px,7px);} }
+
+/* ---- Top bar: invisible at first, texts zoom out and the glass bar fades in once you scroll ---- */
+.navbar::before{ opacity:0; transition:opacity .45s ease, background .3s ease; }
+.navbar.sticky::before{ opacity:1; }
+.navbar .logo a, .navbar .menu li a{ text-shadow:0 1px 10px rgba(0,0,0,.5); }
+@media (min-width:948px){
+    .navbar .logo a{ font-size:clamp(22px,2.4vw,32px); transform-origin:left center; }
+    .navbar .menu li a{ margin-left:16px; font-size:17px; }
+    .navbar.sticky .logo a{ transform:scale(.88); }
+    .navbar.sticky .menu li a{ transform:scale(.92); }
+    .navbar.sticky .menu li a:hover{ transform:scale(1.1); }
+}
+@media (max-width:480px){ .navbar .logo a{ font-size:20px; } }
+
+/* ---- Back-to-top: transparent rectangle (not round) ---- */
+.scroll-up-btn{ mix-blend-mode:normal !important; width:auto !important; height:auto !important; line-height:1 !important; padding:9px 14px !important; border-radius:6px !important; border:1.5px solid rgba(70,76,84,.55) !important; background:rgba(255,255,255,.14) !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#3b4048 !important; display:flex; align-items:center; gap:8px; font-size:20px !important; box-shadow:none !important; right:22px; }
+.scroll-up-btn::after{ content:"TOP"; font:600 11px 'Poppins',sans-serif; letter-spacing:2px; }
+.scroll-up-btn:hover{ background:rgba(120,126,134,.22) !important; transform:translateY(-3px); filter:none; }
+
+/* ---- Scroll tracker: fully transparent ---- */
+.scroll-tracker, .scroll-tracker:hover, .scroll-tracker.dragging{ background:transparent !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; box-shadow:none !important; border:0 !important; }
+.st-list button, .st-list button:hover, .st-list li.active button{ color:#2b2f36; text-shadow:0 0 6px rgba(255,255,255,.95), 0 0 3px rgba(255,255,255,.95); }
+.st-track, .scroll-tracker:hover .st-track, .scroll-tracker.dragging .st-track{ background:rgba(120,126,134,.3); }
+.st-fill{ background:rgba(110,116,124,.75); }
+.st-thumb{ background:rgba(255,255,255,.6); border:2px solid rgba(90,96,104,.85); }
+.scroll-tracker:hover .st-thumb, .scroll-tracker.dragging .st-thumb{ background:rgba(110,116,124,.9); border-color:rgba(255,255,255,.9); }
+.st-pct{ background:rgba(43,47,54,.75); }
+.st-btn{ background:transparent !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; border:1.5px solid rgba(90,96,104,.7) !important; border-radius:6px !important; color:#2b2f36; }
+.st-btn:hover{ background:rgba(120,126,134,.25) !important; color:#111; }
+
+/* ---- About photo: rotating photos that fill the frame (no empty space) ---- */
+.about .about-content .left .about-photo{ position:relative; width:100%; max-width:420px; aspect-ratio:4 / 5; border-radius:14px; overflow:hidden; background:#dfe5ea; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+.about .about-content .left .about-photo img{ position:absolute; top:0; left:0; width:100%; height:100%; max-width:none; object-fit:cover; object-position:center 22%; border-radius:0; box-shadow:none; opacity:0; animation:aboutFade 20s infinite; animation-delay:calc(var(--i) * 4s); transition:transform .8s var(--spring); }
+.about .about-content .left .about-photo img:hover{ transform:none; box-shadow:none; }
+.about .about-content .left .about-photo:hover img{ transform:scale(1.06); }
+@keyframes aboutFade{ 0%{opacity:0;} 4%{opacity:1;} 20%{opacity:1;} 24%{opacity:0;} 100%{opacity:0;} }
+
+/* ---- Experience: same card style as education, with responsibilities ---- */
+.exp-content{ display:flex; flex-wrap:wrap; gap:28px; justify-content:center; align-items:stretch; padding:20px 8px; }
+.exp-card{ width:calc(50% - 20px); box-sizing:border-box; padding:26px 28px; border-radius:20px; background:#222; color:#fff; border:1px solid rgba(255,255,255,.08); text-align:left; outline:none; transition:transform .5s var(--spring), background .4s ease, box-shadow .4s ease; }
+.exp-card:hover, .exp-card:focus-within{ background:rgba(34,34,34,.6); -webkit-backdrop-filter:blur(12px) saturate(140%); backdrop-filter:blur(12px) saturate(140%); box-shadow:0 20px 44px rgba(0,0,0,.3); }
+.exp-card .box{ display:block; text-align:left; transform:none !important; }
+.exp-card .edu-head{ align-items:center; }
+.exp-ico{ flex:0 0 auto; text-decoration:none; }
+.exp-card .org-icon{ width:76px; height:76px; padding:12px; }
+.exp-card .org-icon i{ display:none; }
+.exp-card .org-icon.noimg i{ display:inline-block; font-size:30px; color:#13B9FF; }
+.exp-card .org-icon.noimg img{ display:none; }
+.exp-role{ display:block; font:600 21px/1.25 'Poppins',sans-serif; color:#fff; }
+.exp-org{ display:block; margin-top:6px; font-size:14px; line-height:1.35; color:#d6dde3; text-decoration:none; }
+a.exp-org:hover{ color:#13B9FF; }
+.exp-project{ margin-top:10px; font-size:13px; line-height:1.5; color:#e4e9ed; }
+@media (max-width:768px){ .exp-card{ width:100%; } }
+@media (max-width:480px){ .exp-card{ padding:20px 16px; } .exp-role{ font-size:18px; } .exp-card .org-icon{ width:60px; height:60px; padding:9px; } .exp-content, .education .edu-content{ padding-left:0; padding-right:0; } }
+
+/* ---- Conference poster + training lists ---- */
+.poster-gallery{ display:flex; flex-wrap:wrap; gap:18px; margin-top:14px; }
+.poster-gallery a{ display:block; width:210px; text-align:center; text-decoration:none; color:#333; font-size:12.5px; font-weight:600; transition:transform .4s var(--spring); }
+.poster-gallery img{ display:block; width:100%; height:auto; margin-bottom:6px; border-radius:10px; box-shadow:0 8px 22px rgba(0,0,0,.2); }
+.poster-gallery a:hover{ transform:scale(1.06); }
+.train-list{ margin:8px 0 0 18px; font-size:14px; line-height:1.55; color:#555; }
+@media (max-width:600px){ .poster-gallery a{ width:calc(50% - 9px); } }
+
+/* ---- Languages ---- */
+.mother-tongue{ margin:16px 0 14px; font-size:20px; }
+.mother-tongue span{ font-size:32px; font-weight:700; color:#0b8fc7; }
+
+/* ---- Wider hover previews ---- */
+.link-preview{ width:420px; max-width:calc(100vw - 20px); }
+.lp-banner{ height:230px; }
+.lp-title{ font-size:16px; }
+.lp-desc{ font-size:13.5px; }
+
+/* ---- Very narrow screens (Galaxy Z Fold cover ~344px) ---- */
+@media (max-width:380px){
+    .edu-head{ gap:12px; }
+    .edu-logo-wrap{ width:68px; height:68px; }
+    .edu-short{ font-size:30px; }
+    .edu-programme{ font-size:14.5px; }
+    .education .edu-content .card.edu-card{ padding:18px 14px; }
+    .ielts-overall{ padding:18px 28px 16px; }
+    .ielts-bands{ gap:10px; }
+    .skill-group{ padding:18px 14px 6px; }
+    .home .text-2{ font-size:26px; }
+    .home .text-3{ font-size:22px; }
+}
+
+@media (min-width:948px) and (max-width:1200px){
+    .navbar .menu li a{ margin-left:9px; font-size:14.5px; }
+    .navbar .logo a{ font-size:21px; }
+}
+.navbar .menu{ white-space:nowrap; }
+
+@media (max-width:600px){
+    .home .media{ padding:90px 0 130px 0 !important; }
+    .home .media p{ font-size:24px !important; }
+    .publication p, .about .about-content .right p{ text-align:left !important; }
+}
+
+.exp-content, .education .edu-content{ align-items:flex-start; }
+
+/* =====================================================================
+   Round 10: equal-size cards, details appear on hover (no hint text)
+   ===================================================================== */
+.education .edu-content, .exp-content{ display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:1fr; gap:28px; align-items:stretch !important; padding:20px 8px; }
+.education .edu-content .card.edu-card, .exp-card{ width:auto !important; margin:0 !important; height:100%; position:relative; overflow:hidden; box-sizing:border-box; }
+@media (max-width:768px){ .education .edu-content, .exp-content{ grid-template-columns:minmax(0,1fr); } }
+.edu-hint{ display:none !important; }
+.edu-courses{ position:absolute !important; top:0; left:0; right:0; bottom:0; max-height:none !important; margin:0 !important; padding:22px 24px 18px !important; overflow-x:hidden; overflow-y:auto !important; background:rgba(22,24,28,.95); border-radius:inherit; z-index:2; opacity:0 !important; visibility:hidden; transition:opacity .35s ease, visibility .35s ease !important; }
+.edu-card:hover .edu-courses, .edu-card:focus-within .edu-courses, .edu-card.open .edu-courses,
+.exp-card:hover .edu-courses, .exp-card:focus-within .edu-courses, .exp-card.open .edu-courses{ opacity:1 !important; visibility:visible; }
+.edu-courses ul{ padding-left:18px; font-size:12.5px; }
+.edu-courses .grp{ margin-left:-18px; }
+.edu-static{ margin-top:12px; }
+.edu-static h4{ font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:#aeb8c0; }
+.edu-static ul{ margin-top:5px; padding-left:18px; font-size:12.5px; line-height:1.55; color:#f1f4f6; }
+/* training: details open on hover */
+.publication .train-details{ max-height:0; opacity:0; overflow:hidden; transition:max-height .5s ease, opacity .35s ease, margin .3s ease; }
+.publication:hover .train-details, .publication:focus-within .train-details, .publication.open .train-details{ max-height:520px; opacity:1; margin-top:6px; }
+.publication .train-details p{ margin:0 0 4px; }
+.publication[tabindex]{ outline:none; }
