@@ -1889,8 +1889,8 @@ section .title::after{
 /* ---- Cover photos: one fixed layer, 14 photos, no movement while scrolling ---- */
 .cover-slides{ position:fixed; top:0; right:0; bottom:0; left:0; width:auto; height:auto; z-index:-1; overflow:hidden; background:#0b1620; transform:translateZ(0); contain:layout paint; }
 .cover-slides.paused .cover-slide{ animation-play-state:paused; }
-.cover-slides .cover-slide{ position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; background-repeat:no-repeat; opacity:0; animation:coverFade 84s linear infinite; animation-delay:calc(var(--i) * 6s) !important; will-change:opacity; }
-@keyframes coverFade{ 0%{opacity:0;} 3%{opacity:1;} 7.2%{opacity:1;} 10.2%{opacity:0;} 100%{opacity:0;} }
+.cover-slides .cover-slide{ position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; background-repeat:no-repeat; opacity:0; animation:coverFade 66s ease-in-out infinite; animation-delay:calc(var(--i) * 6s) !important; will-change:opacity; }
+@keyframes coverFade{ 0%{opacity:0;} 3.03%{opacity:1;} 9.09%{opacity:1;} 12.12%{opacity:0;} 100%{opacity:0;} }
 
 /* ---- Typed words change colour while they are typed ---- */
 .about .typing-2{ background:linear-gradient(90deg,#13B9FF,#8b5cf6,#ec4899,#f59e0b,#22c55e,#13B9FF); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; animation:typeHue 5s linear infinite; }
@@ -1933,10 +1933,10 @@ section .title::after{
 
 /* ---- About photo: rotating photos that fill the frame (no empty space) ---- */
 .about .about-content .left .about-photo{ position:relative; width:100%; max-width:420px; aspect-ratio:4 / 5; border-radius:14px; overflow:hidden; background:#dfe5ea; box-shadow:0 10px 30px rgba(0,0,0,.18); }
-.about .about-content .left .about-photo img{ position:absolute; top:0; left:0; width:100%; height:100%; max-width:none; object-fit:cover; object-position:center 22%; border-radius:0; box-shadow:none; opacity:0; animation:aboutFade 20s infinite; animation-delay:calc(var(--i) * 4s); transition:transform .8s var(--spring); }
+.about .about-content .left .about-photo img{ position:absolute; top:0; left:0; width:100%; height:100%; max-width:none; object-fit:cover; object-position:center 22%; border-radius:0; box-shadow:none; opacity:0; animation:aboutFade 15s ease-in-out infinite; animation-delay:calc(var(--i) * 5s); transition:transform .8s var(--spring); }
 .about .about-content .left .about-photo img:hover{ transform:none; box-shadow:none; }
 .about .about-content .left .about-photo:hover img{ transform:scale(1.06); }
-@keyframes aboutFade{ 0%{opacity:0;} 4%{opacity:1;} 20%{opacity:1;} 24%{opacity:0;} 100%{opacity:0;} }
+@keyframes aboutFade{ 0%{opacity:0;} 10.67%{opacity:1;} 33.33%{opacity:1;} 44%{opacity:0;} 100%{opacity:0;} }
 
 /* ---- Experience: same card style as education, with responsibilities ---- */
 .exp-content{ display:flex; flex-wrap:wrap; gap:28px; justify-content:center; align-items:stretch; padding:20px 8px; }
@@ -2003,22 +2003,120 @@ a.exp-org:hover{ color:#13B9FF; }
 .exp-content, .education .edu-content{ align-items:flex-start; }
 
 /* =====================================================================
-   Round 10: equal-size cards, details appear on hover (no hint text)
+   Round 10 (revised): equal-size cards; the hovered card extends downward to show its details
    ===================================================================== */
-.education .edu-content, .exp-content{ display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:1fr; gap:28px; align-items:stretch !important; padding:20px 8px; }
-.education .edu-content .card.edu-card, .exp-card{ width:auto !important; margin:0 !important; height:100%; position:relative; overflow:hidden; box-sizing:border-box; }
+.education .edu-content, .exp-content{ display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:1fr; gap:28px; align-items:stretch !important; padding:20px 8px; overflow:visible !important; }
+.education .edu-content .card.edu-card, .exp-card{ width:auto !important; margin:0 !important; height:100%; position:relative; overflow:visible !important; box-sizing:border-box; z-index:1; }
 @media (max-width:768px){ .education .edu-content, .exp-content{ grid-template-columns:minmax(0,1fr); } }
+.education .edu-content .card.edu-card:hover, .education .edu-content .card.edu-card:focus-within, .education .edu-content .card.edu-card.open,
+.exp-card:hover, .exp-card:focus-within, .exp-card.open{
+    z-index:30; background:#222 !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+    border-bottom-left-radius:0 !important; border-bottom-right-radius:0 !important; box-shadow:0 18px 40px rgba(0,0,0,.28) !important;
+}
 .edu-hint{ display:none !important; }
-.edu-courses{ position:absolute !important; top:0; left:0; right:0; bottom:0; max-height:none !important; margin:0 !important; padding:22px 24px 18px !important; overflow-x:hidden; overflow-y:auto !important; background:rgba(22,24,28,.95); border-radius:inherit; z-index:2; opacity:0 !important; visibility:hidden; transition:opacity .35s ease, visibility .35s ease !important; }
+.edu-courses{
+    position:absolute !important; top:100%; left:-1px; right:-1px; margin:0 !important; padding:0 24px !important;
+    background:#222; border:1px solid rgba(255,255,255,.08); border-top:0; border-radius:0 0 20px 20px;
+    max-height:0 !important; opacity:0 !important; overflow:hidden !important; visibility:hidden;
+    box-shadow:0 24px 40px rgba(0,0,0,.3);
+    transition:max-height .55s ease, opacity .35s ease, padding .35s ease, visibility .35s ease !important;
+}
 .edu-card:hover .edu-courses, .edu-card:focus-within .edu-courses, .edu-card.open .edu-courses,
-.exp-card:hover .edu-courses, .exp-card:focus-within .edu-courses, .exp-card.open .edu-courses{ opacity:1 !important; visibility:visible; }
+.exp-card:hover .edu-courses, .exp-card:focus-within .edu-courses, .exp-card.open .edu-courses{
+    max-height:380px !important; opacity:1 !important; visibility:visible; overflow-y:auto !important; padding:6px 24px 20px !important;
+}
 .edu-courses ul{ padding-left:18px; font-size:12.5px; }
 .edu-courses .grp{ margin-left:-18px; }
 .edu-static{ margin-top:12px; }
 .edu-static h4{ font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:#aeb8c0; }
 .edu-static ul{ margin-top:5px; padding-left:18px; font-size:12.5px; line-height:1.55; color:#f1f4f6; }
+/* logos / photos inside the cards react to hover too */
+.edu-logo-wrap, .exp-card .org-icon{ transition:transform .45s var(--spring), box-shadow .35s ease; }
+.edu-card:hover .edu-logo-wrap, .exp-card:hover .org-icon{ transform:scale(1.1) rotate(-2deg); }
+.edu-logo-wrap:hover, .exp-card .org-icon:hover{ transform:scale(1.2) rotate(-3deg) !important; box-shadow:0 10px 24px rgba(0,0,0,.4); }
 /* training: details open on hover */
 .publication .train-details{ max-height:0; opacity:0; overflow:hidden; transition:max-height .5s ease, opacity .35s ease, margin .3s ease; }
 .publication:hover .train-details, .publication:focus-within .train-details, .publication.open .train-details{ max-height:520px; opacity:1; margin-top:6px; }
 .publication .train-details p{ margin:0 0 4px; }
 .publication[tabindex]{ outline:none; }
+
+/* =====================================================================
+   Round 11: timelines, one hover style for every card, hover-hidden details, skills, top button
+   ===================================================================== */
+/* ---- Timeline (education + experience): newest at the top ---- */
+.education .edu-content.timeline, .exp-content.timeline{ display:block !important; position:relative; max-width:1120px; margin:0 auto; padding:10px 0 30px !important; overflow:visible !important; --tl-off:150px; }
+.timeline::before{ content:""; position:absolute; top:0; bottom:0; left:50%; width:3px; transform:translateX(-50%); border-radius:3px; background:linear-gradient(to bottom, rgba(19,185,255,.9), rgba(19,185,255,.12)); }
+.timeline::after{ content:""; display:block; clear:both; }
+.tl-item{ position:relative; box-sizing:border-box; width:50%; padding-bottom:30px; }
+.tl-item:nth-child(odd){ float:left; clear:left; padding-right:42px; }
+.tl-item:nth-child(even){ float:right; clear:right; padding-left:42px; margin-top:var(--tl-off); }
+.tl-item::before{ content:""; position:absolute; top:7px; width:18px; height:18px; border-radius:50%; background:#fff; border:4px solid #13B9FF; box-shadow:0 0 0 5px rgba(19,185,255,.18); z-index:4; transition:transform .4s var(--spring); }
+.tl-item:nth-child(odd)::before{ right:-9px; }
+.tl-item:nth-child(even)::before{ left:-9px; }
+.tl-item:hover::before{ transform:scale(1.35); }
+.tl-date{ display:block; width:fit-content; max-width:100%; margin:0 0 10px; padding:5px 14px; border-radius:20px; font:600 13px/1.3 'Poppins',sans-serif; color:#0b6fa4; background:rgba(19,185,255,.12); border:1px solid rgba(19,185,255,.4); transition:transform .4s var(--spring); }
+.tl-item:nth-child(odd) .tl-date{ margin-left:auto; }
+.tl-item:hover .tl-date{ transform:scale(1.08); }
+.timeline .tl-item .card.edu-card, .timeline .tl-item .card.exp-card{ height:auto !important; width:auto !important; transition:transform .5s var(--spring), background .4s ease, opacity .3s ease, filter .3s ease, border-color .3s ease; }
+.timeline:has(.card:hover) .tl-item:not(:hover) .card{ opacity:.4; }
+@media (max-width:768px){
+    .timeline::before{ left:16px; }
+    .tl-item, .tl-item:nth-child(odd), .tl-item:nth-child(even){ float:none; clear:none; width:100%; margin-top:0; padding:0 0 26px 46px; }
+    .tl-item:nth-child(odd)::before, .tl-item:nth-child(even)::before{ left:7px; right:auto; }
+    .tl-item:nth-child(odd) .tl-date{ margin-left:0; }
+}
+
+/* ---- Expanded card: one clean rounded shape (card + extension) ---- */
+.education .edu-content .card.edu-card:hover, .education .edu-content .card.edu-card:focus-within, .education .edu-content .card.edu-card.open,
+.exp-card:hover, .exp-card:focus-within, .exp-card.open{
+    border-color:rgba(19,185,255,.6) !important; border-bottom-color:transparent !important; box-shadow:none !important;
+    filter:drop-shadow(0 20px 26px rgba(0,0,0,.38));
+}
+.edu-courses{ border:1px solid rgba(19,185,255,.6) !important; border-top:0 !important; box-shadow:none !important; border-radius:0 0 20px 20px !important; }
+.edu-courses::-webkit-scrollbar{ width:6px; }
+.edu-courses::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.25); border-radius:6px; }
+
+/* ---- One hover style for every card (same family as the publication cards) ---- */
+.skill-group, .trf-preview, .score-details, .about .about-content .left .about-photo{ border:1px solid rgba(0,0,0,.07); transition:transform .45s var(--spring), box-shadow .35s ease, background .35s ease, border-color .35s ease; }
+.skill-group:hover, .trf-preview:hover, .score-details:hover, .about .about-content .left .about-photo:hover{ background-color:rgba(255,255,255,.78); border-color:rgba(19,185,255,.45); box-shadow:0 18px 38px rgba(0,0,0,.18); }
+.ielts-overall, .ielts-bands > div, .ielts-meta span, .edu-programme, .exp-project, .edu-courses li, .train-list li, .skill-chips span, .skills .bars, .skill-group h3{ transition:transform .35s var(--spring), background .3s ease, color .25s ease, border-color .3s ease; }
+.edu-courses li:hover{ transform:translateX(6px); color:#fff; }
+.train-list li:hover{ transform:translateX(6px); color:#111; }
+.exp-project{ padding:6px 8px; margin-left:-8px; border-radius:8px; }
+.exp-project:hover{ background:rgba(255,255,255,.08); }
+.edu-programme:hover{ transform:translateX(4px); }
+.ielts-meta span:hover{ transform:scale(1.08); }
+.skills .skills-content .right .skill-group .bars:hover{ transform:translateX(4px); }
+.skill-group:hover h3{ transform:translateX(3px); }
+.skill-group h3 i{ transition:transform .45s var(--spring); }
+.skill-group:hover h3 i{ transform:rotate(-8deg) scale(1.12); }
+
+/* ---- Hover-hidden details for publications, conferences and projects ---- */
+.pub-details{ max-height:0; opacity:0; overflow:hidden; transition:max-height .5s ease, opacity .35s ease, margin .3s ease; }
+.publication:hover .pub-details, .publication:focus-within .pub-details, .publication.open .pub-details{ max-height:520px; opacity:1; margin-top:8px; }
+.pub-details p{ margin:0 0 6px; }
+
+/* ---- Skills: tidier grid ---- */
+.skills .skills-content .right{ grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); align-items:stretch; gap:24px; }
+.skill-group{ display:flex; flex-direction:column; }
+.skill-group .skill-chips{ margin-top:auto; padding-top:6px; }
+
+/* ---- Back to top: new icon (arrow to a top bar), transparent squircle ---- */
+.scroll-up-btn::after{ content:none !important; }
+.scroll-up-btn{ padding:11px !important; border-radius:14px !important; gap:0; }
+.scroll-up-btn svg{ display:block; width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform .4s var(--spring); }
+.scroll-up-btn:hover svg{ transform:translateY(-3px); }
+
+/* timeline fixes: only the first right-hand item is offset; narrow-screen wrapping; softer dimming */
+.tl-item:nth-child(even){ margin-top:0; }
+.tl-item:nth-child(2){ margin-top:var(--tl-off); }
+@media (max-width:768px){ .tl-item:nth-child(2){ margin-top:0; } }
+.timeline:has(.card:hover) .tl-item:not(:hover) .card{ opacity:.5; }
+.edu-programme span{ min-width:0; overflow-wrap:anywhere; }
+
+/* skills: tight masonry columns instead of a grid with gaps */
+.skills .skills-content .right{ display:block !important; column-count:3; column-gap:24px; }
+.skills .skills-content .right .skill-group{ display:block; break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 24px; }
+.skill-group .skill-chips{ margin-top:0; padding-top:10px; }
+@media (max-width:1100px){ .skills .skills-content .right{ column-count:2; } }
+@media (max-width:680px){ .skills .skills-content .right{ column-count:1; } }

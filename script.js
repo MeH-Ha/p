@@ -256,7 +256,7 @@ var GOATCOUNTER_CODE = "";
 (function () {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!window.matchMedia("(hover: hover)").matches) return;
-    document.querySelectorAll(".exp-card, .edu-card, .publication, .score-details, .trf-preview, .skill-group").forEach(function (el) {
+    document.querySelectorAll(".publication, .score-details, .trf-preview, .skill-group, .about-photo, .edu-card, .exp-card, .ielts-overall, .ielts-bands > div").forEach(function (el) {
         el.classList.add("tilt");
         el.addEventListener("mousemove", function (e) {
             var r = el.getBoundingClientRect();
@@ -403,4 +403,25 @@ var LINK_SCREENSHOTS = true;
             if (!was) el.classList.add("open");
         });
     });
+})();
+
+/* ---- 9. Timelines: equal-size cards and a zig-zag offset that fits the card height ---- */
+(function () {
+    var timer;
+    function run() {
+        document.querySelectorAll(".timeline").forEach(function (tl) {
+            var cards = [].slice.call(tl.querySelectorAll(".edu-card, .exp-card")), m = 0;
+            cards.forEach(function (c) { c.style.minHeight = ""; });
+            if (window.innerWidth <= 768) { tl.style.setProperty("--tl-off", "0px"); return; }   // phones: natural card heights
+            cards.forEach(function (c) { m = Math.max(m, c.offsetHeight); });
+            cards.forEach(function (c) { c.style.minHeight = m + "px"; });
+            var pill = tl.querySelector(".tl-date"), ph = pill ? pill.offsetHeight + 10 : 40;
+            tl.style.setProperty("--tl-off", Math.round((m + ph + 30) / 2) + "px");
+        });
+    }
+    function later() { clearTimeout(timer); timer = setTimeout(run, 120); }
+    window.addEventListener("load", run);
+    window.addEventListener("resize", later);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+    run();
 })();
