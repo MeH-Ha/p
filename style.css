@@ -1889,8 +1889,8 @@ section .title::after{
 /* ---- Cover photos: one fixed layer, 14 photos, no movement while scrolling ---- */
 .cover-slides{ position:fixed; top:0; right:0; bottom:0; left:0; width:auto; height:auto; z-index:-1; overflow:hidden; background:#0b1620; transform:translateZ(0); contain:layout paint; }
 .cover-slides.paused .cover-slide{ animation-play-state:paused; }
-.cover-slides .cover-slide{ position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; background-repeat:no-repeat; opacity:0; animation:coverFade 66s ease-in-out infinite; animation-delay:calc(var(--i) * 6s) !important; will-change:opacity; }
-@keyframes coverFade{ 0%{opacity:0;} 3.03%{opacity:1;} 9.09%{opacity:1;} 12.12%{opacity:0;} 100%{opacity:0;} }
+.cover-slides .cover-slide{ position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; background-repeat:no-repeat; opacity:0; animation:coverFade 66s ease-in-out infinite; animation-delay:calc(var(--i) * 6s - 2s) !important; will-change:opacity; }
+@keyframes coverFade{ 0%{opacity:0;} 3.03%{opacity:1;} 12.12%{opacity:1;} 12.13%{opacity:0;} 100%{opacity:0;} }
 
 /* ---- Typed words change colour while they are typed ---- */
 .about .typing-2{ background:linear-gradient(90deg,#13B9FF,#8b5cf6,#ec4899,#f59e0b,#22c55e,#13B9FF); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; animation:typeHue 5s linear infinite; }
@@ -1933,10 +1933,10 @@ section .title::after{
 
 /* ---- About photo: rotating photos that fill the frame (no empty space) ---- */
 .about .about-content .left .about-photo{ position:relative; width:100%; max-width:420px; aspect-ratio:4 / 5; border-radius:14px; overflow:hidden; background:#dfe5ea; box-shadow:0 10px 30px rgba(0,0,0,.18); }
-.about .about-content .left .about-photo img{ position:absolute; top:0; left:0; width:100%; height:100%; max-width:none; object-fit:cover; object-position:center 22%; border-radius:0; box-shadow:none; opacity:0; animation:aboutFade 15s ease-in-out infinite; animation-delay:calc(var(--i) * 5s); transition:transform .8s var(--spring); }
+.about .about-content .left .about-photo img{ position:absolute; top:0; left:0; width:100%; height:100%; max-width:none; object-fit:cover; object-position:center 22%; border-radius:0; box-shadow:none; opacity:0; animation:aboutFade 15s ease-in-out infinite; animation-delay:calc(var(--i) * 5s - 1.6s); transition:transform .8s var(--spring); }
 .about .about-content .left .about-photo img:hover{ transform:none; box-shadow:none; }
 .about .about-content .left .about-photo:hover img{ transform:scale(1.06); }
-@keyframes aboutFade{ 0%{opacity:0;} 10.67%{opacity:1;} 33.33%{opacity:1;} 44%{opacity:0;} 100%{opacity:0;} }
+@keyframes aboutFade{ 0%{opacity:0;} 10.67%{opacity:1;} 44%{opacity:1;} 44.01%{opacity:0;} 100%{opacity:0;} }
 
 /* ---- Experience: same card style as education, with responsibilities ---- */
 .exp-content{ display:flex; flex-wrap:wrap; gap:28px; justify-content:center; align-items:stretch; padding:20px 8px; }
@@ -2043,29 +2043,6 @@ a.exp-org:hover{ color:#13B9FF; }
 /* =====================================================================
    Round 11: timelines, one hover style for every card, hover-hidden details, skills, top button
    ===================================================================== */
-/* ---- Timeline (education + experience): newest at the top ---- */
-.education .edu-content.timeline, .exp-content.timeline{ display:block !important; position:relative; max-width:1120px; margin:0 auto; padding:10px 0 30px !important; overflow:visible !important; --tl-off:150px; }
-.timeline::before{ content:""; position:absolute; top:0; bottom:0; left:50%; width:3px; transform:translateX(-50%); border-radius:3px; background:linear-gradient(to bottom, rgba(19,185,255,.9), rgba(19,185,255,.12)); }
-.timeline::after{ content:""; display:block; clear:both; }
-.tl-item{ position:relative; box-sizing:border-box; width:50%; padding-bottom:30px; }
-.tl-item:nth-child(odd){ float:left; clear:left; padding-right:42px; }
-.tl-item:nth-child(even){ float:right; clear:right; padding-left:42px; margin-top:var(--tl-off); }
-.tl-item::before{ content:""; position:absolute; top:7px; width:18px; height:18px; border-radius:50%; background:#fff; border:4px solid #13B9FF; box-shadow:0 0 0 5px rgba(19,185,255,.18); z-index:4; transition:transform .4s var(--spring); }
-.tl-item:nth-child(odd)::before{ right:-9px; }
-.tl-item:nth-child(even)::before{ left:-9px; }
-.tl-item:hover::before{ transform:scale(1.35); }
-.tl-date{ display:block; width:fit-content; max-width:100%; margin:0 0 10px; padding:5px 14px; border-radius:20px; font:600 13px/1.3 'Poppins',sans-serif; color:#0b6fa4; background:rgba(19,185,255,.12); border:1px solid rgba(19,185,255,.4); transition:transform .4s var(--spring); }
-.tl-item:nth-child(odd) .tl-date{ margin-left:auto; }
-.tl-item:hover .tl-date{ transform:scale(1.08); }
-.timeline .tl-item .card.edu-card, .timeline .tl-item .card.exp-card{ height:auto !important; width:auto !important; transition:transform .5s var(--spring), background .4s ease, opacity .3s ease, filter .3s ease, border-color .3s ease; }
-.timeline:has(.card:hover) .tl-item:not(:hover) .card{ opacity:.4; }
-@media (max-width:768px){
-    .timeline::before{ left:16px; }
-    .tl-item, .tl-item:nth-child(odd), .tl-item:nth-child(even){ float:none; clear:none; width:100%; margin-top:0; padding:0 0 26px 46px; }
-    .tl-item:nth-child(odd)::before, .tl-item:nth-child(even)::before{ left:7px; right:auto; }
-    .tl-item:nth-child(odd) .tl-date{ margin-left:0; }
-}
-
 /* ---- Expanded card: one clean rounded shape (card + extension) ---- */
 .education .edu-content .card.edu-card:hover, .education .edu-content .card.edu-card:focus-within, .education .edu-content .card.edu-card.open,
 .exp-card:hover, .exp-card:focus-within, .exp-card.open{
@@ -2108,10 +2085,6 @@ a.exp-org:hover{ color:#13B9FF; }
 .scroll-up-btn:hover svg{ transform:translateY(-3px); }
 
 /* timeline fixes: only the first right-hand item is offset; narrow-screen wrapping; softer dimming */
-.tl-item:nth-child(even){ margin-top:0; }
-.tl-item:nth-child(2){ margin-top:var(--tl-off); }
-@media (max-width:768px){ .tl-item:nth-child(2){ margin-top:0; } }
-.timeline:has(.card:hover) .tl-item:not(:hover) .card{ opacity:.5; }
 .edu-programme span{ min-width:0; overflow-wrap:anywhere; }
 
 /* skills: tight masonry columns instead of a grid with gaps */
@@ -2120,3 +2093,85 @@ a.exp-org:hover{ color:#13B9FF; }
 .skill-group .skill-chips{ margin-top:0; padding-top:10px; }
 @media (max-width:1100px){ .skills .skills-content .right{ column-count:2; } }
 @media (max-width:680px){ .skills .skills-content .right{ column-count:1; } }
+
+/* =====================================================================
+   Round 12
+   ===================================================================== */
+/* ---- Timeline tracker: round start/end points, progress fill, aligned nodes ---- */
+.education .edu-content.timeline, .exp-content.timeline{ display:block !important; position:relative; max-width:1120px; margin:0 auto; padding:46px 0 50px !important; overflow:visible !important; --tl-off:150px; --tp:0%; }
+.timeline::before{ content:""; position:absolute; top:15px; bottom:15px; left:50%; width:4px; margin-left:-2px; border-radius:4px; background:linear-gradient(to bottom,#13B9FF 0,#13B9FF var(--tp),rgba(120,126,134,.3) var(--tp),rgba(120,126,134,.3) 100%); }
+.timeline::after{ content:""; display:block; clear:both; }
+.tl-cap{ position:absolute; left:50%; width:30px; height:30px; margin-left:-15px; border-radius:50%; background:#fff; border:5px solid #13B9FF; box-shadow:0 0 0 7px rgba(19,185,255,.18); z-index:5; box-sizing:border-box; }
+.tl-cap::after{ content:""; position:absolute; top:4px; left:4px; right:4px; bottom:4px; border-radius:50%; background:#13B9FF; }
+.tl-cap.start{ top:0; } .tl-cap.end{ bottom:0; }
+.tl-item{ position:relative; box-sizing:border-box; width:50%; padding-bottom:30px; }
+.tl-item:nth-of-type(odd){ float:left; clear:left; padding-right:46px; }
+.tl-item:nth-of-type(even){ float:right; clear:right; padding-left:46px; margin-top:0; }
+.tl-item:nth-of-type(2){ margin-top:var(--tl-off); }
+.tl-date{ display:flex; align-items:center; width:fit-content; max-width:100%; height:32px; margin:0 0 10px; padding:0 14px; box-sizing:border-box; border-radius:16px; font:600 13px/1 'Poppins',sans-serif; color:#0b6fa4; background:rgba(19,185,255,.12); border:1px solid rgba(19,185,255,.4); transition:transform .4s var(--spring); }
+.tl-item:nth-of-type(odd) .tl-date{ margin-left:auto; }
+.tl-item:hover .tl-date{ transform:scale(1.08); }
+.tl-item::before{ content:""; position:absolute; top:7px; width:18px; height:18px; box-sizing:border-box; border-radius:50%; background:#fff; border:4px solid #8b949e; z-index:4; transition:transform .4s var(--spring), background .3s ease, border-color .3s ease; }
+.tl-item::after{ content:""; position:absolute; top:15px; height:2px; width:46px; background:rgba(120,126,134,.45); transition:background .3s ease; }
+.tl-item:nth-of-type(odd)::before{ right:-9px; } .tl-item:nth-of-type(odd)::after{ right:0; }
+.tl-item:nth-of-type(even)::before{ left:-9px; } .tl-item:nth-of-type(even)::after{ left:0; }
+.tl-item.passed::before{ background:#13B9FF; border-color:#fff; box-shadow:0 0 0 5px rgba(19,185,255,.28); }
+.tl-item.passed::after{ background:#13B9FF; }
+.tl-item:hover::before{ transform:scale(1.3); }
+.timeline .tl-item .card.edu-card, .timeline .tl-item .card.exp-card{ height:auto !important; width:auto !important; transition:transform .5s var(--spring), background .4s ease, opacity .3s ease, filter .3s ease, border-color .3s ease; }
+.timeline:has(.card:hover) .tl-item:not(:hover) .card{ opacity:.5; }
+@media (max-width:768px){
+    .timeline::before{ left:16px; }
+    .tl-cap{ left:16px; }
+    .tl-item, .tl-item:nth-of-type(odd), .tl-item:nth-of-type(even), .tl-item:nth-of-type(2){ float:none; clear:none; width:100%; margin-top:0; padding:0 0 26px 48px; }
+    .tl-item:nth-of-type(odd)::before, .tl-item:nth-of-type(even)::before{ left:7px; right:auto; }
+    .tl-item:nth-of-type(odd)::after, .tl-item:nth-of-type(even)::after{ left:16px; right:auto; width:32px; }
+    .tl-item:nth-of-type(odd) .tl-date{ margin-left:0; }
+}
+
+/* ---- Education and experience cards share the same border ---- */
+.education .edu-content .card.edu-card, .exp-card{ border:1px solid rgba(255,255,255,.16); }
+
+/* ---- Faculty / school / institute line with logo ---- */
+.edu-unit{ display:flex; align-items:center; gap:10px; }
+.unit-logo{ flex:0 0 auto; width:28px; height:28px; object-fit:contain; background:#fff; border-radius:7px; padding:2px; transition:transform .4s var(--spring); }
+.edu-unit:hover .unit-logo{ transform:scale(1.2) rotate(-4deg); }
+.unit-text{ min-width:0; }
+.unit-sub{ display:block; margin-top:2px; font-size:12px; font-weight:500; color:#d6dde3; }
+
+/* ---- Conferences ---- */
+.research.conferences .title::after{ content:"where I presented and took part"; }
+.conf-es{ font-size:14px; color:#666; }
+.conf-type{ font-weight:600; color:#0b6fa4; }
+
+/* ---- Navigation: 11 items need to fit on one line ---- */
+@media (min-width:948px) and (max-width:1320px){
+    .navbar .menu li a{ margin-left:8px; font-size:14px; }
+    .navbar .logo a{ font-size:20px; }
+}
+
+/* =====================================================================
+   Round 13
+   ===================================================================== */
+.edu-faculty, .edu-unit, .edu-unit .unit-text{ color:#fff !important; }
+.unit-sub{ color:#fff; opacity:.85; }
+.unit-logo{ width:32px; height:32px; }
+.unit-logo.iicg{ width:42px; height:42px; padding:0; }
+.publication:hover .pub-details, .publication:focus-within .pub-details, .publication.open .pub-details{ max-height:1300px; }
+
+/* ---- Timeline: the line runs from the first point to the last point; those two are the round start/end points ---- */
+.timeline{ padding-top:60px !important; padding-bottom:70px !important; }
+.timeline::before{ top:var(--tl-first,16px); bottom:auto; height:var(--tl-len,200px); }
+.tl-cap{ display:none !important; }
+.tl-item:first-of-type::before, .tl-item:last-of-type::before,
+.tl-item.passed:first-of-type::before, .tl-item.passed:last-of-type::before{
+    width:28px; height:28px; top:2px; border:6px solid #13B9FF; background:radial-gradient(circle,#13B9FF 0 34%,#fff 36%); box-shadow:0 0 0 7px rgba(19,185,255,.18);
+}
+.tl-item:first-of-type:nth-of-type(odd)::before, .tl-item:last-of-type:nth-of-type(odd)::before{ right:-14px; }
+.tl-item:first-of-type:nth-of-type(even)::before, .tl-item:last-of-type:nth-of-type(even)::before{ left:-14px; }
+.tl-tag{ position:absolute; left:50%; transform:translateX(-50%); padding:5px 13px; border-radius:14px; font:600 12px/1 'Poppins',sans-serif; letter-spacing:.6px; color:#fff; background:rgba(70,76,84,.88); z-index:5; white-space:nowrap; }
+@media (max-width:768px){
+    .tl-item:first-of-type:nth-of-type(odd)::before, .tl-item:last-of-type:nth-of-type(odd)::before,
+    .tl-item:first-of-type:nth-of-type(even)::before, .tl-item:last-of-type:nth-of-type(even)::before{ left:2px; right:auto; }
+    .tl-tag{ left:0; transform:none; }
+}

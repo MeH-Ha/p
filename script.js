@@ -201,7 +201,7 @@ var GOATCOUNTER_CODE = "";
     if (!box) return;
     var track = box.querySelector(".st-track"), pct = box.querySelector(".st-pct"), list = box.querySelector(".st-list");
     var root = document.documentElement;
-    var SECTIONS = [["home","Home"],["about","About"],["education","Education"],["research","Research"],["experience","Experience"],["project","Projects"],["skills","Skills"],["training","Training"],["awards","Awards"],["ielts-score","Languages"],["contact","Contact"]];
+    var SECTIONS = [["home","Home"],["about","About"],["education","Education"],["research","Research"],["conferences","Conferences"],["experience","Experience"],["project","Projects"],["skills","Skills"],["training","Training"],["awards","Awards"],["ielts-score","Languages"],["contact","Contact"]];
     var items = [], maxS = 1, ticking = false;
     SECTIONS.forEach(function (s) {
         var el = document.getElementById(s[0]); if (!el) return;
@@ -405,23 +405,50 @@ var LINK_SCREENSHOTS = true;
     });
 })();
 
-/* ---- 9. Timelines: equal-size cards and a zig-zag offset that fits the card height ---- */
+/* ---- 9. Timelines: equal-size cards, zig-zag offset, a line that runs from the first to the last point, and a progress fill ---- */
 (function () {
-    var timer;
-    function run() {
-        document.querySelectorAll(".timeline").forEach(function (tl) {
+    var tls = [].slice.call(document.querySelectorAll(".timeline"));
+    if (!tls.length) return;
+    tls.forEach(function (tl) { tl.insertAdjacentHTML("beforeend", '<span class="tl-tag top">Latest</span><span class="tl-tag bottom">Earliest</span>'); });
+    var timer, ticking = false;
+    function layout() {
+        tls.forEach(function (tl) {
             var cards = [].slice.call(tl.querySelectorAll(".edu-card, .exp-card")), m = 0;
             cards.forEach(function (c) { c.style.minHeight = ""; });
-            if (window.innerWidth <= 768) { tl.style.setProperty("--tl-off", "0px"); return; }   // phones: natural card heights
-            cards.forEach(function (c) { m = Math.max(m, c.offsetHeight); });
-            cards.forEach(function (c) { c.style.minHeight = m + "px"; });
-            var pill = tl.querySelector(".tl-date"), ph = pill ? pill.offsetHeight + 10 : 40;
-            tl.style.setProperty("--tl-off", Math.round((m + ph + 30) / 2) + "px");
+            if (window.innerWidth > 768) {
+                cards.forEach(function (c) { m = Math.max(m, c.offsetHeight); });
+                cards.forEach(function (c) { c.style.minHeight = m + "px"; });
+                var pill = tl.querySelector(".tl-date"), ph = pill ? pill.offsetHeight + 10 : 42;
+                tl.style.setProperty("--tl-off", Math.round((m + ph + 30) / 2) + "px");
+            } else { tl.style.setProperty("--tl-off", "0px"); }
+            var items = tl.querySelectorAll(".tl-item"); if (!items.length) return;
+            var fy = items[0].offsetTop + 16, ly = items[items.length - 1].offsetTop + 16;
+            tl._fy = fy; tl._len = Math.max(1, ly - fy);
+            tl.style.setProperty("--tl-first", fy + "px"); tl.style.setProperty("--tl-len", tl._len + "px");
+            var t1 = tl.querySelector(".tl-tag.top"), t2 = tl.querySelector(".tl-tag.bottom");
+            if (t1) t1.style.top = (fy - 42) + "px";
+            if (t2) t2.style.top = (ly + 24) + "px";
+        });
+        update();
+    }
+    function update() {
+        ticking = false;
+        var probe = window.innerHeight * 0.55, reads = [];
+        tls.forEach(function (tl) {
+            var r = tl.getBoundingClientRect();
+            reads.push({ tl: tl, top: r.top, nodes: [].slice.call(tl.querySelectorAll(".tl-item")).map(function (it) { return { it: it, y: it.getBoundingClientRect().top + 16 }; }) });
+        });
+        reads.forEach(function (o) {
+            var p = Math.min(1, Math.max(0, (probe - (o.top + (o.tl._fy || 0))) / (o.tl._len || 1)));
+            o.tl.style.setProperty("--tp", (p * 100) + "%");
+            o.nodes.forEach(function (n) { n.it.classList.toggle("passed", n.y < probe); });
         });
     }
-    function later() { clearTimeout(timer); timer = setTimeout(run, 120); }
-    window.addEventListener("load", run);
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    function later() { clearTimeout(timer); timer = setTimeout(layout, 120); }
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", later);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
-    run();
+    window.addEventListener("load", function () { layout(); setTimeout(layout, 1500); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+    layout();
 })();
